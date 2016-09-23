@@ -511,7 +511,11 @@ class ApplicationMain {
 		
 		config = {
 			
+<<<<<<< HEAD
 			build: "42",
+=======
+			build: "27",
+>>>>>>> refs/remotes/origin/master
 			company: "HaxeFlixel",
 			file: "Project Disco",
 			fps: 60,
