@@ -27,7 +27,7 @@ class PlayState extends FlxState
 		paredA = new Pared();
 		paredB = new Pared(780, 0);
 		techo = new Techo();
-		TrampaDisco = new CajaDisco(50,50,4);
+		TrampaDisco = new CajaDisco(300,300,8);
 		add(TrampaDisco);
 		add(piso);
 		add(paredA);
