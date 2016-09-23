@@ -46,17 +46,17 @@ class Player extends FlxSprite
 				Reg.velPlayer -= Reg.accelerationPlayer;
 			}
 		}
-		if (FlxG.keys.pressed.SPACE)
+		if (FlxG.keys.justPressed.SPACE)
 		{
 			Reg.jumpVelPlayer = Reg.jumpMaxVelPlayer;
 		}
-		else if (y + height < FlxG.height)
-		{
-			Reg.jumpVelPlayer += Reg.jumpAccelerationPlayer;
-		}
-		else
+		else if(y + height > FlxG.height)
 		{
 			Reg.jumpVelPlayer = 0;
+		}
+		else if (Reg.jumpVelPlayer < 600)
+		{
+			Reg.jumpVelPlayer += Reg.jumpAccelerationPlayer;
 		}
 		velocity.x = Reg.velPlayer;
 		velocity.y = Reg.jumpVelPlayer;

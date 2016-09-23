@@ -20,6 +20,7 @@ class Disco extends FlxSprite
 		angle = angulo;
 		trace (angle);
 		cos = FlxMath.fastCos(angle);
+		trace(cos);
 		sin = FlxMath.fastSin(angle);
 		velocity.x = velocidad * cos;
 		if (sin < 0)
