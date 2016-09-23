@@ -511,7 +511,15 @@ class ApplicationMain {
 		
 		config = {
 			
+<<<<<<< HEAD
 			build: "45",
+=======
+<<<<<<< HEAD
+			build: "42",
+=======
+			build: "27",
+>>>>>>> refs/remotes/origin/master
+>>>>>>> origin/parte-gonzael-Mas-piola
 			company: "HaxeFlixel",
 			file: "Project Disco",
 			fps: 60,
