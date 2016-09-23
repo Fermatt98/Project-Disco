@@ -17,6 +17,8 @@ class PlayState extends FlxState
 	private var techo:FlxSprite;
 	//-------Armas------//
 	private var TrampaDisco:FlxSprite;
+	private var TrampaDisco2:FlxSprite;
+	private var TrampaDisco3:FlxSprite;
 	
 	override public function create():Void
 	{
@@ -27,8 +29,12 @@ class PlayState extends FlxState
 		paredA = new Pared();
 		paredB = new Pared(780, 0);
 		techo = new Techo();
-		TrampaDisco = new CajaDisco(300,300,8);
+		TrampaDisco = new CajaDisco(200, 10, 10);
+		TrampaDisco2 = new CajaDisco(400, 10,10);
+		TrampaDisco3 = new CajaDisco(600, 10,10);
 		add(TrampaDisco);
+		add(TrampaDisco2);
+		add(TrampaDisco3);
 		add(piso);
 		add(paredA);
 		add(paredB);
