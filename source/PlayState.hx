@@ -16,6 +16,7 @@ class PlayState extends FlxState
 		super.create();
 		player = new Player(FlxG.width/2, FlxG.height);
 		add(player);
+		//PUTO EL QUE LEE
 	}
 
 	override public function update(elapsed:Float):Void
