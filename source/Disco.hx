@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
+import flixel.math.FlxMath;
 
 /**
  * ...
@@ -16,6 +17,8 @@ class Disco extends FlxSprite
 		makeGraphic(20, 20);
 		velocity.x = velocidad;
 		angle = angulo;
+		X += velocidad * FlxMath.fastCos(angle);
+		Y += velocidad * FlxMath.fastSin(angle);
 	}
 	
 }
