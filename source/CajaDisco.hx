@@ -19,7 +19,7 @@ class CajaDisco extends FlxSprite
 		discos = new Array<Disco>();
 		for (a in 0...cantDiscos)
 		{
-			discos.push(new Disco(300,300,50,a + 1));
+			discos.push(new Disco(X,Y,50,a));
 		}
 		for ( a in 0...cantDiscos)
 		{
