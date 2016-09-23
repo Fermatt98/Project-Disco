@@ -8,13 +8,13 @@ import flixel.ui.FlxButton;
 import flixel.math.FlxMath;
 
 class PlayState extends FlxState
-{
-<<<<<<< HEAD
+
 	//-------Ecenario-------//
 	private var piso:FlxSprite;
 	private var paredA:FlxSprite;
 	private var paredB:FlxSprite;
 	private var techo:FlxSprite;
+	private var player:FlxSprite;
 	//-------Armas------//
 	private var TrampaDisco:FlxSprite;
 	override public function create():Void
@@ -30,19 +30,7 @@ class PlayState extends FlxState
 		add(paredA);
 		add(paredB);
 		add(techo);
-=======
-	private var player:FlxSprite;
-	
-	override public function create():Void
-	{
-		super.create();
 		player = new Player(FlxG.width/2, FlxG.height);
 		add(player);
->>>>>>> refs/remotes/origin/master
-	}
-
-	override public function update(elapsed:Float):Void
-	{
-		super.update(elapsed);
 	}
 }
