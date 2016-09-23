@@ -9,9 +9,13 @@ import flixel.math.FlxMath;
 
 class PlayState extends FlxState
 {
+	private var player:FlxSprite;
+	
 	override public function create():Void
 	{
 		super.create();
+		player = new Player(FlxG.width/2, FlxG.height);
+		add(player);
 	}
 
 	override public function update(elapsed:Float):Void
