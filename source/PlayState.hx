@@ -22,7 +22,10 @@ class PlayState extends FlxState
 		Reg.TrampaDisco = new CajaDisco(200, 10, 30, 0.5, 500);
 		Reg.TrampaDisco2 = new CajaDisco(400, 10,20, 2, 400);
 		Reg.TrampaDisco3 = new CajaDisco(600, 10, 10, 4, 300);
-		Reg.Luz1 = new CajaLuz(300, 10, 2, 3);
+		Reg.Luz1 = new CajaLuz(300, 10, 0.5, 1);
+		Reg.Luz2 = new CajaLuz(500, 10, 1, 1);
+		Reg.Luz3 = new CajaLuz(100, 10, 0.3, 0.7);
+		Reg.Luz4 = new CajaLuz(700, 10, 1.3, 0.5);
 		add(Reg.TrampaDisco);
 		add(Reg.TrampaDisco2);
 		add(Reg.TrampaDisco3);
@@ -31,6 +34,9 @@ class PlayState extends FlxState
 		add(Reg.paredDer);
 		add(Reg.techo);
 		add(Reg.Luz1);
+		add(Reg.Luz2);
+		add(Reg.Luz3);
+		add(Reg.Luz4);
 		FlxG.sound.playMusic(AssetPaths.Game__wav);
 		//FlxG.debugger.visible = true;
 	}

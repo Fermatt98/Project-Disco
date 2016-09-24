@@ -27,4 +27,7 @@ class Reg
 	static public var TrampaDisco2:FlxSprite;
 	static public var TrampaDisco3:FlxSprite;
 	static public var Luz1:FlxSprite;
+	static public var Luz2:FlxSprite;
+	static public var Luz3:FlxSprite;
+	static public var Luz4:FlxSprite;
 }

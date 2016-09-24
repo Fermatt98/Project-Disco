@@ -22,6 +22,8 @@ class CajaLuz extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?delayLuz:Float, ?duracionLuz:Float, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
+		makeGraphic(30, 30);
+		color = 0x00DF0101;
 		_delayLuz = delayLuz;
 		_duracionLuz = duracionLuz + delayLuz;
 	}
@@ -30,7 +32,7 @@ class CajaLuz extends FlxSprite
 		_time += elapsed;
 		if ( _time > _delayLuz && !_luzBool)
 		{
-			_luz = new Luz(x, y);
+			_luz = new Luz(x, y + height);
 			FlxG.state.add(_luz);	
 			_luzBool = true;
 		}
