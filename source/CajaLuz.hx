@@ -29,6 +29,7 @@ class CajaLuz extends FlxSprite
 	}
 	override public function update(elapsed:Float):Void
 	{
+		super.update(elapsed);
 		_time += elapsed;
 		if ( _time > _delayLuz && !_luzBool)
 		{

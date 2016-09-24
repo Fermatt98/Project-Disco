@@ -13,7 +13,6 @@ import flixel.math.FlxAngle;
  */
 class CajaDisco extends FlxSprite
 {
-	private var discos:Array<Disco>;
 	private var timer:Float = 0;
 	private var cantDiscUp:Int = 0;
 	private var _delayTime:Float = 0;
@@ -27,7 +26,7 @@ class CajaDisco extends FlxSprite
 		_delayTime = delayTime;
 		_velocidadDisco = velocidadDisco;
 		cantDiscUp = cantDiscos;
-		discos = new Array<Disco>();
+		Reg.discos = new Array<Disco>();
 		_anguloDisco =FlxAngle.asRadians(180/(cantDiscos-1));
 	}
 	override public function update(elapsed:Float):Void 
@@ -39,8 +38,8 @@ class CajaDisco extends FlxSprite
 		{
 			for (a in 0...cantDiscUp)
 			{
-				discos.push(new Disco(x + width/2, y + height/2, _velocidadDisco, a * _anguloDisco));
-				FlxG.state.add(discos[discos.length-1]);
+				Reg.discos.push(new Disco(x + width/2, y + height/2, _velocidadDisco, a * _anguloDisco));
+				FlxG.state.add(Reg.discos[Reg.discos.length-1]);
 			}
 			timer = 0;
 		}

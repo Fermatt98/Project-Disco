@@ -10,7 +10,8 @@ class Reg
 	inline static public var accelerationPlayer:Int = 30;
 	inline static public var jumpAccelerationPlayer:Int = 20;
 	inline static public var jumpMaxVelPlayer:Int = -600;
-	inline static public var maxJump = 2;
+	inline static public var maxJump:Int = 2;
+	inline static public var pixelVel:Int = 800;
 	
 	//------ DISCO -----//
 	static public var velocidadDisco:Int = 250;
@@ -30,4 +31,6 @@ class Reg
 	static public var Luz2:FlxSprite;
 	static public var Luz3:FlxSprite;
 	static public var Luz4:FlxSprite;
+	static public var pixel:Array<Pixel>;
+	static public var discos:Array<Disco>;
 }
