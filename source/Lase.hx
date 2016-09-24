@@ -43,7 +43,8 @@ class Lase extends FlxSprite
 			{
 				velocity.x = -velocidad;
 			}
-		}	
+		}
+		color = 0x00FFFF00;
 	}
 	override public function update(elapsed:Float):Void
 	{
@@ -62,8 +63,7 @@ class Lase extends FlxSprite
 				{
 					velocity.y = velocity.y * -1;
 					_time = 0;
-				}
-		
+				}		
 			}
 			else
 			{
@@ -74,7 +74,7 @@ class Lase extends FlxSprite
 				}
 				else
 				{
-					velocity.x = -velocity.x * -1;
+					velocity.x = velocity.x * -1;
 					_time = 0;
 				}
 			}

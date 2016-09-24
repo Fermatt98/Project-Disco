@@ -25,16 +25,16 @@ class Reg
 	static public var paredDer:FlxSprite;
 	static public var techo:FlxSprite;
 	//-------Armas------//
-	/*static public var TrampaDisco:FlxSprite;
+	static public var TrampaDisco:FlxSprite;
 	static public var TrampaDisco2:FlxSprite;
 	static public var TrampaDisco3:FlxSprite;
 	static public var Luz1:FlxSprite;
 	static public var Luz2:FlxSprite;
 	static public var Luz3:FlxSprite;
-	static public var Luz4:FlxSprite;*/
+	static public var Luz4:FlxSprite;
 	static public var Laser1:FlxSprite;
 	static public var Laser2:FlxSprite;
 	static public var Laser3:FlxSprite;
 	static public var Laser4:FlxSprite;
-	//static public var pixel:Array<Pixel>;
+	static public var pixel:Array<Pixel>;
 }

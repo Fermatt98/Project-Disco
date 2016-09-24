@@ -23,6 +23,7 @@ class CajaDisco extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(30, 30);
+		color = 0x008A0829;
 		_delayTime = delayTime;
 		_velocidadDisco = velocidadDisco;
 		cantDiscUp = cantDiscos;

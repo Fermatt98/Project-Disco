@@ -14,6 +14,7 @@ class Luz extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(30, 800);
+		color = 0x0000FF00;
 	}
 	
 }
