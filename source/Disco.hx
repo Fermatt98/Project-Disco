@@ -20,15 +20,12 @@ class Disco extends FlxSprite
 		makeGraphic(5, 5);
 		angle = angulo;
 		trace (angle);
-<<<<<<< HEAD
 		cos = FlxMath.fastCos(FlxAngle.asRadians(angulo));
 		trace(cos);
 		sin = FlxMath.fastSin(FlxAngle.asRadians(angle));
-=======
 		cos = FlxMath.fastCos(angle);
 		trace(cos);
 		sin = FlxMath.fastSin(angle);
->>>>>>> origin/master
 		velocity.x = velocidad * cos;
 		velocity.y = velocidad * sin;
 		trace(velocity.x);

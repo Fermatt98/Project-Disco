@@ -20,20 +20,29 @@ class CajaDisco extends FlxSprite
 		makeGraphic(30, 30);
 		cantDiscUp = cantDiscos;
 		discos = new Array<Disco>();
+		Reg.anguloDisco = 180/cantDiscos;
 	}
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
 		timer += elapsed;
+		
 		if (timer > Reg.spawnDisco)
 		{
 			for (a in 0...cantDiscUp)
 			{
-				discos.push(new Disco(x, y, 300, a * 20));
+				discos.push(new Disco(x, y, Reg.velocidadDisco, a * Reg.anguloDisco));
 				FlxG.state.add(discos[discos.length-1]);
-
 			}
 			timer = 0;
+			/*if (Reg.anguloDisco == 20)
+			{
+				Reg.anguloDisco = 15;
+			}
+			else
+			{
+				Reg.anguloDisco = 20;
+			}*/
 		}
 		for (i in 0...discos.length)
 		{
