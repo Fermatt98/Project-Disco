@@ -23,4 +23,13 @@ class Disco extends FlxSprite
 		velocity.y = velocidad * FlxMath.fastSin(angle);
 	}
 	
+	override public function update(elapsed:Float):Void 
+	{
+		super.update(elapsed);
+		if (!isOnScreen())
+		{
+			destroy();
+		}
+	}
+	
 }

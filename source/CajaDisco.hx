@@ -44,12 +44,5 @@ class CajaDisco extends FlxSprite
 			}
 			timer = 0;
 		}
-		for (i in 0...discos.length)
-		{
-			if (!discos[i].isOnScreen())
-			{
-				discos[i].kill();
-			}
-		}
 	}
 }

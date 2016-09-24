@@ -1,5 +1,7 @@
 package;
 
+import flixel.FlxSprite;
+
 class Reg
 {
 	static public var velPlayer:Int = 0;
@@ -11,4 +13,15 @@ class Reg
 	//------ DISCO -----//
 	static public var velocidadDisco:Int = 250;
 	static public var anguloDisco:Float = 0;
+	//--------FLXSPRITES------------//
+	static public var player:FlxSprite;
+	//-------Escenario-------//
+	static public var piso:FlxSprite;
+	static public var paredA:FlxSprite;
+	static public var paredB:FlxSprite;
+	static public var techo:FlxSprite;
+	//-------Armas------//
+	static public var TrampaDisco:FlxSprite;
+	static public var TrampaDisco2:FlxSprite;
+	static public var TrampaDisco3:FlxSprite;
 }
