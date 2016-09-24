@@ -4,6 +4,9 @@ import flixel.FlxSprite;
 import flixel.group.FlxGroup;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.FlxG;
+import flixel.math.FlxMath;
+import flixel.math.FlxAngle;
+
 /**
  * ...
  * @author ...
@@ -20,7 +23,7 @@ class CajaDisco extends FlxSprite
 		makeGraphic(30, 30);
 		cantDiscUp = cantDiscos;
 		discos = new Array<Disco>();
-		Reg.anguloDisco = 180/cantDiscos;
+		Reg.anguloDisco =FlxAngle.asRadians(180/(cantDiscos-1));
 	}
 	override public function update(elapsed:Float):Void 
 	{
@@ -31,7 +34,7 @@ class CajaDisco extends FlxSprite
 		{
 			for (a in 0...cantDiscUp)
 			{
-				discos.push(new Disco(x, y, Reg.velocidadDisco, a * Reg.anguloDisco));
+				discos.push(new Disco(x + width/2, y + height/2, Reg.velocidadDisco, a * Reg.anguloDisco));
 				FlxG.state.add(discos[discos.length-1]);
 			}
 			timer = 0;

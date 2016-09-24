@@ -19,17 +19,8 @@ class Disco extends FlxSprite
 		super(X, Y, SimpleGraphic);
 		makeGraphic(5, 5);
 		angle = angulo;
-		trace (angle);
-		cos = FlxMath.fastCos(FlxAngle.asRadians(angulo));
-		trace(cos);
-		sin = FlxMath.fastSin(FlxAngle.asRadians(angle));
-		cos = FlxMath.fastCos(angle);
-		trace(cos);
-		sin = FlxMath.fastSin(angle);
-		velocity.x = velocidad * cos;
-		velocity.y = velocidad * sin;
-		trace(velocity.x);
-		trace(velocity.y);
+		velocity.x = velocidad * FlxMath.fastCos(angle);
+		velocity.y = velocidad * FlxMath.fastSin(angle);
 	}
 	
 }

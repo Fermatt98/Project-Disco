@@ -11,5 +11,5 @@ class Reg
 	inline static public var jumpMaxVelPlayer:Int = -600;
 	//------ DISCO -----//
 	static public var velocidadDisco:Int = 250;
-	static public var anguloDisco:Float = 10;
+	static public var anguloDisco:Float = 0;
 }
