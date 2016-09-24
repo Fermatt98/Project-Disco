@@ -16,36 +16,33 @@ class CajaDisco extends FlxSprite
 	private var discos:Array<Disco>;
 	private var timer:Float = 0;
 	private var cantDiscUp:Int = 0;
+	private var _delayTime:Float = 0;
+	private var _anguloDisco:Float = 0;
+	private var _velocidadDisco:Int = 0;
 
-	public function new(?X:Float=0, ?Y:Float=0, cantDiscos:Int, ?SimpleGraphic:FlxGraphicAsset) 
+	public function new(?X:Float=0, ?Y:Float=0, cantDiscos:Int, ?delayTime:Float, ?velocidadDisco:Int, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(30, 30);
+		_delayTime = delayTime;
+		_velocidadDisco = velocidadDisco;
 		cantDiscUp = cantDiscos;
 		discos = new Array<Disco>();
-		Reg.anguloDisco =FlxAngle.asRadians(180/(cantDiscos-1));
+		_anguloDisco =FlxAngle.asRadians(180/(cantDiscos-1));
 	}
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
 		timer += elapsed;
 		
-		if (timer > Reg.spawnDisco)
+		if (timer > _delayTime)
 		{
 			for (a in 0...cantDiscUp)
 			{
-				discos.push(new Disco(x + width/2, y + height/2, Reg.velocidadDisco, a * Reg.anguloDisco));
+				discos.push(new Disco(x + width/2, y + height/2, _velocidadDisco, a * _anguloDisco));
 				FlxG.state.add(discos[discos.length-1]);
 			}
 			timer = 0;
-			/*if (Reg.anguloDisco == 20)
-			{
-				Reg.anguloDisco = 15;
-			}
-			else
-			{
-				Reg.anguloDisco = 20;
-			}*/
 		}
 		for (i in 0...discos.length)
 		{
