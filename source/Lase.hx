@@ -45,9 +45,10 @@ class Lase extends FlxSprite
 			}
 		}	
 	}
-	/*override public function update(elapsed:Float):Void
+	override public function update(elapsed:Float):Void
 	{
-		/*_time += elapsed;
+		super.update(elapsed);
+		_time += elapsed;
 		if (_time > _timeCamDir)
 		{
 			if (_recta == true)
@@ -81,6 +82,6 @@ class Lase extends FlxSprite
 			
 		
 		
-	}*/
+	}
 	
 }
