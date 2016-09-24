@@ -13,24 +13,26 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		super.create();
-		Reg.player = new Player(FlxG.width/2, FlxG.height);
+		Reg.player = new Player(FlxG.width/2, FlxG.height/2);
 		add(Reg.player);
 		Reg.piso = new Piso(0, 580);
-		Reg.paredA = new Pared();
-		Reg.paredB = new Pared(780, 0);
+		Reg.paredIzq = new Pared();
+		Reg.paredDer = new Pared(780, 0);
 		Reg.techo = new Techo();
 		Reg.TrampaDisco = new CajaDisco(200, 10, 30, 0.5, 500);
 		Reg.TrampaDisco2 = new CajaDisco(400, 10,20, 2, 400);
-		Reg.TrampaDisco3 = new CajaDisco(600, 10,10, 4, 300);
+		Reg.TrampaDisco3 = new CajaDisco(600, 10, 10, 4, 300);
+		Reg.Luz1 = new CajaLuz(300, 10, 2, 3);
 		add(Reg.TrampaDisco);
 		add(Reg.TrampaDisco2);
 		add(Reg.TrampaDisco3);
 		add(Reg.piso);
-		add(Reg.paredA);
-		add(Reg.paredB);
+		add(Reg.paredIzq);
+		add(Reg.paredDer);
 		add(Reg.techo);
+		add(Reg.Luz1);
 		FlxG.sound.playMusic(AssetPaths.Game__wav);
-		FlxG.debugger.visible = true;
+		//FlxG.debugger.visible = true;
 	}
 
 	override public function update(elapsed:Float):Void
