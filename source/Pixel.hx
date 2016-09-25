@@ -17,6 +17,7 @@ class Pixel extends FlxSprite
 		makeGraphic(30, 30);
 		color = 0x00FE2E9A;
 		velocity.y = Reg.pixelVel;
+		FlxG.state.add(this);
 	}
 	
 	override public function update(elapsed:Float):Void 
@@ -25,6 +26,10 @@ class Pixel extends FlxSprite
 		if (!isOnScreen())
 		{
 			destroy();
+		}
+		if (FlxG.overlap(Reg.player, this))
+		{
+			Reg.player.kill();
 		}
 	}
 }

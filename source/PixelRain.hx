@@ -18,6 +18,7 @@ class PixelRain extends FlxBasic
 		super();
 		spawn = Spawn;
 		Reg.pixel = new Array<Pixel>();
+		FlxG.state.add(this);
 	}
 	
 	override public function update(elapsed:Float):Void 
@@ -27,7 +28,6 @@ class PixelRain extends FlxBasic
 		if (timer > spawn)
 		{
 			Reg.pixel.push(new Pixel((30 * posicion) + 20, 0));
-			FlxG.state.add(Reg.pixel[Reg.pixel.length-1]);
 			timer = 0;
 			posicion++;
 			if (30 * posicion > 800)

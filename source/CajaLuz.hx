@@ -26,6 +26,7 @@ class CajaLuz extends FlxSprite
 		color = 0x00DF0101;
 		_delayLuz = delayLuz;
 		_duracionLuz = duracionLuz + delayLuz;
+		FlxG.state.add(this);
 	}
 	override public function update(elapsed:Float):Void
 	{
@@ -33,8 +34,7 @@ class CajaLuz extends FlxSprite
 		_time += elapsed;
 		if ( _time > _delayLuz && !_luzBool)
 		{
-			_luz = new Luz(x, y + height);
-			FlxG.state.add(_luz);	
+			_luz = new Luz(x, y + height);	
 			_luzBool = true;
 		}
 		if( _time > _duracionLuz)

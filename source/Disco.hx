@@ -4,6 +4,7 @@ import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.math.FlxMath;
 import flixel.math.FlxAngle;
+import flixel.FlxG;
 
 /**
  * ...
@@ -17,11 +18,13 @@ class Disco extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?velocidad:Int, ?angulo:Float, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(5, 5);
+		makeGraphic(12, 12);
 		color = 0x00FF8000;
 		angle = angulo;
 		velocity.x = velocidad * FlxMath.fastCos(angle);
 		velocity.y = velocidad * FlxMath.fastSin(angle);
+		FlxG.state.add(this);
+		
 	}
 	
 	override public function update(elapsed:Float):Void 
@@ -30,6 +33,10 @@ class Disco extends FlxSprite
 		if (!isOnScreen())
 		{
 			destroy();
+		}
+		if (FlxG.overlap(Reg.player, this))
+		{
+			Reg.player.kill();
 		}
 	}
 	

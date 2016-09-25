@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
+import flixel.FlxG;
 
 /**
  * ...
@@ -14,6 +15,7 @@ class Pared extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(20, 600);
+		FlxG.state.add(this);
 	}
 	
 }

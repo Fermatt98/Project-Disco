@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
+import flixel.FlxG;
 
 /**
  * ...
@@ -13,6 +14,7 @@ class Lase extends FlxSprite
 	private var _timeCamDir:Float;
 	private var _recta:Bool;
 	private var _positivo:Bool;
+	
 	public function new(?X:Float=0, ?Y:Float=0, ?recta:Bool, ?positivo:Bool, ?velocidad:Float, ?timeCamDir:Float, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
@@ -45,7 +47,9 @@ class Lase extends FlxSprite
 			}
 		}
 		color = 0x00FFFF00;
+		FlxG.state.add(this);
 	}
+	
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
@@ -79,9 +83,10 @@ class Lase extends FlxSprite
 				}
 			}
 		}
-			
-		
-		
+		if (FlxG.overlap(Reg.player, this))
+		{
+			Reg.player.kill();
+		}	
 	}
 	
 }

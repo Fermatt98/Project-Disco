@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
+import flixel.FlxG;
 
 /**
  * ...
@@ -15,6 +16,16 @@ class Luz extends FlxSprite
 		super(X, Y, SimpleGraphic);
 		makeGraphic(30, 800);
 		color = 0x0000FF00;
+		FlxG.state.add(this);
+	}
+	
+	override public function update(elapsed:Float):Void 
+	{
+		super.update(elapsed);
+		if (FlxG.overlap(Reg.player, this))
+		{
+			Reg.player.kill();
+		}
 	}
 	
 }
