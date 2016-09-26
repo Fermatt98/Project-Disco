@@ -19,7 +19,7 @@ class Disco extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(12, 12);
-		color = 0x00FF8000;
+		loadGraphic("assets/images/Disco/disco.png");
 		angle = angulo;
 		velocity.x = velocidad * FlxMath.fastCos(angle);
 		velocity.y = velocidad * FlxMath.fastSin(angle);

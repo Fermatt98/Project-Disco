@@ -15,7 +15,7 @@ class Pixel extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(30, 30);
-		color = 0x00FE2E9A;
+		loadGraphic("assets/images/Pixel/pixel.png");
 		velocity.y = Reg.pixelVel;
 		FlxG.state.add(this);
 	}

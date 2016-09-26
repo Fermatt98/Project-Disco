@@ -29,10 +29,10 @@ class PlayState extends FlxState
 		Reg.Luz2 = new CajaLuz(500, 10, 1, 1);
 		Reg.Luz3 = new CajaLuz(100, 10, 0.3, 0.7);
 		Reg.Luz4 = new CajaLuz(700, 10, 1.3, 0.5);
-		Reg.Laser1 = new Lase(0, 0, true, true, 100,2);
-		Reg.Laser2 = new Lase(0, 600, true, false, 100,2);
-		Reg.Laser3 = new Lase(0,0, false, true, 100,2);
-		Reg.Laser4 = new Lase(800,0,false,false,100,2);
+		Reg.Laser1 = new Lase(0, 0, true, true, 100,2,2);
+		Reg.Laser2 = new Lase(0, 600, true, false, 100,2,2);
+		Reg.Laser3 = new Lase(0,0, false, true, 100,2,2);
+		Reg.Laser4 = new Lase(800,0,false,false,100,2,2);
 		FlxG.sound.playMusic(AssetPaths.Game__wav);
 		//FlxG.debugger.visible = true;
 	}

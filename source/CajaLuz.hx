@@ -23,7 +23,7 @@ class CajaLuz extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(30, 30);
-		color = 0x00DF0101;
+		loadGraphic("assets/images/CajaLuz/cajaLuz.png");
 		_delayLuz = delayLuz;
 		_duracionLuz = duracionLuz + delayLuz;
 		FlxG.state.add(this);

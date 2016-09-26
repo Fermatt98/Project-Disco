@@ -16,6 +16,7 @@ class Player extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(16, 32);
+		loadGraphic("assets/images/Player/player.png");
 		y -= height;
 	}
 	
