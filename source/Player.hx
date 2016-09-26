@@ -63,7 +63,7 @@ class Player extends FlxSprite
 				jumpCount++;
 			}
 		}
-		if (Reg.jumpVelPlayer < 600)
+		if (Reg.jumpVelPlayer < Reg.jumpMaxVelPlayer*-1)
 		{
 			Reg.jumpVelPlayer += Reg.jumpAccelerationPlayer;
 		}
