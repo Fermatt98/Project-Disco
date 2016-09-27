@@ -18,6 +18,7 @@ class CajaLuz extends FlxSprite
 	private var _time:Float = 0;
 	private var _delayLuz:Float = 0;
 	private var _duracionLuz:Float = 0;
+	private var _duracionTotalLuz:Float = 0;
 	private var _luzBool:Bool = false;
 	public function new(?X:Float=0, ?Y:Float=0, ?delayLuz:Float, ?duracionLuz:Float, ?SimpleGraphic:FlxGraphicAsset) 
 	{
@@ -25,6 +26,7 @@ class CajaLuz extends FlxSprite
 		makeGraphic(30, 30);
 		loadGraphic("assets/images/CajaLuz/cajaLuz.png");
 		_delayLuz = delayLuz;
+		_duracionTotalLuz = duracionLuz;
 		_duracionLuz = duracionLuz + delayLuz;
 		FlxG.state.add(this);
 	}
@@ -34,13 +36,12 @@ class CajaLuz extends FlxSprite
 		_time += elapsed;
 		if ( _time > _delayLuz && !_luzBool)
 		{
-			_luz = new Luz(x, y + height);	
+			_luz = new Luz(x, y + height, _duracionTotalLuz);	
 			_luzBool = true;
 		}
 		if( _time > _duracionLuz)
 		{
 			_time = 0;
-			_luz.destroy();
 			_luzBool = false;
 		}
 		trace(_time);

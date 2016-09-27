@@ -12,6 +12,9 @@ class PixelRain extends FlxBasic
 	private var timer:Float = 0;
 	private var spawn:Float = 0;
 	private var posicion:Int = 0;
+	private var distancia:Int = 30;
+	private var inicio:Int = 20;
+	private var fin:Int = 800;
 	
 	public function new(Spawn:Float) 
 	{
@@ -27,10 +30,10 @@ class PixelRain extends FlxBasic
 		timer += elapsed;
 		if (timer > spawn)
 		{
-			Reg.pixel.push(new Pixel((30 * posicion) + 20, 0));
+			Reg.pixel.push(new Pixel((distancia * posicion) + inicio, 0));
 			timer = 0;
 			posicion++;
-			if (30 * posicion > 800)
+			if (distancia * posicion > fin)
 			{
 				posicion = 0;
 			}

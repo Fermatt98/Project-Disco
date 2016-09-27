@@ -11,11 +11,15 @@ import flixel.FlxG;
 class Luz extends FlxSprite
 {
 	private var _time:Float = 0;
+	private var timeLimit:Float = 0.05;
 	private var _animacion:Int = 0;
-	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
+	private var _duracionLuz:Float = 0;
+	
+	public function new(?X:Float=0, ?Y:Float=0, duracionLuz:Float, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(30, 540);
+		_duracionLuz = duracionLuz;
 		FlxG.state.add(this);
 	}
 	
@@ -33,16 +37,19 @@ class Luz extends FlxSprite
 			_animacion += 1;
 		}
 		
-		if (_animacion == 1 && _time > 0.05)
+		if (_animacion == 1 && _time > timeLimit)
 		{
 			loadGraphic("assets/images/Luz/luz_2.png");
 			_animacion += 1;
 		}
-		if (_animacion == 2 && _time > 0.1)
+		if (_animacion == 2 && _time > timeLimit*2)
 		{
 			loadGraphic("assets/images/Luz/luz_3.png");
 		}
-		
+		if( _time > _duracionLuz)
+		{
+			destroy();
+		}
 	}
 	
 }

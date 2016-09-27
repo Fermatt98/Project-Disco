@@ -9,7 +9,7 @@ import flixel.FlxG;
  * ...
  * @author ...
  */
-class Lase extends FlxSprite
+class Laser extends FlxSprite
 {
 	private var _time:Float = 0;
 	private var _time2:Float = 0;
@@ -29,7 +29,7 @@ class Lase extends FlxSprite
 		if (_recta == true)
 		{
 			makeGraphic(800, 5);
-			loadGraphic("assets/images/Lacer/lacer.png");
+			loadGraphic("assets/images/Laser/laser.png");
 			if (_positivo == true)
 			{
 				velocity.y = velocidad;
@@ -43,7 +43,7 @@ class Lase extends FlxSprite
 		else
 		{
 			makeGraphic(5, 600);
-			loadGraphic("assets/images/Lacer/lacerL.png");
+			loadGraphic("assets/images/Laser/laserL.png");
 			if (_positivo == true)
 			{
 				velocity.x = velocidad;
@@ -97,11 +97,11 @@ class Lase extends FlxSprite
 			_pega = false;
 			if (_recta == true)
 			{
-				loadGraphic("assets/images/Lacer/lacer_2.png");
+				loadGraphic("assets/images/Laser/laser_2.png");
 			}
 			else
 			{
-				loadGraphic("assets/images/Lacer/lacerL_2.png");
+				loadGraphic("assets/images/Laser/laserL_2.png");
 			}
 			
 		}
@@ -112,11 +112,11 @@ class Lase extends FlxSprite
 			_time2 = 0;
 			if (_recta == true)
 			{
-				loadGraphic("assets/images/Lacer/lacer.png");
+				loadGraphic("assets/images/Laser/laser.png");
 			}
 			else
 			{
-				loadGraphic("assets/images/Lacer/lacerL.png");
+				loadGraphic("assets/images/Laser/laserL.png");
 			}
 		}
 		if (FlxG.overlap(Reg.player, this) && _pega == true)
