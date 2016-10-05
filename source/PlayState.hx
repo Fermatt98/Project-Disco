@@ -6,11 +6,17 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.math.FlxMath;
+import flixel.text.FlxText;
 
 class PlayState extends FlxState
 {
 	private var pixelRain:PixelRain;
 	private var timer:Float = 0;
+	private var arma:Int = 0;
+	private var BotonTiros:FlxSprite;
+	private var BotonTirosMenos:FlxSprite;
+	private var BotonDelay:FlxSprite;
+	private var BotonDelayMenos:FlxSprite;
 	
 	override public function create():Void
 	{
@@ -21,102 +27,120 @@ class PlayState extends FlxState
 		Reg.paredIzq = new Pared();
 		Reg.paredDer = new Pared(780, 0);
 		Reg.techo = new Techo();
-		Reg.TrampaDisco = new CajaDisco(200, 10, 30, 4, 500);
-		Reg.TrampaDisco.kill();
-		/*
-		Reg.TrampaDisco2 = new CajaDisco(400, 10,20, 2, 400);
-		Reg.TrampaDisco3 = new CajaDisco(600, 10, 10, 0.5, 300);
-		*/
-		pixelRain = new PixelRain(0.2);
-		pixelRain.kill();
-		Reg.Luz1 = new CajaLuz(300, 10, 0.5, 1);
-		Reg.Luz1.kill();
-		/*
-		Reg.Luz2 = new CajaLuz(500, 10, 1, 1);
-		Reg.Luz3 = new CajaLuz(100, 10, 0.3, 0.7);
-		Reg.Luz4 = new CajaLuz(700, 10, 1.3, 0.5);
-		*/
-		Reg.Laser1 = new Laser(0, 0, true, true, 100, 2, 2);
-		Reg.Laser1.kill();
-		/*
-		Reg.Laser2 = new Laser(0, 600, true, false, 100,2,2);
-		Reg.Laser3 = new Laser(0,0, false, true, 100,2,2);
-		Reg.Laser4 = new Laser(800,0,false,false,100,2,2);
-		*/
+		Reg.EdicionControl = new EdicionOn(50,50);
+		Reg.CajaDiscos = new Array<CajaDisco>();
+		Reg.CajaLuzes = new Array<CajaLuz>();
+		Reg.CajaLacer = new Array<Laser>();
+		Reg.CajaPixel = new Array<PixelRain>();
+		Reg.Consol = new Array<Consola>();
+		//------Botones-----//
+		BotonTiros = new Boton(220, 103, true);
+		BotonTirosMenos = new Boton(73, 103, false);
+		BotonDelay = new Boton(310, 129, true);
+		BotonDelayMenos = new Boton(73, 129, false);
+		//-----FinBotones---//
+		Reg.Consol[0] = new Consola(100, 100, "Cantidad", Reg.CantDiscos);
+		Reg.Consol[1] = new Consola(100,125,"Tiempo disparo", Reg.DelayDiscos);
 		FlxG.sound.playMusic(AssetPaths.Game__wav);
 		//FlxG.debugger.visible = true;
 	}
-
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		if (!Reg.player.exists)
+		timer += elapsed;
+		//----Editor----//
+		if (BotonTiros.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressed)
 		{
-			timer += elapsed;
-			if (timer > 2)
-			{
-				Reg.player.revive();
-				timer = 0;
-			}
+			Reg.CantDiscos += 1;
+			Reg.Consol[0].cambio(Reg.CantDiscos);
 		}
+		if (BotonTirosMenos.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressed && Reg.CantDiscos > 0)
+		{
+			Reg.CantDiscos -= 1;
+			Reg.Consol[0].cambio(Reg.CantDiscos);
+		}
+		if (BotonDelay.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressed)
+		{
+			Reg.DelayDiscos += 0.1;
+			Reg.Consol[1].cambio(Reg.DelayDiscos);
+		}
+		if (BotonDelayMenos.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressed && Reg.DelayDiscos > 0)
+		{
+			Reg.DelayDiscos -= 0.1;
+			Reg.Consol[1].cambio(Reg.DelayDiscos);
+		}
+		//---Fin Editor---//
+		if (FlxG.mouse.justPressed && arma == 1)
+		{
+			Reg.CajaDiscos[Reg.CantCajaDiscos] = new CajaDisco(FlxG.mouse.x, FlxG.mouse.y, Reg.CantDiscos,Reg.DelayDiscos,500);
+			Reg.CantCajaDiscos += 1;
+		}
+		if (FlxG.mouse.justPressed && arma == 2)
+		{
+			Reg.CajaLuzes[Reg.CantCajaLuzes] = new CajaLuz(FlxG.mouse.x, FlxG.mouse.y, 0.5,1);
+			Reg.CantCajaLuzes += 1;
+		}
+		if (FlxG.mouse.justPressed && arma == 3)
+		{
+			Reg.CajaLacer[Reg.CantCajaLacer] = new Laser(FlxG.mouse.x, FlxG.mouse.y, true,false, 100, 4, 3);
+			Reg.CantCajaLacer += 1;
+		}
+		if (FlxG.mouse.justPressed && arma == 4)
+		{
+			Reg.CajaPixel[Reg.CantCajaPixel] = new PixelRain(FlxG.mouse.x, FlxG.mouse.y, 0.5);
+			Reg.CantCajaPixel += 1;
+		}
+		
 		if (FlxG.keys.justPressed.ONE)
 		{
-			if (Reg.TrampaDisco.exists)
+			if (arma == 1)
 			{
-				Reg.TrampaDisco.kill();
-				Reg.TrampaDisco2.kill();
-				Reg.TrampaDisco3.kill();
+				arma = 0;
+				Reg.EdicionControl.cambio(true);
 			}
 			else
 			{
-				Reg.TrampaDisco = new CajaDisco(200, 10, 30, 4, 500);
-				Reg.TrampaDisco2 = new CajaDisco(400, 10,20, 2, 400);
-				Reg.TrampaDisco3 = new CajaDisco(600, 10, 10, 0.5, 300);
+				arma = 1;
+				Reg.EdicionControl.cambio(false);
 			}
 		}
 		if (FlxG.keys.justPressed.TWO)
 		{
-			if (pixelRain.exists)
+			if (arma == 2)
 			{
-				pixelRain.kill();
+				arma = 0;
+				Reg.EdicionControl.cambio(true);
 			}
 			else
 			{
-				pixelRain = new PixelRain(0.2);
+				arma = 2;
+				Reg.EdicionControl.cambio(false);
 			}
 		}
 		if (FlxG.keys.justPressed.THREE)
 		{
-			if (Reg.Luz1.exists)
+			if (arma == 3)
 			{
-				Reg.Luz1.kill();
-				Reg.Luz2.kill();
-				Reg.Luz3.kill();
-				Reg.Luz4.kill();
+				arma = 0;
+				Reg.EdicionControl.cambio(true);
 			}
 			else
 			{
-				Reg.Luz1 = new CajaLuz(300, 10, 0.5, 1);
-				Reg.Luz2 = new CajaLuz(500, 10, 1, 1);
-				Reg.Luz3 = new CajaLuz(100, 10, 0.3, 0.7);
-				Reg.Luz4 = new CajaLuz(700, 10, 1.3, 0.5);
+				arma = 3;
+				Reg.EdicionControl.cambio(false);
 			}
 		}
 		if (FlxG.keys.justPressed.FOUR)
 		{
-			if (Reg.Laser1.exists)
+			if (arma == 4)
 			{
-				Reg.Laser1.kill();
-				Reg.Laser2.kill();
-				Reg.Laser3.kill();
-				Reg.Laser4.kill();
+				arma = 0;
+				Reg.EdicionControl.cambio(true);
 			}
 			else
 			{
-				Reg.Laser1 = new Laser(0, 0, true, true, 100, 2, 2);
-				Reg.Laser2 = new Laser(0, 600, true, false, 100,2,2);
-				Reg.Laser3 = new Laser(0,0, false, true, 100,2,2);
-				Reg.Laser4 = new Laser(800,0,false,false,100,2,2);
+				arma = 4;
+				Reg.EdicionControl.cambio(false);
 			}
 		}
 	}

@@ -44,5 +44,9 @@ class CajaDisco extends FlxSprite
 			}
 			timer = 0;
 		}
+		if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedRight)
+		{
+			destroy();
+		}
 	}
 }

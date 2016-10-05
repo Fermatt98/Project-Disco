@@ -1,7 +1,7 @@
 package;
 
 import flixel.FlxSprite;
-
+import flixel.text.FlxText;
 class Reg
 {
 	static public var velPlayer:Int = 0;
@@ -12,11 +12,13 @@ class Reg
 	inline static public var jumpMaxVelPlayer:Int = -600;
 	inline static public var maxJump:Int = 2;
 	inline static public var pixelVel:Int = 800;
-	
+	//-----Editor----//
+	static public var Consol:Array<Consola>;
+	static public var EdicionControl:EdicionOn;
 	//------ DISCO -----//
 	static public var velocidadDisco:Int = 250;
 	static public var anguloDisco:Float = 0;
-		static public var discos:Array<Disco>;
+	static public var discos:Array<Disco>;
 	//--------FLXSPRITES------------//
 	static public var player:FlxSprite;
 	//-------Escenario-------//
@@ -25,16 +27,17 @@ class Reg
 	static public var paredDer:FlxSprite;
 	static public var techo:FlxSprite;
 	//-------Armas------//
-	static public var TrampaDisco:FlxSprite;
-	static public var TrampaDisco2:FlxSprite;
-	static public var TrampaDisco3:FlxSprite;
-	static public var Luz1:FlxSprite;
-	static public var Luz2:FlxSprite;
-	static public var Luz3:FlxSprite;
-	static public var Luz4:FlxSprite;
-	static public var Laser1:FlxSprite;
-	static public var Laser2:FlxSprite;
-	static public var Laser3:FlxSprite;
-	static public var Laser4:FlxSprite;
-	static public var pixel:Array<Pixel>;
+		//-------Discos-----//
+		static public var CajaDiscos:Array<CajaDisco>;
+		static public var CantCajaDiscos:Int = 0;
+		static public var CantDiscos:Int = 0;
+		static public var DelayDiscos:Float = 1;
+		//-------DiscosFin----//
+		static public var CajaLuzes:Array<CajaLuz>;
+		static public var CantCajaLuzes:Int = 0;
+		static public var CajaLacer:Array<Laser>;
+		static public var CantCajaLacer:Int = 0;
+		static public var CajaPixel:Array<PixelRain>;
+		static public var CantCajaPixel:Int = 0;
+		static public var pixel:Array<Pixel>;
 }
