@@ -15,7 +15,7 @@ class Disco extends FlxSprite
 	private var cos:Float = 0;
 	private var sin:Float = 0;
 	
-	public function new(?X:Float=0, ?Y:Float=0, ?velocidad:Int, ?angulo:Float, ?SimpleGraphic:FlxGraphicAsset) 
+	public function new(?X:Float=0, ?Y:Float=0, ?velocidad:Float, ?angulo:Float, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(12, 12);

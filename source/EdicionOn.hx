@@ -36,7 +36,7 @@ class EdicionOn extends FlxSprite
 		super.update(elapsed);
 		if (FlxG.mouse.justPressed && arma == 1)
 		{
-			Reg.CajaDiscos[Reg.CantCajaDiscos] = new CajaDisco(FlxG.mouse.x, FlxG.mouse.y, Reg.CantDiscos,Reg.DelayDiscos,500);
+			Reg.CajaDiscos[Reg.CantCajaDiscos] = new CajaDisco(FlxG.mouse.x, FlxG.mouse.y, Reg.CantDiscos,Reg.DelayDiscos,Reg.VelDiscos);
 			Reg.CantCajaDiscos += 1;
 		}
 		if (FlxG.mouse.justPressed && arma == 2)

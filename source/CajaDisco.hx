@@ -17,9 +17,9 @@ class CajaDisco extends FlxSprite
 	private var cantDiscUp:Int = 0;
 	private var _delayTime:Float = 0;
 	private var _anguloDisco:Float = 0;
-	private var _velocidadDisco:Int = 0;
+	private var _velocidadDisco:Float = 0;
 
-	public function new(?X:Float=0, ?Y:Float=0, cantDiscos:Int, ?delayTime:Float, ?velocidadDisco:Int, ?SimpleGraphic:FlxGraphicAsset) 
+	public function new(?X:Float=0, ?Y:Float=0, cantDiscos:Int, ?delayTime:Float, ?velocidadDisco:Float, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(30, 30);

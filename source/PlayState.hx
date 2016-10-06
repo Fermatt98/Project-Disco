@@ -1,5 +1,4 @@
 package;
-
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -12,11 +11,6 @@ class PlayState extends FlxState
 {
 	private var pixelRain:PixelRain;
 	private var timer:Float = 0;
-
-	private var BotonTiros:FlxSprite;
-	private var BotonTirosMenos:FlxSprite;
-	private var BotonDelay:FlxSprite;
-	private var BotonDelayMenos:FlxSprite;
 	
 	override public function create():Void
 	{
@@ -33,14 +27,18 @@ class PlayState extends FlxState
 		Reg.CajaLacer = new Array<Laser>();
 		Reg.CajaPixel = new Array<PixelRain>();
 		Reg.Consol = new Array<Consola>();
+		Reg.BotonEditor = new Array<FlxSprite>();
 		//------Botones-----//
-		BotonTiros = new Boton(220, 103, true, "Tiros");
-		BotonTirosMenos = new Boton(73, 103, false, "TirosMenos");
-		BotonDelay = new Boton(310, 129, true, "Delay");
-		BotonDelayMenos = new Boton(73, 129, false, "DelayMenos");
+		Reg.BotonEditor[0] = new Boton(230, 103, true, "Tiros");
+		Reg.BotonEditor[1] = new Boton(73, 103, false, "TirosMenos");
+		Reg.BotonEditor[2] = new Boton(315, 129, true, "Delay");
+		Reg.BotonEditor[3] = new Boton(73, 129, false, "DelayMenos");
+		Reg.BotonEditor[4] = new Boton(350, 155, true, "Velocidad");
+		Reg.BotonEditor[5] = new Boton(73,155,false, "VelocidadMenos");
 		//-----FinBotones---//
 		Reg.Consol[0] = new Consola(100, 100, "Cantidad", Reg.CantDiscos);
-		Reg.Consol[1] = new Consola(100,125,"Tiempo disparo", Reg.DelayDiscos);
+		Reg.Consol[1] = new Consola(100, 125, "Tiempo disparo", Reg.DelayDiscos);
+		Reg.Consol[2] = new Consola(100,150,"Velocidad disparo", Reg.VelDiscos);
 		FlxG.sound.playMusic(AssetPaths.Game__wav);
 		//FlxG.debugger.visible = true;
 	}

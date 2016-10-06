@@ -57,6 +57,16 @@ class Boton extends FlxSprite
 				Reg.DelayDiscos -= 0.1;
 				Reg.Consol[1].cambio(Reg.DelayDiscos);
 			}
+			if (_tag == "Velocidad" && Reg.DelayDiscos > 0)
+			{
+				Reg.VelDiscos += 10;
+				Reg.Consol[2].cambio(Reg.VelDiscos);
+			}
+			if (_tag == "VelocidadMenos" && Reg.VelDiscos > 0)
+			{
+				Reg.VelDiscos -= 10;
+				Reg.Consol[2].cambio(Reg.VelDiscos);
+			}
 		}
 	}
 	

@@ -14,6 +14,7 @@ class Reg
 	inline static public var pixelVel:Int = 800;
 	//-----Editor----//
 	static public var Consol:Array<Consola>;
+	static public var BotonEditor:Array<FlxSprite>;
 	static public var EdicionControl:EdicionOn;
 	//------ DISCO -----//
 	static public var velocidadDisco:Int = 250;
@@ -32,6 +33,7 @@ class Reg
 		static public var CantCajaDiscos:Int = 0;
 		static public var CantDiscos:Int = 0;
 		static public var DelayDiscos:Float = 1;
+		static public var VelDiscos:Float = 300;
 		//-------DiscosFin----//
 		static public var CajaLuzes:Array<CajaLuz>;
 		static public var CantCajaLuzes:Int = 0;
