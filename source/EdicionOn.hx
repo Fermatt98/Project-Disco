@@ -12,7 +12,9 @@ import flixel.FlxG;
 class EdicionOn extends FlxSprite
 {
 	private var arma:Int = 0;
-	
+	private var activo:String = "NULL";
+	private var armaUno:Bool = false;
+	private var armaDos:Bool = false;
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
@@ -64,6 +66,20 @@ class EdicionOn extends FlxSprite
 			}
 			else
 			{
+				if (armaUno != true)
+				{
+					Reg.BotonEditor[0] = new Boton(230, 103, true, "Tiros");
+					Reg.BotonEditor[1] = new Boton(73, 103, false, "TirosMenos");
+					Reg.BotonEditor[2] = new Boton(315, 129, true, "Delay");
+					Reg.BotonEditor[3] = new Boton(73, 129, false, "DelayMenos");
+					Reg.BotonEditor[4] = new Boton(350, 155, true, "Velocidad");
+					Reg.BotonEditor[5] = new Boton(73, 155, false, "VelocidadMenos");
+					Reg.Consol[0] = new Consola(100, 100, "Cantidad", Reg.CantDiscos);
+					Reg.Consol[1] = new Consola(100, 125, "Tiempo disparo", Reg.DelayDiscos);
+					Reg.Consol[2] = new Consola(100, 150, "Velocidad disparo", Reg.VelDiscos);
+				}
+				activo = "armaUno";
+				armaUno = true;
 				arma = 1;
 				cambio(false);
 			}
@@ -77,6 +93,17 @@ class EdicionOn extends FlxSprite
 			}
 			else
 			{
+				if (armaDos != true)
+				{
+					Reg.BotonEditor[6] = new Boton(230, 103, true, "DelayLuz");
+					Reg.BotonEditor[7] = new Boton(73, 103, false, "DelayLuzMenos");
+					Reg.BotonEditor[8] = new Boton(315, 129, true, "Duracion");
+					Reg.BotonEditor[9] = new Boton(73, 129, false, "DuracionMenos");
+					Reg.Consol[3] = new Consola(100, 100, "Tiempo entre disparo", Reg.CantDiscos);
+					Reg.Consol[4] = new Consola(100, 125, "Duracion", Reg.DelayDiscos);
+				}
+				activo = "armaDos";
+				armaDos = false;
 				arma = 2;
 				cambio(false);
 			}
@@ -106,6 +133,30 @@ class EdicionOn extends FlxSprite
 				arma = 4;
 				cambio(false);
 			}
+		}
+		if (armaUno == true && activo != "armaUno")
+		{
+			for (a in 0...3)
+			{
+				Reg.Consol[a].destroy();
+			}
+			for (a in 0...6)
+			{
+				Reg.BotonEditor[a].destroy();
+			}
+			armaUno = false;
+		}
+		if (armaUno == true && activo != "armaUno")
+		{
+			for (a in 2...5)
+			{
+				Reg.Consol[a].destroy();
+			}
+			for (a in 6...10)
+			{
+				Reg.BotonEditor[a].destroy();
+			}
+			armaUno = false;
 		}
 	}
 }

@@ -16,10 +16,6 @@ class Reg
 	static public var Consol:Array<Consola>;
 	static public var BotonEditor:Array<FlxSprite>;
 	static public var EdicionControl:EdicionOn;
-	//------ DISCO -----//
-	static public var velocidadDisco:Int = 250;
-	static public var anguloDisco:Float = 0;
-	static public var discos:Array<Disco>;
 	//--------FLXSPRITES------------//
 	static public var player:FlxSprite;
 	//-------Escenario-------//
@@ -34,6 +30,12 @@ class Reg
 		static public var CantDiscos:Int = 0;
 		static public var DelayDiscos:Float = 1;
 		static public var VelDiscos:Float = 300;
+		static public var velocidadDisco:Int = 250;
+		static public var anguloDisco:Float = 0;
+		static public var discos:Array<Disco>;
+		//--------Luz-------//
+		static public var DelayLuz:Float = 1;
+		static public var DuracionLuz:Float = 2;
 		//-------DiscosFin----//
 		static public var CajaLuzes:Array<CajaLuz>;
 		static public var CantCajaLuzes:Int = 0;
