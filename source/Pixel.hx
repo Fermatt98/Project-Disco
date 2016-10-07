@@ -10,13 +10,18 @@ import flixel.FlxG;
  */
 class Pixel extends FlxSprite
 {
+	private var _direccionY;
+	private var _direccionX;
 
-	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
+	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset, direccionX, direccionY) 
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(30, 30);
 		loadGraphic("assets/images/Pixel/pixel.png");
-		velocity.y = Reg.pixelVel;
+		_direccionX = direccionX;
+		_direccionY = direccionY;
+		velocity.y = _direccionY;
+		velocity.x = _direccionX;
 		FlxG.state.add(this);
 	}
 	
