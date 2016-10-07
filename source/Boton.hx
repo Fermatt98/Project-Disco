@@ -37,6 +37,7 @@ class Boton extends FlxSprite
 		super.update(elapsed);
 		if (overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressed)
 		{
+			//------Discos----////
 			if (_tag == "Tiros")
 			{
 				Reg.CantDiscos += 1;
@@ -66,6 +67,27 @@ class Boton extends FlxSprite
 			{
 				Reg.VelDiscos -= 10;
 				Reg.Consol[2].cambio(Reg.VelDiscos);
+			}
+			//-------FinDiscos-------//
+			if (_tag == "DelayLuz" && Reg.DelayLuz > 0.1)
+			{
+				Reg.DelayLuz += 0.1;
+				Reg.Consol[3].cambio(Reg.DelayLuz);
+			}
+			if (_tag == "DelayLuzMenos" && Reg.DelayLuz > 0.1)
+			{
+				Reg.DelayLuz -= 0.1;
+				Reg.Consol[3].cambio(Reg.DelayLuz);
+			}
+			if (_tag == "Duracion" && Reg.DuracionLuz > 0.05)
+			{
+				Reg.DuracionLuz += 0.1;
+				Reg.Consol[4].cambio(Reg.DuracionLuz);
+			}
+			if (_tag == "DuracionMenos" && Reg.DuracionLuz > 0.05)
+			{
+				Reg.DuracionLuz -= 0.1;
+				Reg.Consol[4].cambio(Reg.DuracionLuz);
 			}
 		}
 	}

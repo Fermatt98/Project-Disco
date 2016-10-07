@@ -21,6 +21,7 @@ class EdicionOn extends FlxSprite
 		makeGraphic(30, 30);
 		this.color = 0xFF0000;
 		FlxG.state.add(this);
+		cambio(true);
 	}
 	public function cambio(prendido:Bool)
 	{
@@ -43,7 +44,7 @@ class EdicionOn extends FlxSprite
 		}
 		if (FlxG.mouse.justPressed && arma == 2)
 		{
-			Reg.CajaLuzes[Reg.CantCajaLuzes] = new CajaLuz(FlxG.mouse.x, FlxG.mouse.y, 0.5,1);
+			Reg.CajaLuzes[Reg.CantCajaLuzes] = new CajaLuz(FlxG.mouse.x, FlxG.mouse.y, Reg.DelayLuz,Reg.DuracionLuz);
 			Reg.CantCajaLuzes += 1;
 		}
 		if (FlxG.mouse.justPressed && arma == 3)
@@ -95,15 +96,15 @@ class EdicionOn extends FlxSprite
 			{
 				if (armaDos != true)
 				{
-					Reg.BotonEditor[6] = new Boton(230, 103, true, "DelayLuz");
+					Reg.BotonEditor[6] = new Boton(380, 103, true, "DelayLuz");
 					Reg.BotonEditor[7] = new Boton(73, 103, false, "DelayLuzMenos");
-					Reg.BotonEditor[8] = new Boton(315, 129, true, "Duracion");
+					Reg.BotonEditor[8] = new Boton(245, 129, true, "Duracion");
 					Reg.BotonEditor[9] = new Boton(73, 129, false, "DuracionMenos");
 					Reg.Consol[3] = new Consola(100, 100, "Tiempo entre disparo", Reg.CantDiscos);
 					Reg.Consol[4] = new Consola(100, 125, "Duracion", Reg.DelayDiscos);
 				}
 				activo = "armaDos";
-				armaDos = false;
+				armaDos = true;
 				arma = 2;
 				cambio(false);
 			}
@@ -146,9 +147,9 @@ class EdicionOn extends FlxSprite
 			}
 			armaUno = false;
 		}
-		if (armaUno == true && activo != "armaUno")
+		if (armaDos == true && activo != "armaDos")
 		{
-			for (a in 2...5)
+			for (a in 3...5)
 			{
 				Reg.Consol[a].destroy();
 			}
@@ -156,7 +157,7 @@ class EdicionOn extends FlxSprite
 			{
 				Reg.BotonEditor[a].destroy();
 			}
-			armaUno = false;
+			armaDos = false;
 		}
 	}
 }
