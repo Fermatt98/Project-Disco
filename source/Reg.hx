@@ -33,10 +33,27 @@ class Reg
 		static public var velocidadDisco:Int = 250;
 		static public var anguloDisco:Float = 0;
 		static public var discos:Array<Disco>;
+		//-------DiscosFin----//
 		//--------Luz-------//
 		static public var DelayLuz:Float = 1;
 		static public var DuracionLuz:Float = 2;
-		//-------DiscosFin----//
+		//-------LuzFin----//
+		//-------PixelRain------//
+		static public var PixelSpawn:Float = 0;
+		static public var PixelDireccionX:Float = 1;
+		static public var PixelDireccionY:Float = 1;
+		static public var PixelDistancia:Float = 10;
+		static public var PixelVelocidad:Float = 30;
+		//-------PixelRainFin---//
+		//-------Lacer------//
+		static public var LacerVertical:Bool = false;
+		static public var LacerVerticalN:Float = 0;
+		static public var LacerDireccion:Bool = false;
+		static public var LacerDireccionN:Float = 0;
+		static public var LacerVelocidad:Float = 0;
+		static public var LacerCambio:Float = 0;
+		static public var LacerIntervalo:Float = 0;
+		//-----FinLacer----//
 		static public var CajaLuzes:Array<CajaLuz>;
 		static public var CantCajaLuzes:Int = 0;
 		static public var CajaLacer:Array<Laser>;
@@ -44,4 +61,10 @@ class Reg
 		static public var CajaPixel:Array<PixelRain>;
 		static public var CantCajaPixel:Int = 0;
 		static public var pixel:Array<Pixel>;
+	//-------Editor------//
+		static public var timeline:FlxSprite;
+		static public var songLine:FlxSprite;
+		static public var pixelTime:Float;
+		static public var getTime:Float;
+		static public var time:Float;
 }

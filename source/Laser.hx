@@ -18,6 +18,8 @@ class Laser extends FlxSprite
 	private var _recta:Bool;
 	private var _positivo:Bool;
 	private var _pega:Bool = true;
+	private var timeStart:Float = 0;
+	private var endTime:Float = Reg.time;
 	
 	public function new(?X:Float=0, ?Y:Float=0, ?recta:Bool, ?positivo:Bool, ?velocidad:Float, ?timeCamDir:Float, ?intervalo:Float, ?SimpleGraphic:FlxGraphicAsset) 
 	{
@@ -60,69 +62,89 @@ class Laser extends FlxSprite
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		_time += elapsed;
-		_time2 += elapsed;
-		if (_time > _timeCamDir)
+		if (Reg.getTime >= timeStart && Reg.getTime < endTime)
 		{
-			if (_recta == true)
+			_time += elapsed;
+			_time2 += elapsed;
+			if (!visible)
 			{
-				if (_positivo == true)
+				set_visible(true);
+			}
+			if (_time > _timeCamDir)
+			{
+				if (_recta == true)
 				{
-					velocity.y = velocity.y * -1;
-					_time = 0;
+					if (_positivo == true)
+					{
+						velocity.y = velocity.y * -1;
+						_time = 0;
+					}
+					else
+					{
+						velocity.y = velocity.y * -1;
+						_time = 0;
+					}		
 				}
 				else
 				{
-					velocity.y = velocity.y * -1;
-					_time = 0;
-				}		
+					if (_positivo == true)
+					{
+						velocity.x = velocity.x * -1;
+						_time = 0;
+					}
+					else
+					{
+						velocity.x = velocity.x * -1;
+						_time = 0;
+					}
+				}
 			}
-			else
+			if (_time2 > _intervalo && _pega == true)
 			{
-				if (_positivo == true)
+				_intervalo = _intervalo * 2;
+				_pega = false;
+				if (_recta == true)
 				{
-					velocity.x = velocity.x * -1;
-					_time = 0;
+					loadGraphic("assets/images/Laser/laser_2.png");
 				}
 				else
 				{
-					velocity.x = velocity.x * -1;
-					_time = 0;
+					loadGraphic("assets/images/Laser/laserL_2.png");
+				}
+				
+			}
+			if (_time2 > _intervalo && _pega == false)
+			{
+				_intervalo = _intervalo / 2;	
+				_pega = true;
+				_time2 = 0;
+				if (_recta == true)
+				{
+					loadGraphic("assets/images/Laser/laser.png");
+				}
+				else
+				{
+					loadGraphic("assets/images/Laser/laserL.png");
 				}
 			}
-		}
-		if (_time2 > _intervalo && _pega == true)
-		{
-			_intervalo = _intervalo * 2;
-			_pega = false;
-			if (_recta == true)
+			if (FlxG.overlap(Reg.player, this) && _pega == true)
 			{
-				loadGraphic("assets/images/Laser/laser_2.png");
+				Reg.player.kill();
 			}
-			else
+			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedRight)
 			{
-				loadGraphic("assets/images/Laser/laserL_2.png");
+				set_visible(false);
+				endTime = Reg.getTime;
 			}
-			
-		}
-		if (_time2 > _intervalo && _pega == false)
-		{
-			_intervalo = _intervalo / 2;	
-			_pega = true;
-			_time2 = 0;
-			if (_recta == true)
+			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedMiddle)
 			{
-				loadGraphic("assets/images/Laser/laser.png");
-			}
-			else
-			{
-				loadGraphic("assets/images/Laser/laserL.png");
+				destroy();
 			}
 		}
-		if (FlxG.overlap(Reg.player, this) && _pega == true)
+		else
 		{
-			Reg.player.kill();
-		}	
+			set_visible(false);
+		}
 	}
 	
 }

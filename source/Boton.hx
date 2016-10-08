@@ -69,6 +69,7 @@ class Boton extends FlxSprite
 				Reg.Consol[2].cambio(Reg.VelDiscos);
 			}
 			//-------FinDiscos-------//
+			//-------Luz------//
 			if (_tag == "DelayLuz" && Reg.DelayLuz > 0.1)
 			{
 				Reg.DelayLuz += 0.1;
@@ -88,6 +89,175 @@ class Boton extends FlxSprite
 			{
 				Reg.DuracionLuz -= 0.1;
 				Reg.Consol[4].cambio(Reg.DuracionLuz);
+			}
+			//------FinLuz-----//
+			//------Pixel----//
+			if (_tag == "Spawn" && Reg.DelayLuz > 0.1)
+			{
+				Reg.PixelSpawn += 0.1;
+				Reg.Consol[5].cambio(Reg.PixelSpawn);
+			}
+			if (_tag == "SpawnMenos" && Reg.DelayLuz > 0.1)
+			{
+				Reg.PixelSpawn -= 0.1;
+				Reg.Consol[5].cambio(Reg.PixelSpawn);
+			}
+			if (_tag == "DireccionX")
+			{
+				if (Reg.PixelDireccionX == 1)
+				{
+					Reg.PixelDireccionX = -1;
+				}
+				else
+				{
+					Reg.PixelDireccionX = 1;
+				}
+				Reg.Consol[6].cambio(Reg.PixelDireccionX);
+			}
+			if (_tag == "DireccionXMenos")
+			{
+				if (Reg.PixelDireccionX == 1)
+				{
+					Reg.PixelDireccionX = -1;
+				}
+				else
+				{
+					Reg.PixelDireccionX = 1;
+				}
+				Reg.Consol[6].cambio(Reg.PixelDireccionX);
+			}
+			if (_tag == "DireccionY")
+			{
+				if (Reg.PixelDireccionY == 1)
+				{
+					Reg.PixelDireccionY = -1;
+				}
+				else
+				{
+					Reg.PixelDireccionY = 1;
+				}
+				Reg.Consol[7].cambio(Reg.PixelDireccionY);
+			}
+			
+			if (_tag == "DireccionYMenos")
+			{
+				if (Reg.PixelDireccionY == 1)
+				{
+					Reg.PixelDireccionY = -1;
+				}
+				else
+				{
+					Reg.PixelDireccionY = 1;
+				}
+				Reg.Consol[7].cambio(Reg.PixelDireccionY);
+			}
+			if (_tag == "Distancia")
+			{
+				Reg.PixelDistancia += 5;
+				Reg.Consol[8].cambio(Reg.PixelDistancia);
+			}
+			if (_tag == "DistanciaMenos" && Reg.PixelDistancia >= 5)
+			{
+				Reg.PixelDistancia -= 5;
+				Reg.Consol[8].cambio(Reg.PixelDistancia);
+			}
+			if (_tag == "VelocidadPixel")
+			{
+				Reg.PixelVelocidad += 5;
+				Reg.Consol[9].cambio(Reg.PixelVelocidad);
+			}
+			if (_tag == "VelocidadPixelMenos" && Reg.PixelVelocidad >= 5)
+			{
+				Reg.PixelVelocidad -= 5;
+				Reg.Consol[9].cambio(Reg.PixelVelocidad);
+			}
+			//------FinPixel-----//
+			//------Lacer------//
+			if (_tag == "VerticalLacer")
+			{
+				if (Reg.LacerVerticalN == 1)
+				{
+					Reg.LacerVerticalN = 0;
+					Reg.LacerVertical = false;
+				}
+				else
+				{
+					Reg.LacerVerticalN = 1;
+					Reg.LacerVertical = true;
+				}
+				Reg.Consol[10].cambio(Reg.LacerVerticalN);
+			}
+			if (_tag == "VerticalLacerMenos")
+			{
+				if (Reg.LacerVerticalN == 1)
+				{
+					Reg.LacerVerticalN = 0;
+					Reg.LacerVertical = false;
+				}
+				else
+				{
+					Reg.LacerVerticalN = 1;
+					Reg.LacerVertical = true;
+				}
+				Reg.Consol[10].cambio(Reg.LacerVerticalN);
+			}
+			if (_tag == "DireccionLacer")
+			{
+				if (Reg.LacerDireccionN == 1)
+				{
+					Reg.LacerDireccionN = 0;
+					Reg.LacerDireccion = false;
+				}
+				else
+				{
+					Reg.LacerDireccionN = 1;
+					Reg.LacerDireccion = true;
+				}
+				Reg.Consol[11].cambio(Reg.LacerDireccionN);
+			}
+			if (_tag == "DireccionLacerMenos")
+			{
+				if (Reg.LacerDireccionN == 1)
+				{
+					Reg.LacerDireccionN = 0;
+					Reg.LacerDireccion = false;
+				}
+				else
+				{
+					Reg.LacerDireccionN = 1;
+					Reg.LacerDireccion = true;
+				}
+				Reg.Consol[11].cambio(Reg.LacerDireccionN);
+			}
+			if (_tag == "LacerVelocidad")
+			{
+				Reg.LacerVelocidad += 5;
+				Reg.Consol[12].cambio(Reg.LacerVelocidad);
+			}
+			if (_tag == "LacerVelocidadMenos" && Reg.LacerVelocidad >= 5)
+			{
+				Reg.LacerVelocidad -= 5;
+				Reg.Consol[12].cambio(Reg.LacerVelocidad);
+			}
+			if (_tag == "LacerCambio")
+			{
+				Reg.LacerCambio += 0.1;
+				Reg.Consol[13].cambio(Reg.LacerCambio);
+			}
+			if (_tag == "LacerCambioMenos" && Reg.LacerCambio >= 0.1)
+			{
+				Reg.LacerCambio -= 0.1;
+				Reg.Consol[13].cambio(Reg.LacerCambio);
+			}
+			if (_tag == "LacerIntervalo")
+			{
+				Reg.LacerIntervalo += 0.1;
+				Reg.Consol[14].cambio(Reg.LacerIntervalo);
+			}
+			if (_tag == "LacerIntervaloMenos")
+			{
+				Reg.LacerIntervalo -= 0.1;
+				Reg.Consol[14].cambio(Reg.LacerIntervalo);
 			}
 		}
 	}

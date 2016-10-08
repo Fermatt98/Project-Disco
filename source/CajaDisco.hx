@@ -18,10 +18,13 @@ class CajaDisco extends FlxSprite
 	private var _delayTime:Float = 0;
 	private var _anguloDisco:Float = 0;
 	private var _velocidadDisco:Float = 0;
+	private var timeStart:Float = 0;
+	private var endTime:Float = Reg.time;
 
 	public function new(?X:Float=0, ?Y:Float=0, cantDiscos:Int, ?delayTime:Float, ?velocidadDisco:Float, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
+		timeStart = Reg.getTime;
 		makeGraphic(30, 30);
 		loadGraphic("assets/images/CajaDisco/cajaDisco.png");
 		_delayTime = delayTime;
@@ -34,19 +37,34 @@ class CajaDisco extends FlxSprite
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
-		timer += elapsed;
-		
-		if (timer > _delayTime)
+		if (Reg.getTime >= timeStart && Reg.getTime < endTime)
 		{
-			for (a in 0...cantDiscUp)
+			timer += elapsed;
+			if (!visible)
 			{
-				Reg.discos.push(new Disco(x + width/2, y + height/2, _velocidadDisco, a * _anguloDisco));
+				set_visible(true);
 			}
-			timer = 0;
+			if (timer > _delayTime)
+			{
+				for (a in 0...cantDiscUp)
+				{
+					Reg.discos.push(new Disco(x + width / 2, y + height / 2, _velocidadDisco, a * _anguloDisco));
+				}
+				timer = 0;
+			}
+			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedRight)
+			{
+				set_visible(false);
+				endTime = Reg.getTime;
+			}
+			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedMiddle)
+			{
+				destroy();
+			}
 		}
-		if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedRight)
+		else
 		{
-			destroy();
+			set_visible(false);
 		}
 	}
 }

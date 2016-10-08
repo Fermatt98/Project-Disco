@@ -20,10 +20,13 @@ class CajaLuz extends FlxSprite
 	private var _duracionLuz:Float = 0;
 	private var _duracionTotalLuz:Float = 0;
 	private var _luzBool:Bool = false;
+	private var timeStart:Float = 0;
+	private var endTime:Float = Reg.time;
 	public function new(?X:Float=0, ?Y:Float=0, ?delayLuz:Float, ?duracionLuz:Float, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(30, 30);
+		timeStart = Reg.getTime;
 		loadGraphic("assets/images/CajaLuz/cajaLuz.png");
 		_delayLuz = delayLuz;
 		_duracionTotalLuz = duracionLuz;
@@ -33,21 +36,37 @@ class CajaLuz extends FlxSprite
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		_time += elapsed;
-		if ( _time > _delayLuz && !_luzBool)
+		if (Reg.getTime >= timeStart && Reg.getTime < endTime)
 		{
-			_luz = new Luz(x, y + height, _duracionTotalLuz);	
-			_luzBool = true;
+			_time += elapsed;
+			if (!visible)
+			{
+				set_visible(true);
+			}
+			if ( _time > _delayLuz && !_luzBool)
+			{
+				_luz = new Luz(x, y + height, _duracionTotalLuz);	
+				_luzBool = true;
+			}
+			if( _time > _duracionLuz)
+			{
+				_time = 0;
+				_luzBool = false;
+			}
+			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedRight)
+			{
+				set_visible(false);
+				endTime = Reg.getTime;
+			}
+			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedMiddle)
+			{
+				destroy();
+			}
 		}
-		if( _time > _duracionLuz)
+		else
 		{
-			_time = 0;
-			_luzBool = false;
+			set_visible(false);
+			_luz.destroy();
 		}
-		if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedRight)
-		{
-			destroy();
-		}
-		trace(_time);
 	}
 }

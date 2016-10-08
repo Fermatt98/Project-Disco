@@ -18,6 +18,7 @@ class Player extends FlxSprite
 		makeGraphic(16, 32);
 		loadGraphic("assets/images/Player/player.png");
 		y -= height;
+		FlxG.state.add(this);
 	}
 	
 	override public function update(elapsed:Float):Void 
@@ -54,6 +55,10 @@ class Player extends FlxSprite
 			else if (velocity.x > 0)
 			{
 				Reg.velPlayer -= Reg.accelerationPlayer;
+			}
+			else
+			{
+				Reg.velPlayer = 0;
 			}
 		}
 		if (FlxG.keys.justPressed.SPACE)
