@@ -70,27 +70,18 @@ class CajaDisco extends FlxSprite
 	}
 	public function getVariable(list:List<Float>)
 	{
-		list.push(x);
-		list.push(y);
-		list.push(timeStart);
-		list.push(endTime);
-		list.push(_delayTime);
-		list.push(_velocidadDisco);
-		list.push(cantDiscUp);
-		list.push(_anguloDisco);
+		list.add(x);
+		list.add(y);
+		list.add(timeStart);
+		list.add(endTime);
+		list.add(_delayTime);
+		list.add(_velocidadDisco);
+		list.add(cantDiscUp);
+		list.add(_anguloDisco);
 	}
 	
 	public function setVariable(list:List<Float>)
 	{
-		_anguloDisco = list.pop();
-		cantDiscUp = list.pop();
-		_velocidadDisco = list.pop();
-		_delayTime = list.pop();
-		endTime = list.pop();
-		timeStart = list.pop();
-		y = list.pop();
-		x = list.pop();
-		/*
 		x = list.pop();
 		y = list.pop();
 		timeStart = list.pop();
@@ -99,6 +90,13 @@ class CajaDisco extends FlxSprite
 		_velocidadDisco = list.pop();
 		cantDiscUp = list.pop();
 		_anguloDisco = list.pop();
-		*/
+		list.add(x);
+		list.add(y);
+		list.add(timeStart);
+		list.add(endTime);
+		list.add(_delayTime);
+		list.add(_velocidadDisco);
+		list.add(cantDiscUp);
+		list.add(_anguloDisco);
 	}
 }

@@ -12,6 +12,7 @@ class Reg
 	inline static public var jumpMaxVelPlayer:Int = -600;
 	inline static public var maxJump:Int = 2;
 	inline static public var pixelVel:Int = 800;
+	inline static public var cantArmas:Int = 4;
 	//-----Editor----//
 	static public var Consol:Array<Consola>;
 	static public var BotonEditor:Array<FlxSprite>;

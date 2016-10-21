@@ -13,8 +13,8 @@ class PixelRain extends FlxBasic
 	private var spawn:Float = 0;
 	private var posicion:Int = 0;
 	private var _distancia:Float = 30;
-	private var _inicioX:Int = 0;
-	private var _inicioY:Int = 0;
+	private var _inicioX:Float = 0;
+	private var _inicioY:Float = 0;
 	private var _velocidad:Float;
 	private var _direccionY:Float;
 	private var _direccionX:Float;
@@ -22,7 +22,7 @@ class PixelRain extends FlxBasic
 	private var timeStart:Float = 0;
 	private var endTime:Float = Reg.time;
 	
-	public function new(inicioX, inicioY, Spawn:Float, direccionX:Float, direccionY:Float, ?distancia:Float = 30, velocidad:Float) 
+	public function new(?inicioX, ?inicioY, ?Spawn:Float, ?direccionX:Float, ?direccionY:Float, ?distancia:Float = 30, ?velocidad:Float) 
 	{
 		super();
 		_inicioX = inicioX;
@@ -77,5 +77,41 @@ class PixelRain extends FlxBasic
 				posicion = 0;
 			}
 		}
+	}
+	
+	public function getVariable(list:List<Float>)
+	{
+		list.add(_inicioX);
+		list.add(_inicioY);
+		list.add(timeStart);
+		list.add(endTime);
+		list.add(spawn);
+		list.add(_distancia);
+		list.add(_velocidad);
+		list.add(_direccionX);
+		list.add(_direccionY);
+		
+	}
+	
+	public function setVariable(list:List<Float>)
+	{
+		_inicioX = list.pop();
+		_inicioY = list.pop();
+		timeStart = list.pop();
+		endTime = list.pop();
+		spawn = list.pop();
+		_distancia = list.pop();
+		_velocidad = list.pop();
+		_direccionX = list.pop();
+		_direccionY = list.pop();
+		list.add(_inicioX);
+		list.add(_inicioY);
+		list.add(timeStart);
+		list.add(endTime);
+		list.add(spawn);
+		list.add(_distancia);
+		list.add(_velocidad);
+		list.add(_direccionX);
+		list.add(_direccionY);
 	}
 }

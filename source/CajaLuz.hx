@@ -69,4 +69,33 @@ class CajaLuz extends FlxSprite
 			_luz.destroy();
 		}
 	}
+	
+	public function getVariable(list:List<Float>)
+	{
+		list.add(x);
+		list.add(y);
+		list.add(timeStart);
+		list.add(endTime);
+		list.add(_delayLuz);
+		list.add(_duracionTotalLuz);
+		list.add(_duracionLuz);
+	}
+	
+	public function setVariable(list:List<Float>)
+	{
+		x = list.pop();
+		y = list.pop();
+		timeStart = list.pop();
+		endTime = list.pop();
+		_delayLuz = list.pop();
+		_duracionTotalLuz = list.pop();
+		_duracionLuz = list.pop();
+		list.add(x);
+		list.add(y);
+		list.add(timeStart);
+		list.add(endTime);
+		list.add(_delayLuz);
+		list.add(_duracionTotalLuz);
+		list.add(_duracionLuz);
+	}
 }

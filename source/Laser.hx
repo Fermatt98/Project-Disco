@@ -147,4 +147,84 @@ class Laser extends FlxSprite
 		}
 	}
 	
+	public function getVariable(list:List<Float>)
+	{
+		list.add(x);
+		list.add(y);
+		list.add(timeStart);
+		list.add(endTime);
+		list.add(velocity.x);
+		list.add(velocity.y);
+		list.add(_timeCamDir);
+		list.add(_intervalo);
+		if (_recta)
+		{
+			list.add(1);
+		}
+		else
+		{
+			list.add(0);
+		}
+		if (_positivo)
+		{
+			list.add(1);
+		}
+		else
+		{
+			list.add(0);
+		}
+	}
+	
+	public function setVariable(list:List<Float>)
+	{
+		x = list.pop();
+		y = list.pop();
+		timeStart = list.pop();
+		endTime = list.pop();
+		velocity.x = list.pop();
+		velocity.y = list.pop();
+		_timeCamDir = list.pop();
+		_intervalo = list.pop();
+		if (list.pop() == 1)
+		{
+			_recta = true;
+		}
+		else
+		{
+			_recta = false;
+		}
+		if (list.pop() == 1)
+		{
+			_positivo = true;
+		}
+		else
+		{
+			_positivo = false;
+		}
+		list.add(x);
+		list.add(y);
+		list.add(timeStart);
+		list.add(endTime);
+		list.add(velocity.x);
+		list.add(velocity.y);
+		list.add(_timeCamDir);
+		list.add(_intervalo);
+		if (_recta)
+		{
+			list.add(1);
+		}
+		else
+		{
+			list.add(0);
+		}
+		if (_positivo)
+		{
+			list.add(1);
+		}
+		else
+		{
+			list.add(0);
+		}
+	}
+	
 }

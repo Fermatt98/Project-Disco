@@ -15,12 +15,12 @@ class PlayState extends FlxState
 	private var pixelRain:PixelRain;
 	private var music:FlxSound;
 	private var _gameSave:FlxSave;
-	private var cajaDiscoList:Array<List<Float>>;
+	private var Level1:Array<Array<List<Float>>>;
 	
 	override public function create():Void
 	{
 		super.create();
-		cajaDiscoList = new Array <List<Float>> ();
+		Level1 = new Array <Array<List<Float>>> ();
 		Reg.getTime = 0;
 		Reg.player = new Player(FlxG.width/2, FlxG.height/2);
 		Reg.piso = new Piso(0, 580);
@@ -38,8 +38,8 @@ class PlayState extends FlxState
 		music = FlxG.sound.load(AssetPaths.Game__wav);
 		music.play();
 		//FlxG.debugger.visible = true;
-		_gameSave = new FlxSave(); // initialize
-		_gameSave.bind("discos");
+		_gameSave = new FlxSave();
+		_gameSave.bind("Level1");
 	}
 	override public function update(elapsed:Float):Void
 	{
@@ -47,30 +47,99 @@ class PlayState extends FlxState
 		if (FlxG.keys.justPressed.S)
 		{
 			_gameSave.erase();
-			_gameSave.bind("discos");
-			for (i in 0...Reg.CantCajaDiscos)
+			_gameSave.bind("Level1");
+			for (k in 0...Reg.cantArmas)
 			{
-				cajaDiscoList[i] = new List<Float>();
-				Reg.CajaDiscos[i].getVariable(cajaDiscoList[i]);
+				Level1[k] = new Array < List<Float> > ();
+				switch (k)
+				{
+					case 0:
+						for (i in 0...Reg.CantCajaDiscos)
+						{
+							Level1[k][i] = new List<Float>();
+							Reg.CajaDiscos[i].getVariable(Level1[k][i]);
+						}
+						break;
+					case 1:
+						for (i in 0...Reg.CantCajaLuzes)
+						{
+							Level1[k][i] = new List<Float>();
+							Reg.CajaLuzes[i].getVariable(Level1[k][i]);
+						}
+						break;
+					case 2:
+						for (i in 0...Reg.CantCajaPixel)
+						{
+							Level1[k][i] = new List<Float>();
+							Reg.CajaPixel[i].getVariable(Level1[k][i]);
+						}
+						break;
+					case 3:
+						for (i in 0...Reg.CantCajaLacer)
+						{
+							Level1[k][i] = new List<Float>();
+							Reg.CajaLacer[i].getVariable(Level1[k][i]);
+						}
+						break;
+				}
+				
 			}
-			_gameSave.data.discos = cajaDiscoList;
+			_gameSave.data.Level1 = Level1;
 			_gameSave.flush();
-			trace(_gameSave.data.discos);
 		}
 		if (FlxG.keys.justPressed.L)
 		{
+			Level1 = _gameSave.data.Level1;
 			for (i in 0...Reg.CajaDiscos.length)
 			{
 				Reg.CajaDiscos[i].destroy();
 			}
-			cajaDiscoList = _gameSave.data.discos;
-			for (i in 0...cajaDiscoList.length)
+			for (i in 0...Reg.CajaLuzes.length)
 			{
-				Reg.CajaDiscos[i] = new CajaDisco();
-				Reg.CajaDiscos[i].setVariable(cajaDiscoList[i]);
+				Reg.CajaLuzes[i].destroy();
 			}
-			trace(_gameSave.data.discos);
-			
+			for (i in 0...Reg.CajaPixel.length)
+			{
+				Reg.CajaPixel[i].destroy();
+			}
+			for (i in 0...Reg.CajaLacer.length)
+			{
+				Reg.CajaLacer[i].destroy();
+			}
+			for (k in 0...Reg.cantArmas)
+			{
+				switch (k)
+				{
+					case 0:
+						for (i in 0...Level1[k].length)
+						{
+							Reg.CajaDiscos[i] = new CajaDisco();
+							Reg.CajaDiscos[i].setVariable(Level1[k][i]);
+						}
+						break;
+					case 1:
+						for (i in 0...Level1[k].length)
+						{
+							Reg.CajaLuzes[i] = new CajaLuz();
+							Reg.CajaLuzes[i].setVariable(Level1[k][i]);
+						}
+						break;
+					case 2:
+						for (i in 0...Level1[k].length)
+						{
+							Reg.CajaPixel[i] = new PixelRain();
+							Reg.CajaPixel[i].setVariable(Level1[k][i]);
+						}
+						break;
+					case 3:
+						for (i in 0...Level1[k].length)
+						{
+							Reg.CajaLacer[i] = new Laser();
+							Reg.CajaLacer[i].setVariable(Level1[k][i]);
+						}
+						break;
+				}
+			}
 		}
 	}
 }
