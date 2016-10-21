@@ -59,30 +59,25 @@ class PlayState extends FlxState
 							Level1[k][i] = new List<Float>();
 							Reg.CajaDiscos[i].getVariable(Level1[k][i]);
 						}
-						break;
 					case 1:
 						for (i in 0...Reg.CantCajaLuzes)
 						{
 							Level1[k][i] = new List<Float>();
 							Reg.CajaLuzes[i].getVariable(Level1[k][i]);
 						}
-						break;
 					case 2:
 						for (i in 0...Reg.CantCajaPixel)
 						{
 							Level1[k][i] = new List<Float>();
 							Reg.CajaPixel[i].getVariable(Level1[k][i]);
 						}
-						break;
 					case 3:
 						for (i in 0...Reg.CantCajaLacer)
 						{
 							Level1[k][i] = new List<Float>();
 							Reg.CajaLacer[i].getVariable(Level1[k][i]);
 						}
-						break;
 				}
-				
 			}
 			_gameSave.data.Level1 = Level1;
 			_gameSave.flush();
@@ -106,7 +101,7 @@ class PlayState extends FlxState
 			{
 				Reg.CajaLacer[i].destroy();
 			}
-			for (k in 0...Reg.cantArmas)
+			for (k in 0...4)
 			{
 				switch (k)
 				{
@@ -116,28 +111,24 @@ class PlayState extends FlxState
 							Reg.CajaDiscos[i] = new CajaDisco();
 							Reg.CajaDiscos[i].setVariable(Level1[k][i]);
 						}
-						break;
 					case 1:
 						for (i in 0...Level1[k].length)
 						{
 							Reg.CajaLuzes[i] = new CajaLuz();
 							Reg.CajaLuzes[i].setVariable(Level1[k][i]);
 						}
-						break;
 					case 2:
 						for (i in 0...Level1[k].length)
 						{
 							Reg.CajaPixel[i] = new PixelRain();
 							Reg.CajaPixel[i].setVariable(Level1[k][i]);
 						}
-						break;
 					case 3:
 						for (i in 0...Level1[k].length)
 						{
 							Reg.CajaLacer[i] = new Laser();
 							Reg.CajaLacer[i].setVariable(Level1[k][i]);
 						}
-						break;
 				}
 			}
 		}

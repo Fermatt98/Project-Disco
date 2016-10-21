@@ -21,9 +21,10 @@ class Laser extends FlxSprite
 	private var timeStart:Float = 0;
 	private var endTime:Float = Reg.time;
 	
-	public function new(?X:Float=0, ?Y:Float=0, ?recta:Bool, ?positivo:Bool, ?velocidad:Float, ?timeCamDir:Float, ?intervalo:Float, ?SimpleGraphic:FlxGraphicAsset) 
+	public function new(?X:Float=0, ?Y:Float=0, ?recta:Bool=false, ?positivo:Bool=false, ?velocidad:Float=0, ?timeCamDir:Float=0, ?intervalo:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
+		timeStart = Reg.getTime;
 		_timeCamDir = timeCamDir;
 		_recta = recta;
 		_intervalo = intervalo;
@@ -55,7 +56,6 @@ class Laser extends FlxSprite
 				velocity.x = -velocidad;
 			}
 		}
-		
 		FlxG.state.add(this);
 	}
 	

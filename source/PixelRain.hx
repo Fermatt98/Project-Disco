@@ -22,7 +22,7 @@ class PixelRain extends FlxBasic
 	private var timeStart:Float = 0;
 	private var endTime:Float = Reg.time;
 	
-	public function new(?inicioX, ?inicioY, ?Spawn:Float, ?direccionX:Float, ?direccionY:Float, ?distancia:Float = 30, ?velocidad:Float) 
+	public function new(?inicioX, ?inicioY, ?Spawn:Float=0, ?direccionX:Float=0, ?direccionY:Float=0, ?distancia:Float = 30, ?velocidad:Float=0) 
 	{
 		super();
 		_inicioX = inicioX;

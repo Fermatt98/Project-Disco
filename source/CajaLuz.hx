@@ -22,7 +22,7 @@ class CajaLuz extends FlxSprite
 	private var _luzBool:Bool = false;
 	private var timeStart:Float = 0;
 	private var endTime:Float = Reg.time;
-	public function new(?X:Float=0, ?Y:Float=0, ?delayLuz:Float, ?duracionLuz:Float, ?SimpleGraphic:FlxGraphicAsset) 
+	public function new(?X:Float=0, ?Y:Float=0, ?delayLuz:Float=0, ?duracionLuz:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(30, 30);
@@ -66,7 +66,7 @@ class CajaLuz extends FlxSprite
 		else
 		{
 			set_visible(false);
-			_luz.destroy();
+			//_luz.destroy();
 		}
 	}
 	
