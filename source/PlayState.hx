@@ -9,19 +9,18 @@ import flixel.ui.FlxButton;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxSave;
-import haxe.Serializer;
 
 class PlayState extends FlxState
 {
 	private var pixelRain:PixelRain;
 	private var music:FlxSound;
 	private var _gameSave:FlxSave;
-	private var serializer:Serializer;
+	private var cajaDiscoList:Array<List<Float>>;
 	
 	override public function create():Void
 	{
 		super.create();
-		serializer = new Serializer();
+		cajaDiscoList = new Array <List<Float>> ();
 		Reg.getTime = 0;
 		Reg.player = new Player(FlxG.width/2, FlxG.height/2);
 		Reg.piso = new Piso(0, 580);
@@ -47,17 +46,31 @@ class PlayState extends FlxState
 		super.update(elapsed);
 		if (FlxG.keys.justPressed.S)
 		{
-			_gameSave.data.discos = new Array<CajaDisco>();
+			_gameSave.erase();
+			_gameSave.bind("discos");
 			for (i in 0...Reg.CantCajaDiscos)
 			{
-				serializer.serialize(Reg.CajaDiscos[i]);
-				_gameSave.data.discos.push(serializer);
-				_gameSave.flush();
+				cajaDiscoList[i] = new List<Float>();
+				Reg.CajaDiscos[i].getVariable(cajaDiscoList[i]);
 			}
+			_gameSave.data.discos = cajaDiscoList;
+			_gameSave.flush();
+			trace(_gameSave.data.discos);
 		}
 		if (FlxG.keys.justPressed.L)
 		{
-			Reg.CajaDiscos = _gameSave.data.discos;
+			for (i in 0...Reg.CajaDiscos.length)
+			{
+				Reg.CajaDiscos[i].destroy();
+			}
+			cajaDiscoList = _gameSave.data.discos;
+			for (i in 0...cajaDiscoList.length)
+			{
+				Reg.CajaDiscos[i] = new CajaDisco();
+				Reg.CajaDiscos[i].setVariable(cajaDiscoList[i]);
+			}
+			trace(_gameSave.data.discos);
+			
 		}
 	}
 }
