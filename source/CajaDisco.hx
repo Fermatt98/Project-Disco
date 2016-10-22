@@ -25,7 +25,7 @@ class CajaDisco extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		timeStart = Reg.getTime;
-		makeGraphic(30, 30);
+		makeGraphic(60, 60);
 		loadGraphic("assets/images/CajaDisco/cajaDisco.png");
 		_delayTime = delayTime;
 		_velocidadDisco = velocidadDisco;

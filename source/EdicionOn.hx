@@ -20,7 +20,7 @@ class EdicionOn extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(30, 30);
+		makeGraphic(60, 60);
 		this.color = 0xFF0000;
 		FlxG.state.add(this);
 		cambio(true);

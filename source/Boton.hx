@@ -15,7 +15,7 @@ class Boton extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?mas:Bool, tag:String, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(18, 18);
+		makeGraphic(36, 36);
 		FlxG.state.add(this);
 		if (mas == true)
 		{

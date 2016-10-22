@@ -18,7 +18,7 @@ class Luz extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, duracionLuz:Float, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(30, 540);
+		makeGraphic(60, 1080);
 		_duracionLuz = duracionLuz;
 		FlxG.state.add(this);
 	}

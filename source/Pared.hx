@@ -14,7 +14,7 @@ class Pared extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(20, 600);
+		makeGraphic(40, 1200);
 		FlxG.state.add(this);
 	}
 	

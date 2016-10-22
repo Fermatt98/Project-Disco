@@ -17,7 +17,7 @@ class Timeline extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(8, 32);
+		makeGraphic(16, 64);
 		color = 0x24552564;
 		FlxG.state.add(this);
 		Reg.Consol[99] = new Consola(100, 450, "Tiempo: ", Reg.getTime);

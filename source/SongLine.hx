@@ -13,7 +13,7 @@ class SongLine extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, time:Float, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(760, 32, 0x84438594);
+		makeGraphic(1520, 32, 0x84438594);
 		FlxG.state.add(this);
 		Reg.time = time;
 		Reg.pixelTime = Reg.time / (width - 8);

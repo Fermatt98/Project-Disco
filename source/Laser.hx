@@ -31,7 +31,7 @@ class Laser extends FlxSprite
 		_positivo = positivo;
 		if (_recta == true)
 		{
-			makeGraphic(800, 5);
+			makeGraphic(1600, 10);
 			loadGraphic("assets/images/Laser/laser.png");
 			if (_positivo == true)
 			{

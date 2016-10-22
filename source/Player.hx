@@ -15,7 +15,7 @@ class Player extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(16, 32);
+		makeGraphic(32, 64);
 		loadGraphic("assets/images/Player/player.png");
 		y -= height;
 		FlxG.state.add(this);
