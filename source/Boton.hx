@@ -15,7 +15,8 @@ class Boton extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?mas:Bool, tag:String, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(36, 36);
+		makeGraphic(Reg.tamanioBoton, Reg.tamanioBoton);
+		y -= height / 2;
 		FlxG.state.add(this);
 		if (mas == true)
 		{
@@ -24,6 +25,7 @@ class Boton extends FlxSprite
 		else
 		{
 			loadGraphic("assets/images/Editor/BotonMenos.png");
+			x -= width;
 		}
 		_tag = tag;
 	}
@@ -261,5 +263,4 @@ class Boton extends FlxSprite
 			}
 		}
 	}
-	
 }

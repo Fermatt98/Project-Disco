@@ -17,10 +17,10 @@ class Timeline extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(16, 64);
+		makeGraphic(Reg.tamanioTimeLineX, Reg.tamanioTimeLineY);
 		color = 0x24552564;
 		FlxG.state.add(this);
-		Reg.Consol[99] = new Consola(100, 450, "Tiempo: ", Reg.getTime);
+		Reg.Consol[99] = new Consola(Reg.posicionTiempo.x, Reg.posicionTiempo.y, "Tiempo: ", Reg.getTime);
 	}
 	
 	override public function update(elapsed:Float):Void 
@@ -71,7 +71,7 @@ class Timeline extends FlxSprite
 		if (Reg.getTime != oldTime)
 		{
 			Reg.Consol[99].destroy();
-			Reg.Consol[99] = new Consola(100, 450, "Tiempo: ", Reg.getTime);
+			Reg.Consol[99] = new Consola(Reg.posicionTiempo.x, Reg.posicionTiempo.y, "Tiempo: ", Reg.getTime);
 			oldTime = Reg.getTime;
 		}
 		

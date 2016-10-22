@@ -15,7 +15,7 @@ class Player extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(32, 64);
+		makeGraphic(Reg.tamanioPlayerX, Reg.tamanioPlayerY);
 		loadGraphic("assets/images/Player/player.png");
 		y -= height;
 		FlxG.state.add(this);
@@ -34,32 +34,15 @@ class Player extends FlxSprite
 	{
 		if (FlxG.keys.pressed.LEFT)
 		{
-			if (Reg.velPlayer > Reg.maxVelPlayer*-1)
-			{
-				Reg.velPlayer -= Reg.accelerationPlayer;
-			}
+			Reg.velPlayer = -Reg.maxVelPlayer;
 		}
 		else if (FlxG.keys.pressed.RIGHT)
 		{
-			if (velocity.x < Reg.maxVelPlayer)
-			{
-				Reg.velPlayer += Reg.accelerationPlayer;
-			}
+			Reg.velPlayer = Reg.maxVelPlayer;
 		}
 		else
 		{
-			if (Reg.velPlayer < 0)
-			{
-				Reg.velPlayer += Reg.accelerationPlayer;
-			}
-			else if (velocity.x > 0)
-			{
-				Reg.velPlayer -= Reg.accelerationPlayer;
-			}
-			else
-			{
-				Reg.velPlayer = 0;
-			}
+			Reg.velPlayer = 0;
 		}
 		if (FlxG.keys.justPressed.SPACE)
 		{

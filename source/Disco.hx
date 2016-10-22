@@ -18,7 +18,7 @@ class Disco extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?velocidad:Float, ?angulo:Float, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(24, 24);
+		makeGraphic(Reg.tamanioDisco, Reg.tamanioDisco);
 		loadGraphic("assets/images/Disco/disco.png");
 		angle = angulo;
 		velocity.x = velocidad * FlxMath.fastCos(angle);

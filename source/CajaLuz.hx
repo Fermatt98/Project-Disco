@@ -25,7 +25,7 @@ class CajaLuz extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?delayLuz:Float=0, ?duracionLuz:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(60, 60);
+		makeGraphic(Reg.tamanioCajas, Reg.tamanioCajas);
 		timeStart = Reg.getTime;
 		loadGraphic("assets/images/CajaLuz/cajaLuz.png");
 		_delayLuz = delayLuz;

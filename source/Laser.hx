@@ -20,10 +20,15 @@ class Laser extends FlxSprite
 	private var _pega:Bool = true;
 	private var timeStart:Float = 0;
 	private var endTime:Float = Reg.time;
+	private var tamanio:Int = 10;
+	private var startX:Float;
+	private var startY:Float;
 	
 	public function new(?X:Float=0, ?Y:Float=0, ?recta:Bool=false, ?positivo:Bool=false, ?velocidad:Float=0, ?timeCamDir:Float=0, ?intervalo:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
+		startX = x;
+		startY = y;
 		timeStart = Reg.getTime;
 		_timeCamDir = timeCamDir;
 		_recta = recta;
@@ -31,7 +36,7 @@ class Laser extends FlxSprite
 		_positivo = positivo;
 		if (_recta == true)
 		{
-			makeGraphic(1600, 10);
+			makeGraphic(FlxG.width, tamanio);
 			loadGraphic("assets/images/Laser/laser.png");
 			if (_positivo == true)
 			{
@@ -45,7 +50,7 @@ class Laser extends FlxSprite
 		}
 		else
 		{
-			makeGraphic(5, 600);
+			makeGraphic(tamanio, FlxG.height);
 			loadGraphic("assets/images/Laser/laserL.png");
 			if (_positivo == true)
 			{
@@ -149,8 +154,8 @@ class Laser extends FlxSprite
 	
 	public function getVariable(list:List<Float>)
 	{
-		list.add(x);
-		list.add(y);
+		list.add(startX);
+		list.add(startY);
 		list.add(timeStart);
 		list.add(endTime);
 		list.add(velocity.x);

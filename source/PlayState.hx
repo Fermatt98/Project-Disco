@@ -16,18 +16,19 @@ class PlayState extends FlxState
 	private var music:FlxSound;
 	private var _gameSave:FlxSave;
 	private var Level1:Array<Array<List<Float>>>;
+	private var existsCounter:Int = 0;
 	
 	override public function create():Void
 	{
 		super.create();
-		Level1 = new Array <Array<List<Float>>> ();
+		Level1 = new Array <Array<List<Float>>>();
 		Reg.getTime = 0;
 		Reg.player = new Player(FlxG.width/2, FlxG.height/2);
-		Reg.piso = new Piso(0, 1160);
+		Reg.piso = new Piso(0, FlxG.height);
 		Reg.paredIzq = new Pared();
-		Reg.paredDer = new Pared(1560, 0);
+		Reg.paredDer = new Pared(FlxG.width, 0);
 		Reg.techo = new Techo();
-		Reg.EdicionControl = new EdicionOn(50,50);
+		Reg.EdicionControl = new EdicionOn(Reg.posicionEdicionOn.x,Reg.posicionEdicionOn.y);
 		Reg.CajaDiscos = new Array<CajaDisco>();
 		Reg.CajaLuzes = new Array<CajaLuz>();
 		Reg.CajaLacer = new Array<Laser>();
@@ -40,6 +41,7 @@ class PlayState extends FlxState
 		//FlxG.debugger.visible = true;
 		_gameSave = new FlxSave();
 		_gameSave.bind("Level1");
+		FlxG.cameras.bgColor = 0xffffffff;
 	}
 	override public function update(elapsed:Float):Void
 	{
@@ -54,28 +56,60 @@ class PlayState extends FlxState
 				switch (k)
 				{
 					case 0:
+						existsCounter = 0;
 						for (i in 0...Reg.CantCajaDiscos)
 						{
-							Level1[k][i] = new List<Float>();
-							Reg.CajaDiscos[i].getVariable(Level1[k][i]);
+							if (Reg.CajaDiscos[i].exists)
+							{
+								Level1[k][i-existsCounter] = new List<Float>();
+								Reg.CajaDiscos[i].getVariable(Level1[k][i-existsCounter]);
+							}
+							else
+							{
+								existsCounter++;
+							}
 						}
 					case 1:
+						existsCounter = 0;
 						for (i in 0...Reg.CantCajaLuzes)
 						{
-							Level1[k][i] = new List<Float>();
-							Reg.CajaLuzes[i].getVariable(Level1[k][i]);
+							if (Reg.CajaLuzes[i].exists)
+							{
+								Level1[k][i-existsCounter] = new List<Float>();
+								Reg.CajaLuzes[i].getVariable(Level1[k][i-existsCounter]);
+							}
+							else
+							{
+								existsCounter++;
+							}
 						}
 					case 2:
+						existsCounter = 0;
 						for (i in 0...Reg.CantCajaPixel)
 						{
-							Level1[k][i] = new List<Float>();
-							Reg.CajaPixel[i].getVariable(Level1[k][i]);
+							if (Reg.CajaPixel[i].exists)
+							{
+								Level1[k][i-existsCounter] = new List<Float>();
+								Reg.CajaPixel[i].getVariable(Level1[k][i-existsCounter]);
+							}
+							else
+							{
+								existsCounter++;
+							}
 						}
 					case 3:
+						existsCounter = 0;
 						for (i in 0...Reg.CantCajaLacer)
 						{
-							Level1[k][i] = new List<Float>();
-							Reg.CajaLacer[i].getVariable(Level1[k][i]);
+							if (Reg.CajaLacer[i].exists)
+							{
+								Level1[k][i-existsCounter] = new List<Float>();
+								Reg.CajaLacer[i].getVariable(Level1[k][i-existsCounter]);
+							}
+							else
+							{
+								existsCounter++;
+							}
 						}
 				}
 			}

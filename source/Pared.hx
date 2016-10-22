@@ -10,12 +10,17 @@ import flixel.FlxG;
  */
 class Pared extends FlxSprite
 {
-
+	
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(40, 1200);
+		makeGraphic(Reg.tamanioPared, Std.int(FlxG.height));
+		if (x != 0)
+		{
+			x -= width;
+		}
 		FlxG.state.add(this);
+		color = 0x99999999;
 	}
 	
 }

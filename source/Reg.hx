@@ -1,18 +1,33 @@
 package;
 
 import flixel.FlxSprite;
+import flixel.graphics.FlxGraphic;
+import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 class Reg
 {
 	static public var velPlayer:Int = 0;
 	static public var jumpVelPlayer:Int = 0;
 	inline static public var maxVelPlayer:Int = 400;
-	inline static public var accelerationPlayer:Int = 30;
 	inline static public var jumpAccelerationPlayer:Int = 20;
 	inline static public var jumpMaxVelPlayer:Int = -600;
 	inline static public var maxJump:Int = 2;
 	inline static public var pixelVel:Int = 800;
 	inline static public var cantArmas:Int = 4;
+	//------Posiciones-----//
+	static public var posicionEdicionOn:FlxPoint = new FlxPoint(100, 100);
+	static public var posicionTiempo:FlxPoint = new FlxPoint(100, 450);
+	//------Tamaño------//
+	inline static public var tamanioPlayerX:Int = 64;
+	inline static public var tamanioPlayerY:Int = 64;
+	inline static public var tamanioPared:Int = 64;
+	inline static public var tamanioCajas:Int = 64;
+	inline static public var tamanioBoton:Int = 36;
+	inline static public var tamanioDisco:Int = 24;
+	inline static public var tamanioSongLine:Int = 64;
+	inline static public var tamanioTimeLineX:Int = 16;
+	inline static public var tamanioTimeLineY:Int = 64;
+	
 	//-----Editor----//
 	static public var Consol:Array<Consola>;
 	static public var BotonEditor:Array<FlxSprite>;

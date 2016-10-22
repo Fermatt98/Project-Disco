@@ -16,6 +16,7 @@ class Consola extends FlxText
 		text = Text +" " + Numero;
 		_Text = Text;
 		FlxG.state.add(this);
+		color = 0x00000000;
 	}
 	public function cambio(num:Float)
 	{

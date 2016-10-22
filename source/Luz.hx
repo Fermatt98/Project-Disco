@@ -14,11 +14,12 @@ class Luz extends FlxSprite
 	private var timeLimit:Float = 0.05;
 	private var _animacion:Int = 0;
 	private var _duracionLuz:Float = 0;
+	private var tamanio:Int = 60;
 	
 	public function new(?X:Float=0, ?Y:Float=0, duracionLuz:Float, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(60, 1080);
+		makeGraphic(tamanio, Std.int(FlxG.height-y));
 		_duracionLuz = duracionLuz;
 		FlxG.state.add(this);
 	}

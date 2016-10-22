@@ -17,6 +17,9 @@ class EdicionOn extends FlxSprite
 	private var armaDos:Bool = false;
 	private var armaTres:Bool = false;
 	private var armaCuatro:Bool = false;
+	private var inicio:Int = 200;
+	private var distancia:Int = 50;
+	
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
@@ -71,15 +74,15 @@ class EdicionOn extends FlxSprite
 			{
 				if (armaUno != true)
 				{
-					Reg.BotonEditor[0] = new Boton(230, 103, true, "Tiros");
-					Reg.BotonEditor[1] = new Boton(73, 103, false, "TirosMenos");
-					Reg.BotonEditor[2] = new Boton(315, 129, true, "Delay");
-					Reg.BotonEditor[3] = new Boton(73, 129, false, "DelayMenos");
-					Reg.BotonEditor[4] = new Boton(350, 155, true, "Velocidad");
-					Reg.BotonEditor[5] = new Boton(73, 155, false, "VelocidadMenos");
-					Reg.Consol[0] = new Consola(100, 100, "Cantidad", Reg.CantDiscos);
-					Reg.Consol[1] = new Consola(100, 125, "Tiempo disparo", Reg.DelayDiscos);
-					Reg.Consol[2] = new Consola(100, 150, "Velocidad disparo", Reg.VelDiscos);
+					Reg.Consol[0] = new Consola(inicio, inicio, "Cantidad", Reg.CantDiscos);
+					Reg.Consol[1] = new Consola(inicio, inicio + distancia, "Tiempo disparo", Reg.DelayDiscos);
+					Reg.Consol[2] = new Consola(inicio, inicio + distancia*2, "Velocidad disparo", Reg.VelDiscos);
+					Reg.BotonEditor[0] = new Boton(Reg.Consol[0].x + Reg.Consol[0].width, Reg.Consol[0].y + Reg.Consol[0].height/2, true, "Tiros");
+					Reg.BotonEditor[1] = new Boton(Reg.Consol[0].x, Reg.Consol[0].y + Reg.Consol[0].height/2, false, "TirosMenos");
+					Reg.BotonEditor[2] = new Boton(Reg.Consol[1].x + Reg.Consol[1].width, Reg.Consol[1].y + Reg.Consol[1].height/2, true, "Delay");
+					Reg.BotonEditor[3] = new Boton(Reg.Consol[1].x, Reg.Consol[1].y + Reg.Consol[1].height/2, false, "DelayMenos");
+					Reg.BotonEditor[4] = new Boton(Reg.Consol[2].x + Reg.Consol[2].width, Reg.Consol[2].y + Reg.Consol[2].height/2, true, "Velocidad");
+					Reg.BotonEditor[5] = new Boton(Reg.Consol[2].x, Reg.Consol[2].y + Reg.Consol[2].height/2, false, "VelocidadMenos");
 				}
 				activo = "armaUno";
 				armaUno = true;
@@ -98,12 +101,12 @@ class EdicionOn extends FlxSprite
 			{
 				if (armaDos != true)
 				{
-					Reg.BotonEditor[6] = new Boton(380, 103, true, "DelayLuz");
-					Reg.BotonEditor[7] = new Boton(73, 103, false, "DelayLuzMenos");
-					Reg.BotonEditor[8] = new Boton(245, 129, true, "Duracion");
-					Reg.BotonEditor[9] = new Boton(73, 129, false, "DuracionMenos");
-					Reg.Consol[3] = new Consola(100, 100, "Tiempo entre disparo", Reg.CantDiscos);
-					Reg.Consol[4] = new Consola(100, 125, "Duracion", Reg.DelayDiscos);
+					Reg.Consol[3] = new Consola(inicio, inicio, "Tiempo entre disparo", Reg.CantDiscos);
+					Reg.Consol[4] = new Consola(inicio, inicio+distancia, "Duracion", Reg.DelayDiscos);
+					Reg.BotonEditor[6] = new Boton(Reg.Consol[3].x + Reg.Consol[3].width, Reg.Consol[3].y + Reg.Consol[3].height/2, true, "DelayLuz");
+					Reg.BotonEditor[7] = new Boton(Reg.Consol[3].x, Reg.Consol[3].y + Reg.Consol[3].height/2, false, "DelayLuzMenos");
+					Reg.BotonEditor[8] = new Boton(Reg.Consol[4].x + Reg.Consol[4].width, Reg.Consol[4].y + Reg.Consol[4].height/2, true, "Duracion");
+					Reg.BotonEditor[9] = new Boton(Reg.Consol[4].x, Reg.Consol[4].y + Reg.Consol[4].height/2, false, "DuracionMenos");
 				}
 				activo = "armaDos";
 				armaDos = true;
@@ -122,21 +125,21 @@ class EdicionOn extends FlxSprite
 			{
 				if (armaTres != true)
 				{
-					Reg.BotonEditor[10] = new Boton(300, 103, true, "Spawn");
-					Reg.BotonEditor[11] = new Boton(73, 103, false, "SpawnMenos");
-					Reg.BotonEditor[12] = new Boton(255, 129, true, "DireccionX");
-					Reg.BotonEditor[13] = new Boton(73, 129, false, "DireccionXMenos");
-					Reg.BotonEditor[14] = new Boton(255, 155, true, "DireccionY");
-					Reg.BotonEditor[15] = new Boton(73, 155, false, "DireccionYMenos");
-					Reg.BotonEditor[16] = new Boton(255, 181, true, "Distancia");
-					Reg.BotonEditor[17] = new Boton(73, 181, false, "DistanciaMenos");
-					Reg.BotonEditor[18] = new Boton(255, 206, true, "VelocidadPixel");
-					Reg.BotonEditor[19] = new Boton(73, 206, false, "VelocidadPixelMenos");
-					Reg.Consol[5] = new Consola(100, 100, "Spawn Tiempo", Reg.PixelSpawn);
-					Reg.Consol[6] = new Consola(100, 125, "DireccionX", Reg.PixelDireccionX);
-					Reg.Consol[7] = new Consola(100, 150, "DireccionY", Reg.PixelDireccionY);
-					Reg.Consol[8] = new Consola(100, 175, "Distancia", Reg.PixelDistancia);
-					Reg.Consol[9] = new Consola(100, 200, "Velocidad", Reg.PixelVelocidad);
+					Reg.Consol[5] = new Consola(inicio, inicio, "Spawn Tiempo", Reg.PixelSpawn);
+					Reg.Consol[6] = new Consola(inicio, inicio + distancia, "DireccionX", Reg.PixelDireccionX);
+					Reg.Consol[7] = new Consola(inicio, inicio + distancia*2, "DireccionY", Reg.PixelDireccionY);
+					Reg.Consol[8] = new Consola(inicio, inicio + distancia*3, "Distancia", Reg.PixelDistancia);
+					Reg.Consol[9] = new Consola(inicio, inicio + distancia*4, "Velocidad", Reg.PixelVelocidad);
+					Reg.BotonEditor[10] = new Boton(Reg.Consol[5].x + Reg.Consol[5].width, Reg.Consol[5].y + Reg.Consol[5].height/2, true, "Spawn");
+					Reg.BotonEditor[11] = new Boton(Reg.Consol[5].x, Reg.Consol[5].y + Reg.Consol[5].height/2, false, "SpawnMenos");
+					Reg.BotonEditor[12] = new Boton(Reg.Consol[6].x + Reg.Consol[6].width, Reg.Consol[6].y + Reg.Consol[6].height/2, true, "DireccionX");
+					Reg.BotonEditor[13] = new Boton(Reg.Consol[6].x, Reg.Consol[6].y + Reg.Consol[6].height/2, false, "DireccionXMenos");
+					Reg.BotonEditor[14] = new Boton(Reg.Consol[7].x + Reg.Consol[7].width, Reg.Consol[7].y + Reg.Consol[7].height/2, true, "DireccionY");
+					Reg.BotonEditor[15] = new Boton(Reg.Consol[7].x, Reg.Consol[7].y + Reg.Consol[7].height/2, false, "DireccionYMenos");
+					Reg.BotonEditor[16] = new Boton(Reg.Consol[8].x + Reg.Consol[8].width, Reg.Consol[8].y + Reg.Consol[8].height/2, true, "Distancia");
+					Reg.BotonEditor[17] = new Boton(Reg.Consol[8].x, Reg.Consol[8].y + Reg.Consol[8].height/2, false, "DistanciaMenos");
+					Reg.BotonEditor[18] = new Boton(Reg.Consol[9].x + Reg.Consol[9].width, Reg.Consol[9].y + Reg.Consol[9].height/2, true, "VelocidadPixel");
+					Reg.BotonEditor[19] = new Boton(Reg.Consol[9].x, Reg.Consol[9].y + Reg.Consol[9].height/2, false, "VelocidadPixelMenos");
 				}
 				activo = "armaTres";
 				armaTres = true;
@@ -155,21 +158,21 @@ class EdicionOn extends FlxSprite
 			{
 				if (armaCuatro != true)
 				{
-					Reg.BotonEditor[20] = new Boton(230, 103, true, "VerticalLacer");
-					Reg.BotonEditor[21] = new Boton(73, 103, false, "VerticalLacerMenos");
-					Reg.BotonEditor[22] = new Boton(235, 129, true, "DireccionLacer");
-					Reg.BotonEditor[23] = new Boton(73, 129, false, "DireccionLacerMenos");
-					Reg.BotonEditor[24] = new Boton(245, 155, true, "LacerVelocidad");
-					Reg.BotonEditor[25] = new Boton(73, 155, false, "LacerVelocidadMenos");
-					Reg.BotonEditor[26] = new Boton(315, 181, true, "LacerCambio");
-					Reg.BotonEditor[27] = new Boton(73, 181, false, "LacerCambioMenos");
-					Reg.BotonEditor[28] = new Boton(250, 205, true, "LacerIntervalo");
-					Reg.BotonEditor[29] = new Boton(73, 205, false, "LacerIntervaloMenos");
-					Reg.Consol[10] = new Consola(100, 100, "Vertical", Reg.LacerVerticalN);
-					Reg.Consol[11] = new Consola(100, 125, "Direccion", Reg.LacerDireccionN);
-					Reg.Consol[12] = new Consola(100, 150, "Velocidad", Reg.LacerVelocidad);
-					Reg.Consol[13] = new Consola(100, 175, "Tiempo Cambio", Reg.LacerCambio);
-					Reg.Consol[14] = new Consola(100, 200, "Intervalo", Reg.LacerIntervalo);
+					Reg.Consol[10] = new Consola(inicio, inicio, "Vertical", Reg.LacerVerticalN);
+					Reg.Consol[11] = new Consola(inicio, inicio+distancia, "Direccion", Reg.LacerDireccionN);
+					Reg.Consol[12] = new Consola(inicio, inicio+distancia*2, "Velocidad", Reg.LacerVelocidad);
+					Reg.Consol[13] = new Consola(inicio, inicio+distancia*3, "Tiempo Cambio", Reg.LacerCambio);
+					Reg.Consol[14] = new Consola(inicio, inicio+distancia*4, "Intervalo", Reg.LacerIntervalo);
+					Reg.BotonEditor[20] = new Boton(Reg.Consol[10].x + Reg.Consol[10].width, Reg.Consol[10].y + Reg.Consol[10].height/2, true, "VerticalLacer");
+					Reg.BotonEditor[21] = new Boton(Reg.Consol[10].x, Reg.Consol[10].y + Reg.Consol[10].height/2, false, "VerticalLacerMenos");
+					Reg.BotonEditor[22] = new Boton(Reg.Consol[11].x + Reg.Consol[11].width, Reg.Consol[11].y + Reg.Consol[11].height/2, true, "DireccionLacer");
+					Reg.BotonEditor[23] = new Boton(Reg.Consol[11].x, Reg.Consol[11].y + Reg.Consol[11].height/2, false, "DireccionLacerMenos");
+					Reg.BotonEditor[24] = new Boton(Reg.Consol[12].x + Reg.Consol[12].width, Reg.Consol[12].y + Reg.Consol[12].height/2, true, "LacerVelocidad");
+					Reg.BotonEditor[25] = new Boton(Reg.Consol[12].x, Reg.Consol[12].y + Reg.Consol[12].height/2, false, "LacerVelocidadMenos");
+					Reg.BotonEditor[26] = new Boton(Reg.Consol[13].x + Reg.Consol[13].width, Reg.Consol[13].y + Reg.Consol[13].height/2, true, "LacerCambio");
+					Reg.BotonEditor[27] = new Boton(Reg.Consol[13].x, Reg.Consol[13].y + Reg.Consol[13].height/2, false, "LacerCambioMenos");
+					Reg.BotonEditor[28] = new Boton(Reg.Consol[14].x + Reg.Consol[14].width, Reg.Consol[14].y + Reg.Consol[14].height/2, true, "LacerIntervalo");
+					Reg.BotonEditor[29] = new Boton(Reg.Consol[14].x, Reg.Consol[14].y + Reg.Consol[14].height/2, false, "LacerIntervaloMenos");
 				}
 				activo = "armaCuatro";
 				armaCuatro = true;

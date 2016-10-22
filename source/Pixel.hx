@@ -16,7 +16,7 @@ class Pixel extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset, direccionX:Float, direccionY:Float,velocidad:Float) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(60, 60);
+		makeGraphic(Reg.tamanioCajas, Reg.tamanioCajas);
 		loadGraphic("assets/images/Pixel/pixel.png");
 		_direccionX = direccionX;
 		_direccionY = direccionY;
