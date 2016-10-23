@@ -76,7 +76,7 @@ class EdicionOn extends FlxSprite
 				{
 					Reg.Consol[0] = new Consola(inicio, inicio, "Cantidad", Reg.CantDiscos);
 					Reg.Consol[1] = new Consola(inicio, inicio + distancia, "Tiempo disparo", Reg.DelayDiscos);
-					Reg.Consol[2] = new Consola(inicio, inicio + distancia*2, "Velocidad disparo", Reg.VelDiscos);
+					Reg.Consol[2] = new Consola(inicio, inicio + distancia * 2, "Velocidad disparo", Reg.VelDiscos);
 					Reg.BotonEditor[0] = new Boton(Reg.Consol[0].x + Reg.Consol[0].width, Reg.Consol[0].y + Reg.Consol[0].height/2, true, "Tiros");
 					Reg.BotonEditor[1] = new Boton(Reg.Consol[0].x, Reg.Consol[0].y + Reg.Consol[0].height/2, false, "TirosMenos");
 					Reg.BotonEditor[2] = new Boton(Reg.Consol[1].x + Reg.Consol[1].width, Reg.Consol[1].y + Reg.Consol[1].height/2, true, "Delay");

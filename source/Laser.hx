@@ -23,6 +23,7 @@ class Laser extends FlxSprite
 	private var tamanio:Int = 10;
 	private var startX:Float;
 	private var startY:Float;
+	private var startVelocity:Float;
 	
 	public function new(?X:Float=0, ?Y:Float=0, ?recta:Bool=false, ?positivo:Bool=false, ?velocidad:Float=0, ?timeCamDir:Float=0, ?intervalo:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
@@ -34,6 +35,7 @@ class Laser extends FlxSprite
 		_recta = recta;
 		_intervalo = intervalo;
 		_positivo = positivo;
+		startVelocity = velocidad;
 		if (_recta == true)
 		{
 			makeGraphic(FlxG.width, tamanio);
@@ -69,39 +71,51 @@ class Laser extends FlxSprite
 		super.update(elapsed);
 		if (Reg.getTime >= timeStart && Reg.getTime < endTime)
 		{
-			_time += elapsed;
-			_time2 += elapsed;
 			if (!visible)
 			{
 				set_visible(true);
-			}
-			if (_time > _timeCamDir)
-			{
 				if (_recta == true)
 				{
 					if (_positivo == true)
 					{
-						velocity.y = velocity.y * -1;
-						_time = 0;
+						velocity.y = startVelocity;
 					}
 					else
 					{
-						velocity.y = velocity.y * -1;
-						_time = 0;
-					}		
+						velocity.y = -startVelocity;
+					}
+					
 				}
 				else
 				{
 					if (_positivo == true)
 					{
-						velocity.x = velocity.x * -1;
-						_time = 0;
+						velocity.x = startVelocity;
 					}
 					else
 					{
-						velocity.x = velocity.x * -1;
-						_time = 0;
+						velocity.x = -startVelocity;
 					}
+				}
+				_time = 0;
+				_time2 = 0;
+				x = startX;
+				y = startY;
+				
+			}
+			_time += elapsed;
+			_time2 += elapsed;
+			if (_time > _timeCamDir)
+			{
+				if (_recta)
+				{
+					velocity.y = velocity.y * -1;
+					_time = 0;
+				}
+				else
+				{
+					velocity.x = velocity.x * -1;
+					_time = 0;
 				}
 			}
 			if (_time2 > _intervalo && _pega == true)
