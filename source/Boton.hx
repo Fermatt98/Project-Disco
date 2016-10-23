@@ -61,7 +61,7 @@ class Boton extends FlxSprite
 				Reg.DelayDiscos -= 0.1;
 				Reg.Consol[1].cambio(Reg.DelayDiscos);
 			}
-			if (_tag == "Velocidad" && Reg.DelayDiscos > 0)
+			if (_tag == "Velocidad")
 			{
 				Reg.VelDiscos += 10;
 				Reg.Consol[2].cambio(Reg.VelDiscos);
@@ -70,6 +70,16 @@ class Boton extends FlxSprite
 			{
 				Reg.VelDiscos -= 10;
 				Reg.Consol[2].cambio(Reg.VelDiscos);
+			}
+			if (_tag == "Angulo")
+			{
+				Reg.velAngulo += 1;
+				Reg.Consol[98].cambio(Reg.velAngulo);
+			}
+			if (_tag == "AnguloMenos" && Reg.velAngulo > 0)
+			{
+				Reg.velAngulo -= 1;
+				Reg.Consol[98].cambio(Reg.velAngulo);
 			}
 			//-------FinDiscos-------//
 			//-------Luz------//

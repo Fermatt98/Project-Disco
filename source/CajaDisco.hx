@@ -20,8 +20,12 @@ class CajaDisco extends FlxSprite
 	private var _velocidadDisco:Float = 0;
 	private var timeStart:Float = 0;
 	private var endTime:Float = Reg.time;
+	private var velAngle:Float = 0;
+	private var _angle:Float = 0;
+	private var _defaultAngle = 180;
+	private var _anguloSuma:Float;
 
-	public function new(?X:Float=0, ?Y:Float=0, ?cantDiscos:Float=5, ?delayTime:Float=1, ?velocidadDisco:Float=1, ?SimpleGraphic:FlxGraphicAsset) 
+	public function new(?X:Float=0, ?Y:Float=0, ?cantDiscos:Float=5, ?delayTime:Float=1, ?velocidadDisco:Float=1, ?anguloSuma:Float = 0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
 		timeStart = Reg.getTime;
@@ -30,12 +34,13 @@ class CajaDisco extends FlxSprite
 		_delayTime = delayTime;
 		_velocidadDisco = velocidadDisco;
 		cantDiscUp = cantDiscos;
+		_anguloSuma = FlxAngle.asRadians(anguloSuma);
 		Reg.discos = new Array<Disco>();
-		_anguloDisco = FlxAngle.asRadians(180 / (cantDiscos - 1));
+		_anguloDisco = FlxAngle.asRadians(_defaultAngle / (cantDiscos - 1));
 		FlxG.state.add(this);
 	}
 	
-	override public function update(elapsed:Float):Void 
+	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
 		if (Reg.getTime >= timeStart && Reg.getTime < endTime)
@@ -47,9 +52,19 @@ class CajaDisco extends FlxSprite
 			}
 			if (timer > _delayTime)
 			{
+				velAngle+= _anguloSuma;
+				if (velAngle > FlxAngle.asRadians(_defaultAngle))
+				{
+					velAngle = 0;
+				}
 				for (a in 0...Std.int(cantDiscUp))
 				{
-					Reg.discos.push(new Disco(x + width / 2, y + height / 2, _velocidadDisco, a * _anguloDisco));
+					_angle = (a * _anguloDisco) + velAngle;
+					if (_angle > FlxAngle.asRadians(_defaultAngle))
+					{
+						_angle -= FlxAngle.asRadians(_defaultAngle);
+					}
+					Reg.discos.push(new Disco(x + width / 2, y + height / 2, _velocidadDisco, _angle));
 				}
 				timer = 0;
 			}

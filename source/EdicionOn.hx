@@ -44,7 +44,7 @@ class EdicionOn extends FlxSprite
 		super.update(elapsed);
 		if (FlxG.mouse.justPressed && arma == 1)
 		{
-			Reg.CajaDiscos[Reg.CantCajaDiscos] = new CajaDisco(Std.int(FlxG.mouse.x/64)*64, Std.int(FlxG.mouse.y/64)*64, Reg.CantDiscos,Reg.DelayDiscos,Reg.VelDiscos);
+			Reg.CajaDiscos[Reg.CantCajaDiscos] = new CajaDisco(Std.int(FlxG.mouse.x/64)*64, Std.int(FlxG.mouse.y/64)*64, Reg.CantDiscos,Reg.DelayDiscos,Reg.VelDiscos, Reg.velAngulo);
 			Reg.CantCajaDiscos += 1;
 		}
 		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(Reg.techo) && arma == 2)
@@ -77,12 +77,15 @@ class EdicionOn extends FlxSprite
 					Reg.Consol[0] = new Consola(inicio, inicio, "Cantidad", Reg.CantDiscos);
 					Reg.Consol[1] = new Consola(inicio, inicio + distancia, "Tiempo disparo", Reg.DelayDiscos);
 					Reg.Consol[2] = new Consola(inicio, inicio + distancia * 2, "Velocidad disparo", Reg.VelDiscos);
+					Reg.Consol[98] = new Consola(inicio, inicio + distancia * 3, "Velocidad de angulo", Reg.velAngulo);
 					Reg.BotonEditor[0] = new Boton(Reg.Consol[0].x + Reg.Consol[0].width, Reg.Consol[0].y + Reg.Consol[0].height/2, true, "Tiros");
 					Reg.BotonEditor[1] = new Boton(Reg.Consol[0].x, Reg.Consol[0].y + Reg.Consol[0].height/2, false, "TirosMenos");
 					Reg.BotonEditor[2] = new Boton(Reg.Consol[1].x + Reg.Consol[1].width, Reg.Consol[1].y + Reg.Consol[1].height/2, true, "Delay");
 					Reg.BotonEditor[3] = new Boton(Reg.Consol[1].x, Reg.Consol[1].y + Reg.Consol[1].height/2, false, "DelayMenos");
 					Reg.BotonEditor[4] = new Boton(Reg.Consol[2].x + Reg.Consol[2].width, Reg.Consol[2].y + Reg.Consol[2].height/2, true, "Velocidad");
-					Reg.BotonEditor[5] = new Boton(Reg.Consol[2].x, Reg.Consol[2].y + Reg.Consol[2].height/2, false, "VelocidadMenos");
+					Reg.BotonEditor[5] = new Boton(Reg.Consol[2].x, Reg.Consol[2].y + Reg.Consol[2].height / 2, false, "VelocidadMenos");
+					Reg.BotonEditor[99] = new Boton(Reg.Consol[98].x + Reg.Consol[98].width, Reg.Consol[98].y + Reg.Consol[98].height/2, true, "Angulo");
+					Reg.BotonEditor[98] = new Boton(Reg.Consol[98].x, Reg.Consol[98].y + Reg.Consol[98].height/2, false, "AnguloMenos");
 				}
 				activo = "armaUno";
 				armaUno = true;

@@ -172,8 +172,6 @@ class Laser extends FlxSprite
 		list.add(startY);
 		list.add(timeStart);
 		list.add(endTime);
-		list.add(velocity.x);
-		list.add(velocity.y);
 		list.add(_timeCamDir);
 		list.add(_intervalo);
 		if (_recta)
@@ -192,6 +190,7 @@ class Laser extends FlxSprite
 		{
 			list.add(0);
 		}
+		list.add(startVelocity);
 	}
 	
 	public function setVariable(list:List<Float>)
@@ -200,8 +199,6 @@ class Laser extends FlxSprite
 		y = list.pop();
 		timeStart = list.pop();
 		endTime = list.pop();
-		velocity.x = list.pop();
-		velocity.y = list.pop();
 		_timeCamDir = list.pop();
 		_intervalo = list.pop();
 		if (list.pop() == 1)
@@ -220,12 +217,35 @@ class Laser extends FlxSprite
 		{
 			_positivo = false;
 		}
+		if (_recta == true)
+		{
+			if (_positivo == true)
+			{
+				velocity.y = list.pop();
+			}
+			else
+			{
+				velocity.y = -list.pop();
+			}
+			
+		}
+		else
+		{
+			makeGraphic(tamanio, FlxG.height);
+			loadGraphic("assets/images/Laser/laserL.png");
+			if (_positivo == true)
+			{
+				velocity.x = list.pop();
+			}
+			else
+			{
+				velocity.x = -list.pop();
+			}
+		}
 		list.add(x);
 		list.add(y);
 		list.add(timeStart);
 		list.add(endTime);
-		list.add(velocity.x);
-		list.add(velocity.y);
 		list.add(_timeCamDir);
 		list.add(_intervalo);
 		if (_recta)
@@ -244,6 +264,7 @@ class Laser extends FlxSprite
 		{
 			list.add(0);
 		}
+		list.add(startVelocity);
 	}
 	
 }

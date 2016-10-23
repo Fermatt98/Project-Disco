@@ -53,6 +53,7 @@ class Reg
 		static public var velocidadDisco:Int = 250;
 		static public var anguloDisco:Float = 0;
 		static public var discos:Array<Disco>;
+		static public var velAngulo:Float = 0;
 		//-------DiscosFin----//
 		//--------Luz-------//
 		static public var DelayLuz:Float = 1;
