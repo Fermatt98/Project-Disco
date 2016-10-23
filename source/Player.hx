@@ -14,6 +14,8 @@ class Player extends FlxSprite
 	private var _animacionCorrer:Bool = false;
 	private var _time:Float = 0;
 	private var jumpCount:Int = 0;
+	private var bodyslam:Bool = false;
+	private var bodyslamTimer:Float = 0;
 	
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
@@ -43,7 +45,23 @@ class Player extends FlxSprite
 			_time = 0;
 		}
 		collision();
-		movement();
+		if (bodyslam)
+		{
+			bodyslamTimer += elapsed;
+			Reg.velPlayer = 0;
+			if (bodyslamTimer > 0.2)
+			{
+				Reg.jumpVelPlayer = -Reg.jumpMaxVelPlayer * 2;
+			}
+			else
+			{
+				Reg.jumpVelPlayer = 0;
+			}
+		}
+		else
+		{
+			movement();
+		}
 		velocity.x = Reg.velPlayer;
 		velocity.y = Reg.jumpVelPlayer;
 	}
@@ -96,12 +114,18 @@ class Player extends FlxSprite
 		{
 			Reg.jumpVelPlayer += Reg.jumpAccelerationPlayer;
 		}
+		if (FlxG.keys.justPressed.DOWN)
+		{
+			bodyslam = true;
+		}
 	}
 	
 	private function collision()
 	{
 		if (FlxG.overlap(Reg.player, Reg.piso))
 		{
+			bodyslam = false;
+			bodyslamTimer = 0;
 			Reg.jumpVelPlayer = 0;
 			jumpCount = 0;
 			y = Reg.piso.y - height;
