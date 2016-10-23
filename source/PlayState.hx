@@ -13,7 +13,6 @@ import flixel.util.FlxSave;
 class PlayState extends FlxState
 {
 	private var pixelRain:PixelRain;
-	private var music:FlxSound;
 	private var _gameSave:FlxSave;
 	private var Level1:Array<Array<List<Float>>>;
 	private var existsCounter:Int = 0;
@@ -35,10 +34,9 @@ class PlayState extends FlxState
 		Reg.CajaPixel = new Array<PixelRain>();
 		Reg.Consol = new Array<Consola>();
 		Reg.BotonEditor = new Array<FlxSprite>();
+		Reg.music = FlxG.sound.load(AssetPaths.Game__wav);
 		Reg.songLine = new SongLine(Reg.paredIzq.width, Reg.techo.height, 2*60+28);
-		music = FlxG.sound.load(AssetPaths.Game__wav);
-		music.play();
-		//FlxG.debugger.visible = true;
+		//FlxG.debugger.visible = true;2*60+28
 		_gameSave = new FlxSave();
 		_gameSave.bind("Level1");
 		FlxG.cameras.bgColor = 0xffffffff;

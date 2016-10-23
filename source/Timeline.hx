@@ -31,11 +31,13 @@ class Timeline extends FlxSprite
 			if (play)
 			{
 				play = false;
+				Reg.music.stop();
 				velocity.x = 0;
 			}
 			else
 			{
 				play = true;
+				Reg.music.play(true, Reg.getTime*1000);
 			}
 		}
 		if (play)

@@ -4,6 +4,7 @@ import flixel.FlxSprite;
 import flixel.graphics.FlxGraphic;
 import flixel.math.FlxPoint;
 import flixel.text.FlxText;
+import flixel.system.FlxSound;
 class Reg
 {
 	static public var velPlayer:Int = 0;
@@ -15,6 +16,7 @@ class Reg
 	inline static public var maxJump:Int = 2;
 	inline static public var pixelVel:Int = 800;
 	inline static public var cantArmas:Int = 4;
+	static public var music:FlxSound;
 	//------Posiciones-----//
 	static public var posicionEdicionOn:FlxPoint = new FlxPoint(100, 100);
 	static public var posicionTiempo:FlxPoint = new FlxPoint(100, 450);
