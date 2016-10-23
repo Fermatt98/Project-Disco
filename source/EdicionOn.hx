@@ -180,6 +180,11 @@ class EdicionOn extends FlxSprite
 				cambio(false);
 			}
 		}
+		if (FlxG.keys.justPressed.G && Reg.GrishaBool == true)
+		{
+			Reg.GrishaBool = false;
+			Reg.grishaUno = new Grisha();
+		}
 		if (armaUno == true && activo != "armaUno")
 		{
 			for (a in 0...3)

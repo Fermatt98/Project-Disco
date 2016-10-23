@@ -10,6 +10,9 @@ import flixel.FlxG;
  */
 class Player extends FlxSprite
 {
+	private var _animacion:Bool = false;
+	private var _animacionCorrer:Bool = false;
+	private var _time:Float = 0;
 	private var jumpCount:Int = 0;
 	
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
@@ -24,6 +27,21 @@ class Player extends FlxSprite
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
+		_time += elapsed;
+		if (_animacion == true && _time > 0.1)
+		{
+			if (_animacionCorrer == false)
+			{
+				loadGraphic("assets/images/Player/player.png");
+				_animacionCorrer = true;
+			}
+			else
+			{
+				loadGraphic("assets/images/Player/player_2.png");
+				_animacionCorrer = false;
+			}
+			_time = 0;
+		}
 		collision();
 		movement();
 		velocity.x = Reg.velPlayer;
@@ -34,6 +52,8 @@ class Player extends FlxSprite
 	{
 		if (FlxG.keys.pressed.LEFT)
 		{
+			_animacion = true;
+			flipX = true;
 			if (Reg.velPlayer > -Reg.maxVelPlayer)
 			{
 				Reg.velPlayer -= Reg.accelerationPlayer;
@@ -41,6 +61,8 @@ class Player extends FlxSprite
 		}
 		else if (FlxG.keys.pressed.RIGHT)
 		{
+			_animacion = true;
+			flipX = false;
 			if (Reg.velPlayer < Reg.maxVelPlayer)
 			{
 				Reg.velPlayer += Reg.accelerationPlayer;
@@ -59,6 +81,7 @@ class Player extends FlxSprite
 			else
 			{
 				Reg.velPlayer = 0;
+				_animacion = false;
 			}
 		}
 		if (FlxG.keys.justPressed.SPACE)

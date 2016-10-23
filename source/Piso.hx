@@ -18,7 +18,6 @@ class Piso extends FlxSprite
 		loadGraphic(AssetPaths.Piso__png);
 		y -= height;
 		FlxG.state.add(this);
-		color = 0x99999999;
 	}
 	
 }

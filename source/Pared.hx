@@ -23,7 +23,6 @@ class Pared extends FlxSprite
 			x -= width;
 		}
 		FlxG.state.add(this);
-		color = 0x99999999;
 	}
 	
 	override public function update(elapsed:Float):Void 

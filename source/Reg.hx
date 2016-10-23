@@ -57,11 +57,11 @@ class Reg
 		static public var DuracionLuz:Float = 2;
 		//-------LuzFin----//
 		//-------PixelRain------//
-		static public var PixelSpawn:Float = 0;
+		static public var PixelSpawn:Float = 1;
 		static public var PixelDireccionX:Float = 1;
 		static public var PixelDireccionY:Float = 1;
-		static public var PixelDistancia:Float = 10;
-		static public var PixelVelocidad:Float = 30;
+		static public var PixelDistancia:Float = 120;
+		static public var PixelVelocidad:Float = 150;
 		//-------PixelRainFin---//
 		//-------Lacer------//
 		static public var LacerVertical:Bool = false;
@@ -85,4 +85,6 @@ class Reg
 		static public var pixelTime:Float;
 		static public var getTime:Float;
 		static public var time:Float;
+		static public var grishaUno:FlxSprite;
+		static public var GrishaBool:Bool = true;
 }

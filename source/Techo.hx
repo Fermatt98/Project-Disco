@@ -15,8 +15,7 @@ class Techo extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(Std.int(FlxG.width), Reg.tamanioPared);
-		loadGraphic(AssetPaths.techo__psd);
+		loadGraphic(AssetPaths.techo__png);
 		FlxG.state.add(this);
-		color = 0x99999999;
 	}
 }
