@@ -22,7 +22,7 @@ class Reg
 	inline static public var tamanioPlayerX:Int = 64;
 	inline static public var tamanioPlayerY:Int = 64;
 	inline static public var tamanioPared:Int = 64;
-	inline static public var tamanioPiso:Int = 64+48;
+	inline static public var tamanioPiso:Int = 64;
 	inline static public var tamanioCajas:Int = 64;
 	inline static public var tamanioBoton:Int = 36;
 	inline static public var tamanioDisco:Int = 24;
