@@ -35,7 +35,7 @@ class PlayState extends FlxState
 		Reg.Consol = new Array<Consola>();
 		Reg.BotonEditor = new Array<FlxSprite>();
 		Reg.music = FlxG.sound.load(AssetPaths.Game__wav);
-		Reg.songLine = new SongLine(Reg.paredIzq.width, Reg.techo.height, 2*60+28);
+		Reg.songLine = new SongLine(Reg.paredIzq.width, Reg.techo.height, Reg.music.length/1000);
 		//FlxG.debugger.visible = true;2*60+28
 		_gameSave = new FlxSave();
 		_gameSave.bind("Level1");
