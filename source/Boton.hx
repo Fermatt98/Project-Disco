@@ -21,7 +21,7 @@ class Boton extends FlxSprite
 		if (mas == true)
 		{
 			loadGraphic("assets/images/Editor/BotonMas.png");
-			x += width;
+			x += width*2;
 		}
 		else
 		{

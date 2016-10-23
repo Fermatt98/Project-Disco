@@ -43,6 +43,13 @@ class Timeline extends FlxSprite
 		if (play)
 		{
 			velocity.x = Reg.songLine.width / Reg.time; 
+			if (x > Reg.songLine.x + Reg.songLine.width-width+1)
+			{
+				x = Reg.songLine.x + Reg.songLine.width-width;
+				play = false;
+				Reg.music.stop();
+				velocity.x = 0;
+			}
 		}
 		if (FlxG.mouse.pressed && overlapsPoint(FlxG.mouse.getPosition()))
 		{

@@ -44,6 +44,13 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+		if (FlxG.keys.justPressed.R)
+		{
+			if (!Reg.player.exists)
+			{
+				Reg.player.revive();
+			}
+		}
 		if (FlxG.keys.justPressed.S)
 		{
 			_gameSave.erase();
