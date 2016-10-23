@@ -34,15 +34,32 @@ class Player extends FlxSprite
 	{
 		if (FlxG.keys.pressed.LEFT)
 		{
-			Reg.velPlayer = -Reg.maxVelPlayer;
+			if (Reg.velPlayer > -Reg.maxVelPlayer)
+			{
+				Reg.velPlayer -= Reg.accelerationPlayer;
+			}
 		}
 		else if (FlxG.keys.pressed.RIGHT)
 		{
-			Reg.velPlayer = Reg.maxVelPlayer;
+			if (Reg.velPlayer < Reg.maxVelPlayer)
+			{
+				Reg.velPlayer += Reg.accelerationPlayer;
+			}
 		}
 		else
 		{
-			Reg.velPlayer = 0;
+			if (Reg.velPlayer > 0)
+			{
+				Reg.velPlayer -= Reg.accelerationPlayer;
+			}
+			else if (Reg.velPlayer < 0)
+			{
+				Reg.velPlayer += Reg.accelerationPlayer;
+			}
+			else
+			{
+				Reg.velPlayer = 0;
+			}
 		}
 		if (FlxG.keys.justPressed.SPACE)
 		{

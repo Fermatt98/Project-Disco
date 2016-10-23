@@ -44,12 +44,12 @@ class EdicionOn extends FlxSprite
 		super.update(elapsed);
 		if (FlxG.mouse.justPressed && arma == 1)
 		{
-			Reg.CajaDiscos[Reg.CantCajaDiscos] = new CajaDisco(FlxG.mouse.x, FlxG.mouse.y, Reg.CantDiscos,Reg.DelayDiscos,Reg.VelDiscos);
+			Reg.CajaDiscos[Reg.CantCajaDiscos] = new CajaDisco(Std.int(FlxG.mouse.x/64)*64, Std.int(FlxG.mouse.y/64)*64, Reg.CantDiscos,Reg.DelayDiscos,Reg.VelDiscos);
 			Reg.CantCajaDiscos += 1;
 		}
-		if (FlxG.mouse.justPressed && arma == 2)
+		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(Reg.techo) && arma == 2)
 		{
-			Reg.CajaLuzes[Reg.CantCajaLuzes] = new CajaLuz(FlxG.mouse.x, FlxG.mouse.y, Reg.DelayLuz,Reg.DuracionLuz);
+			Reg.CajaLuzes[Reg.CantCajaLuzes] = new CajaLuz(Std.int(FlxG.mouse.x/64)*64, Std.int(FlxG.mouse.y/64)*64, Reg.DelayLuz,Reg.DuracionLuz);
 			Reg.CantCajaLuzes += 1;
 		}
 		if (FlxG.mouse.justPressed && arma == 3)

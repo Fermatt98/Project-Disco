@@ -53,12 +53,12 @@ class CajaLuz extends FlxSprite
 				_time = 0;
 				_luzBool = false;
 			}
-			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedRight)
+			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.pressedRight)
 			{
 				set_visible(false);
 				endTime = Reg.getTime;
 			}
-			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedMiddle)
+			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.pressedMiddle)
 			{
 				destroy();
 			}

@@ -8,6 +8,7 @@ class Reg
 {
 	static public var velPlayer:Int = 0;
 	static public var jumpVelPlayer:Int = 0;
+	inline static public var accelerationPlayer:Int = 100;
 	inline static public var maxVelPlayer:Int = 400;
 	inline static public var jumpAccelerationPlayer:Int = 20;
 	inline static public var jumpMaxVelPlayer:Int = -600;
@@ -21,6 +22,7 @@ class Reg
 	inline static public var tamanioPlayerX:Int = 64;
 	inline static public var tamanioPlayerY:Int = 64;
 	inline static public var tamanioPared:Int = 64;
+	inline static public var tamanioPiso:Int = 64+48;
 	inline static public var tamanioCajas:Int = 64;
 	inline static public var tamanioBoton:Int = 36;
 	inline static public var tamanioDisco:Int = 24;
