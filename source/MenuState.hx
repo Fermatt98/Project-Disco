@@ -24,7 +24,7 @@ class MenuState extends FlxState
 	{
 		super.update(elapsed);
 		counter++;
-		if (counter > 78)
+		if (counter > 103)
 		{
 			counter = 1;
 		}
@@ -157,6 +157,48 @@ class MenuState extends FlxState
 				Menu.loadGraphic(AssetPaths.escritorio_63__jpg);
 			case 77:
 				Menu.loadGraphic(AssetPaths.escritorio_64__jpg);
+			case 83:
+				Menu.loadGraphic(AssetPaths.escritorio_65__jpg);
+			case 84:
+				Menu.loadGraphic(AssetPaths.escritorio_66__jpg);
+			case 85:
+				Menu.loadGraphic(AssetPaths.escritorio_67__jpg);
+			case 86:
+				Menu.loadGraphic(AssetPaths.escritorio_68__jpg);
+			case 87:
+				Menu.loadGraphic(AssetPaths.escritorio_69__jpg);
+			case 88:
+				Menu.loadGraphic(AssetPaths.escritorio_70__jpg);
+			case 89:
+				Menu.loadGraphic(AssetPaths.escritorio_71__jpg);
+			case 90:
+				Menu.loadGraphic(AssetPaths.escritorio_72__jpg);
+			case 91:
+				Menu.loadGraphic(AssetPaths.escritorio_73__jpg);
+			case 92:
+				Menu.loadGraphic(AssetPaths.escritorio_74__jpg);
+			case 93:
+				Menu.loadGraphic(AssetPaths.escritorio_75__jpg);
+			case 94:
+				Menu.loadGraphic(AssetPaths.escritorio_76__jpg);
+			case 95:
+				Menu.loadGraphic(AssetPaths.escritorio_77__jpg);
+			case 96:
+				Menu.loadGraphic(AssetPaths.escritorio_78__jpg);
+			case 97:
+				Menu.loadGraphic(AssetPaths.escritorio_79__jpg);
+			case 98:
+				Menu.loadGraphic(AssetPaths.escritorio_80__jpg);
+			case 99:
+				Menu.loadGraphic(AssetPaths.escritorio_81__jpg);
+			case 100:
+				Menu.loadGraphic(AssetPaths.escritorio_82__jpg);
+			case 101:
+				Menu.loadGraphic(AssetPaths.escritorio_83__jpg);
+			case 102:
+				Menu.loadGraphic(AssetPaths.escritorio_84__jpg);
+			case 103:
+				Menu.loadGraphic(AssetPaths.escritorio_85__jpg);
 		}
 	}
 }
