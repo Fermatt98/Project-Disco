@@ -43,6 +43,11 @@ class PixelRain extends FlxBasic
 		if (Reg.getTime >= timeStart && Reg.getTime < endTime)
 		{
 			timer += elapsed;
+			if (!visible)
+			{
+				posicion = 0;
+				set_visible(true);
+			}
 			if (timer > spawn)
 			{
 				Reg.pixel.push(new Pixel(((_distancia *_direccionX) * posicion) + _inicioX, _inicioY, null, _direccionX, _direccionY, _velocidad));
@@ -57,11 +62,13 @@ class PixelRain extends FlxBasic
 			{
 				set_visible(false);
 				endTime = Reg.getTime;
+				/*
 				for (i in 0...Reg.pixel.length)
 				{
 					Reg.pixel[i].destroy();
 					posicion = 0;
 				}
+				*/
 			}
 			if (FlxG.mouse.justPressedMiddle)
 			{
@@ -71,11 +78,13 @@ class PixelRain extends FlxBasic
 		else
 		{
 			set_visible(false);
+			/*
 			for (i in 0...Reg.pixel.length)
 			{
 				Reg.pixel[i].destroy();
 				posicion = 0;
 			}
+			*/
 		}
 	}
 	

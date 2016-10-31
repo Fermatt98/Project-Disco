@@ -198,6 +198,9 @@ class EdicionOn extends FlxSprite
 			{
 				Reg.BotonEditor[a].destroy();
 			}
+			Reg.Consol[98].destroy();
+			Reg.BotonEditor[99].destroy();
+			Reg.BotonEditor[98].destroy();
 			armaUno = false;
 		}
 		if (armaDos == true && activo != "armaDos")

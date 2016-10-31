@@ -93,6 +93,7 @@ class CajaDisco extends FlxSprite
 		list.add(_velocidadDisco);
 		list.add(cantDiscUp);
 		list.add(_anguloDisco);
+		list.add(_anguloSuma);
 	}
 	
 	public function setVariable(list:List<Float>)
@@ -105,6 +106,7 @@ class CajaDisco extends FlxSprite
 		_velocidadDisco = list.pop();
 		cantDiscUp = list.pop();
 		_anguloDisco = list.pop();
+		_anguloSuma = list.pop();
 		list.add(x);
 		list.add(y);
 		list.add(timeStart);
@@ -113,5 +115,6 @@ class CajaDisco extends FlxSprite
 		list.add(_velocidadDisco);
 		list.add(cantDiscUp);
 		list.add(_anguloDisco);
+		list.add(_anguloSuma);
 	}
 }

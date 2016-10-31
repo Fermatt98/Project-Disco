@@ -149,24 +149,28 @@ class PlayState extends FlxState
 						{
 							Reg.CajaDiscos[i] = new CajaDisco();
 							Reg.CajaDiscos[i].setVariable(Level1[k][i]);
+							Reg.CantCajaDiscos++;
 						}
 					case 1:
 						for (i in 0...Level1[k].length)
 						{
 							Reg.CajaLuzes[i] = new CajaLuz();
 							Reg.CajaLuzes[i].setVariable(Level1[k][i]);
+							Reg.CantCajaLuzes++;
 						}
 					case 2:
 						for (i in 0...Level1[k].length)
 						{
 							Reg.CajaPixel[i] = new PixelRain();
 							Reg.CajaPixel[i].setVariable(Level1[k][i]);
+							Reg.CantCajaPixel++;
 						}
 					case 3:
 						for (i in 0...Level1[k].length)
 						{
 							Reg.CajaLacer[i] = new Laser();
 							Reg.CajaLacer[i].setVariable(Level1[k][i]);
+							Reg.CantCajaLacer++;
 						}
 				}
 			}
