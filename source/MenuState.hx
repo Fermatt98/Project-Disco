@@ -24,7 +24,7 @@ class MenuState extends FlxState
 	{
 		super.update(elapsed);
 		counter++;
-		if (counter > 103)
+		if (counter > 300)
 		{
 			counter = 1;
 		}
@@ -199,6 +199,16 @@ class MenuState extends FlxState
 				Menu.loadGraphic(AssetPaths.escritorio_84__jpg);
 			case 103:
 				Menu.loadGraphic(AssetPaths.escritorio_85__jpg);
+			case 105:
+				Menu.loadGraphic(AssetPaths.escritorio_86__jpg);
+			case 107:
+				Menu.loadGraphic(AssetPaths.escritorio_87__jpg);
+			case 109:
+				Menu.loadGraphic(AssetPaths.escritorio_88__jpg);
+			case 111:
+				Menu.loadGraphic(AssetPaths.escritorio_89__jpg);
+			case 113:
+				Menu.loadGraphic(AssetPaths.escritorio_90__jpg);
 		}
 	}
 }
