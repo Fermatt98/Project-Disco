@@ -23,7 +23,7 @@ class PixelBoton extends FlxSprite
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
-		if (FlxG.mouse.justPressedRight)
+		if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedRight)
 		{
 			Reg.CajaPixel[_num].setVisible(false);
 			Reg.CajaPixel[_num].setEndtime();
@@ -32,10 +32,12 @@ class PixelBoton extends FlxSprite
 				Reg.pixel[i].destroy();
 			}
 			Reg.CajaPixel[_num].setPosition(0);
+			set_visible(false);
 		}
-		if (FlxG.mouse.justPressedMiddle)
+		if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedMiddle)
 		{
 			Reg.CajaPixel[_num].destroy();
+			destroy();
 		}
 	}
 	/*
