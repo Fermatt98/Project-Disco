@@ -11,12 +11,15 @@ import flixel.FlxG;
 class PixelBoton extends FlxSprite 
 {
 	private var _num:Int;
+	private var timeStart:Float = 0;
+	private var endTime:Float = Reg.time;
 
 	public function new(?X:Float=0, ?Y:Float=0, num:Int, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(Reg.tamanioCajas, Reg.tamanioCajas);
 		_num = num;
+		timeStart = Reg.getTime();
 		FlxG.state.add(this);
 	}
 	
@@ -27,12 +30,9 @@ class PixelBoton extends FlxSprite
 		{
 			Reg.CajaPixel[_num].setVisible(false);
 			Reg.CajaPixel[_num].setEndtime();
-			for (i in 0...Reg.pixel.length)
-			{
-				Reg.pixel[i].destroy();
-			}
 			Reg.CajaPixel[_num].setPosition(0);
 			set_visible(false);
+			endTime = Reg.getTime;
 		}
 		if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedMiddle)
 		{

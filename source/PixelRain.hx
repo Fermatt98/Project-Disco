@@ -65,15 +65,6 @@ class PixelRain extends FlxBasic
 		}
 	}
 	
-	override public function destroy():Void 
-	{
-		super.destroy();
-		for (i in 0...Reg.pixel.length)
-			{
-				Reg.pixel[i].destroy();
-			}
-	}
-	
 	public function setVisible(bool:Bool):Void
 	{
 		set_visible(bool);
