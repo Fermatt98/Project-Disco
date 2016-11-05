@@ -19,7 +19,7 @@ class PixelBoton extends FlxSprite
 		super(X, Y, SimpleGraphic);
 		makeGraphic(Reg.tamanioCajas, Reg.tamanioCajas);
 		_num = num;
-		timeStart = Reg.getTime();
+		timeStart = Reg.getTime;
 		FlxG.state.add(this);
 	}
 	
