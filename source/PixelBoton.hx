@@ -17,6 +17,7 @@ class PixelBoton extends FlxSprite
 		super(X, Y, SimpleGraphic);
 		makeGraphic(Reg.tamanioCajas, Reg.tamanioCajas);
 		_num = num;
+		FlxG.state.add(this);
 	}
 	
 	override public function update(elapsed:Float):Void 

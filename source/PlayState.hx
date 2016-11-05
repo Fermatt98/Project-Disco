@@ -32,6 +32,7 @@ class PlayState extends FlxState
 		Reg.CajaLuzes = new Array<CajaLuz>();
 		Reg.CajaLacer = new Array<Laser>();
 		Reg.CajaPixel = new Array<PixelRain>();
+		Reg.CajaPixelBoton = new Array<PixelBoton>();
 		Reg.Consol = new Array<Consola>();
 		Reg.BotonEditor = new Array<FlxSprite>();
 		Reg.music = FlxG.sound.load(AssetPaths.Game__wav);
