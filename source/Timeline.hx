@@ -54,6 +54,9 @@ class Timeline extends FlxSprite
 		if (FlxG.mouse.pressed && overlapsPoint(FlxG.mouse.getPosition()))
 		{
 			movement = true;
+			play = false;
+			Reg.music.stop();
+			velocity.x = 0;
 		}
 		if (movement)
 		{
