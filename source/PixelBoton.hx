@@ -26,18 +26,29 @@ class PixelBoton extends FlxSprite
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
-		if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedRight)
+		if (Reg.getTime >= timeStart && Reg.getTime < endTime)
 		{
-			Reg.CajaPixel[_num].setVisible(false);
-			Reg.CajaPixel[_num].setEndtime();
-			Reg.CajaPixel[_num].setPosition(0);
-			set_visible(false);
-			endTime = Reg.getTime;
+			if (!visible)
+			{
+				set_visible(true);
+			}
+			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedRight)
+			{
+				Reg.CajaPixel[_num].setVisible(false);
+				Reg.CajaPixel[_num].setEndtime();
+				Reg.CajaPixel[_num].setPosition(0);
+				set_visible(false);
+				endTime = Reg.getTime;
+			}
+			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedMiddle)
+			{
+				Reg.CajaPixel[_num].destroy();
+				destroy();
+			}
 		}
-		if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedMiddle)
+		else
 		{
-			Reg.CajaPixel[_num].destroy();
-			destroy();
+			set_visible(false);
 		}
 	}
 	/*
