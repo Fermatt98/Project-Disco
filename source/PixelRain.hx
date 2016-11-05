@@ -58,34 +58,35 @@ class PixelRain extends FlxBasic
 					posicion = 0;
 				}
 			}
-			if (FlxG.mouse.justPressedRight)
-			{
-				set_visible(false);
-				endTime = Reg.getTime;
-				/*
-				for (i in 0...Reg.pixel.length)
-				{
-					Reg.pixel[i].destroy();
-					posicion = 0;
-				}
-				*/
-			}
-			if (FlxG.mouse.justPressedMiddle)
-			{
-				destroy();
-			}
 		}
 		else
 		{
 			set_visible(false);
-			/*
-			for (i in 0...Reg.pixel.length)
+		}
+	}
+	
+	override public function destroy():Void 
+	{
+		super.destroy();
+		for (i in 0...Reg.pixel.length)
 			{
 				Reg.pixel[i].destroy();
-				posicion = 0;
 			}
-			*/
-		}
+	}
+	
+	public function setVisible(bool:Bool):Void
+	{
+		set_visible(bool);
+	}
+	
+	public function setEndtime():Void
+	{
+		endTime = Reg.getTime;
+	}
+	
+	public function setPosition(int:Int)
+	{
+		posicion = int;
 	}
 	
 	public function getVariable(list:List<Float>)

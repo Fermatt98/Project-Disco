@@ -81,6 +81,7 @@ class Reg
 		static public var CantCajaLacer:Int = 0;
 		static public var CajaPixel:Array<PixelRain>;
 		static public var CantCajaPixel:Int = 0;
+		static public var CajaPixelBoton:Array<PixelBoton>;
 		static public var pixel:Array<Pixel>;
 	//-------Editor------//
 		static public var timeline:FlxSprite;

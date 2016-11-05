@@ -54,7 +54,8 @@ class EdicionOn extends FlxSprite
 		}
 		if (FlxG.mouse.justPressed && arma == 3)
 		{
-			Reg.CajaPixel[Reg.CantCajaPixel] = new PixelRain(FlxG.mouse.x, FlxG.mouse.y, Reg.PixelSpawn, Reg.PixelDireccionX, Reg.PixelDireccionY, Reg.PixelDistancia, Reg.PixelVelocidad);
+			Reg.CajaPixel[Reg.CantCajaPixel] = new PixelRain(Std.int(FlxG.mouse.x/64)*64, Std.int(FlxG.mouse.y/64)*64, Reg.PixelSpawn, Reg.PixelDireccionX, Reg.PixelDireccionY, Reg.PixelDistancia, Reg.PixelVelocidad);
+			Reg.CajaPixelBoton[Reg.CantCajaPixel] = new PixelBoton(Std.int(FlxG.mouse.x / 64) * 64, Std.int(FlxG.mouse.y / 64) * 64, Reg.CantCajaPixel);
 			Reg.CantCajaPixel += 1;
 		}
 		if (FlxG.mouse.justPressed && arma == 4)
