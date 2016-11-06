@@ -96,7 +96,9 @@ class PlayState extends FlxState
 							if (Reg.CajaPixel[i].exists)
 							{
 								Level1[k][i-existsCounter] = new List<Float>();
-								Reg.CajaPixel[i].getVariable(Level1[k][i-existsCounter]);
+								Reg.CajaPixel[i].getVariable(Level1[k][i - existsCounter]);
+								Level1[k][i - existsCounter] = new List<Float>();
+								Reg.CajaPixelBoton[i].getVariable(Level1[k][i - existsCounter]);
 							}
 							else
 							{
@@ -136,6 +138,7 @@ class PlayState extends FlxState
 			for (i in 0...Reg.CajaPixel.length)
 			{
 				Reg.CajaPixel[i].destroy();
+				Reg.CajaPixelBoton[i].destroy();
 			}
 			for (i in 0...Reg.CajaLacer.length)
 			{
@@ -164,6 +167,8 @@ class PlayState extends FlxState
 						{
 							Reg.CajaPixel[i] = new PixelRain();
 							Reg.CajaPixel[i].setVariable(Level1[k][i]);
+							Reg.CajaPixelBoton[i] = new PixelBoton();
+							Reg.CajaPixelBoton[i].setVariable(Level1[k][i]);
 							Reg.CantCajaPixel++;
 						}
 					case 3:

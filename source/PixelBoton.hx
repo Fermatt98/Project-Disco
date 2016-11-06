@@ -3,6 +3,7 @@ package;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.FlxG;
+import flixel.util.FlxColor;
 
 /**
  * ...
@@ -10,14 +11,14 @@ import flixel.FlxG;
  */
 class PixelBoton extends FlxSprite 
 {
-	private var _num:Int;
+	private var _num:Float;
 	private var timeStart:Float = 0;
 	private var endTime:Float = Reg.time;
 
-	public function new(?X:Float=0, ?Y:Float=0, num:Int, ?SimpleGraphic:FlxGraphicAsset) 
+	public function new(?X:Float=0, ?Y:Float=0, ?num:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(Reg.tamanioCajas, Reg.tamanioCajas);
+		makeGraphic(Reg.tamanioCajas, Reg.tamanioCajas, FlxColor.RED);
 		_num = num;
 		timeStart = Reg.getTime;
 		FlxG.state.add(this);
@@ -34,15 +35,15 @@ class PixelBoton extends FlxSprite
 			}
 			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedRight)
 			{
-				Reg.CajaPixel[_num].setVisible(false);
-				Reg.CajaPixel[_num].setEndtime();
-				Reg.CajaPixel[_num].setPosition(0);
+				Reg.CajaPixel[Std.int(_num)].setVisible(false);
+				Reg.CajaPixel[Std.int(_num)].setEndtime();
+				Reg.CajaPixel[Std.int(_num)].setPosition(0);
 				set_visible(false);
 				endTime = Reg.getTime;
 			}
 			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.justPressedMiddle)
 			{
-				Reg.CajaPixel[_num].destroy();
+				Reg.CajaPixel[Std.int(_num)].destroy();
 				destroy();
 			}
 		}
@@ -51,41 +52,29 @@ class PixelBoton extends FlxSprite
 			set_visible(false);
 		}
 	}
-	/*
+	
 	public function getVariable(list:List<Float>)
 	{
-		list.add(_inicioX);
-		list.add(_inicioY);
+		list.add(x);
+		list.add(y);
 		list.add(timeStart);
 		list.add(endTime);
-		list.add(spawn);
-		list.add(_distancia);
-		list.add(_velocidad);
-		list.add(_direccionX);
-		list.add(_direccionY);
+		list.add(_num);
 		
 	}
 	
 	public function setVariable(list:List<Float>)
 	{
-		_inicioX = list.pop();
-		_inicioY = list.pop();
+		x = list.pop();
+		y = list.pop();
 		timeStart = list.pop();
 		endTime = list.pop();
-		spawn = list.pop();
-		_distancia = list.pop();
-		_velocidad = list.pop();
-		_direccionX = list.pop();
-		_direccionY = list.pop();
-		list.add(_inicioX);
-		list.add(_inicioY);
+		_num = list.pop();
+		list.add(x);
+		list.add(y);
 		list.add(timeStart);
 		list.add(endTime);
-		list.add(spawn);
-		list.add(_distancia);
-		list.add(_velocidad);
-		list.add(_direccionX);
-		list.add(_direccionY);
+		list.add(_num);
 	}
-	*/
+	
 }
