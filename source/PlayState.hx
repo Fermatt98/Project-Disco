@@ -94,6 +94,26 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+		if (FlxG.keys.justPressed.E)
+		{
+			for (i in 0...Reg.CajaDiscos.length)
+			{
+				Reg.CajaDiscos[i].destroy();
+			}
+			for (i in 0...Reg.CajaLuzes.length)
+			{
+				Reg.CajaLuzes[i].destroy();
+			}
+			for (i in 0...Reg.CajaPixel.length)
+			{
+				Reg.CajaPixel[i].destroy();
+				Reg.CajaPixelBoton[i].destroy();
+			}
+			for (i in 0...Reg.CajaLacer.length)
+			{
+				Reg.CajaLacer[i].destroy();
+			}
+		}
 		if (FlxG.keys.justPressed.R)
 		{
 			if (!Reg.player.exists)

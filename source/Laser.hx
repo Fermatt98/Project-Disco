@@ -222,10 +222,12 @@ class Laser extends FlxSprite
 			if (_positivo == true)
 			{
 				velocity.y = list.pop();
+				startVelocity = velocity.y;
 			}
 			else
 			{
 				velocity.y = -list.pop();
+				startVelocity = velocity.y;
 			}
 			
 		}
@@ -236,10 +238,12 @@ class Laser extends FlxSprite
 			if (_positivo == true)
 			{
 				velocity.x = list.pop();
+				startVelocity = velocity.x;
 			}
 			else
 			{
 				velocity.x = -list.pop();
+				startVelocity = velocity.x;
 			}
 		}
 		list.add(x);
