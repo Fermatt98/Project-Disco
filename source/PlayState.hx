@@ -9,6 +9,8 @@ import flixel.ui.FlxButton;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxSave;
+import haxe.Serializer;
+import haxe.Unserializer;
 
 class PlayState extends FlxState
 {
@@ -16,6 +18,8 @@ class PlayState extends FlxState
 	private var _gameSave:FlxSave;
 	private var Level1:Array<Array<List<Float>>>;
 	private var existsCounter:Int = 0;
+	private var serializer:Serializer;
+	private var unserializer:Unserializer;
 	
 	override public function create():Void
 	{
@@ -36,11 +40,56 @@ class PlayState extends FlxState
 		Reg.Consol = new Array<Consola>();
 		Reg.BotonEditor = new Array<FlxSprite>();
 		Reg.music = FlxG.sound.load(AssetPaths.Game__wav);
-		Reg.songLine = new SongLine(Reg.paredIzq.width, Reg.techo.height, Reg.music.length/1000);
+		Reg.songLine = new SongLine(Reg.paredIzq.width, Reg.techo.height, Reg.music.length / 1000);
+		serializer = new Serializer();
 		//FlxG.debugger.visible = true;2*60+28
 		_gameSave = new FlxSave();
 		_gameSave.bind("Level1");
 		FlxG.cameras.bgColor = 0xffffffff;
+		unserializer = new Unserializer(Reg.EntireLevel);
+		Level1 = unserializer.unserialize();
+		trace(Level1);
+		
+		for (k in 0...5)
+			{
+				switch (k)
+				{
+					case 0:
+						for (i in 0...Level1[k].length)
+						{
+							Reg.CajaDiscos[i] = new CajaDisco();
+							Reg.CajaDiscos[i].setVariable(Level1[k][i]);
+							Reg.CantCajaDiscos++;
+						}
+					case 1:
+						for (i in 0...Level1[k].length)
+						{
+							Reg.CajaLuzes[i] = new CajaLuz();
+							Reg.CajaLuzes[i].setVariable(Level1[k][i]);
+							Reg.CantCajaLuzes++;
+						}
+					case 2:
+						for (i in 0...Level1[k].length)
+						{
+							Reg.CajaPixel[i] = new PixelRain();
+							Reg.CajaPixel[i].setVariable(Level1[k][i]);
+							Reg.CantCajaPixel++;
+						}
+					case 3:
+						for (i in 0...Level1[k].length)
+						{
+							Reg.CajaPixelBoton[i] = new PixelBoton();
+							Reg.CajaPixelBoton[i].setVariable(Level1[k][i]);
+						}
+					case 4:
+						for (i in 0...Level1[k].length)
+						{
+							Reg.CajaLacer[i] = new Laser();
+							Reg.CajaLacer[i].setVariable(Level1[k][i]);
+							Reg.CantCajaLacer++;
+						}
+				}
+			}
 	}
 	override public function update(elapsed:Float):Void
 	{
@@ -136,6 +185,15 @@ class PlayState extends FlxState
 			}
 			_gameSave.data.Level1 = Level1;
 			_gameSave.flush();
+			for (i in 0...Reg.cantArmas)
+			{
+				serializer = new Serializer();
+				serializer.serialize(Level1[i]);
+				trace(serializer);
+			}
+			serializer = new Serializer();
+			serializer.serialize(Level1);
+			trace(serializer);
 		}
 		if (FlxG.keys.justPressed.L)
 		{
@@ -157,7 +215,7 @@ class PlayState extends FlxState
 			{
 				Reg.CajaLacer[i].destroy();
 			}
-			for (k in 0...5)
+			for (k in 0...Level1.length)
 			{
 				switch (k)
 				{
