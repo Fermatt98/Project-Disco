@@ -15,7 +15,7 @@ class Reg
 	inline static public var jumpMaxVelPlayer:Int = -600;
 	inline static public var maxJump:Int = 2;
 	inline static public var pixelVel:Int = 800;
-	inline static public var cantArmas:Int = 4;
+	inline static public var cantArmas:Int = 5;
 	static public var music:FlxSound;
 	//------Posiciones-----//
 	static public var posicionEdicionOn:FlxPoint = new FlxPoint(100, 100);
