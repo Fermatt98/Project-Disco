@@ -196,7 +196,9 @@ class Laser extends FlxSprite
 	public function setVariable(list:List<Float>)
 	{
 		x = list.pop();
+		startX = x;
 		y = list.pop();
+		startY = y;
 		timeStart = list.pop();
 		endTime = list.pop();
 		_timeCamDir = list.pop();
@@ -219,6 +221,7 @@ class Laser extends FlxSprite
 		}
 		if (_recta == true)
 		{
+			loadGraphic("assets/images/Laser/laser.png");
 			if (_positivo == true)
 			{
 				velocity.y = list.pop();
@@ -227,7 +230,7 @@ class Laser extends FlxSprite
 			else
 			{
 				velocity.y = -list.pop();
-				startVelocity = velocity.y;
+				startVelocity = -velocity.y;
 			}
 			
 		}
@@ -243,7 +246,7 @@ class Laser extends FlxSprite
 			else
 			{
 				velocity.x = -list.pop();
-				startVelocity = velocity.x;
+				startVelocity = -velocity.x;
 			}
 		}
 		list.add(x);
