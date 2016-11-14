@@ -14,6 +14,7 @@ class Laser extends FlxSprite
 	private var _time:Float = 0;
 	private var _time2:Float = 0;
 	private var _intervalo:Float = 0;
+	private var _intervaloStart:Float = 0;
 	private var _timeCamDir:Float;
 	private var _recta:Bool;
 	private var _positivo:Bool;
@@ -34,6 +35,7 @@ class Laser extends FlxSprite
 		_timeCamDir = timeCamDir;
 		_recta = recta;
 		_intervalo = intervalo;
+		_intervaloStart = intervalo;
 		_positivo = positivo;
 		startVelocity = velocidad;
 		if (_recta == true)
@@ -173,7 +175,7 @@ class Laser extends FlxSprite
 		list.add(timeStart);
 		list.add(endTime);
 		list.add(_timeCamDir);
-		list.add(_intervalo);
+		list.add(_intervaloStart);
 		if (_recta)
 		{
 			list.add(1);
@@ -202,7 +204,8 @@ class Laser extends FlxSprite
 		timeStart = list.pop();
 		endTime = list.pop();
 		_timeCamDir = list.pop();
-		_intervalo = list.pop();
+		_intervaloStart = list.pop();
+		_intervalo = _intervaloStart;
 		if (list.pop() == 1)
 		{
 			_recta = true;
@@ -254,7 +257,7 @@ class Laser extends FlxSprite
 		list.add(timeStart);
 		list.add(endTime);
 		list.add(_timeCamDir);
-		list.add(_intervalo);
+		list.add(_intervaloStart);
 		if (_recta)
 		{
 			list.add(1);
