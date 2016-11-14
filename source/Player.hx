@@ -3,6 +3,7 @@ package;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.FlxG;
+import flixel.system.FlxSound;
 
 /**
  * ...
@@ -16,6 +17,8 @@ class Player extends FlxSprite
 	private var jumpCount:Int = 0;
 	private var bodyslam:Bool = false;
 	private var bodyslamTimer:Float = 0;
+	private var SFXJump:FlxSound;
+	private var SFXDead:FlxSound;
 	
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
@@ -26,6 +29,8 @@ class Player extends FlxSprite
 		height = 56;
 		offset.set(10, 8);
 		y -= height;
+		SFXJump = FlxG.sound.load(AssetPaths.Jump__wav);
+		SFXDead = FlxG.sound.load(AssetPaths.Explosion__wav);
 		FlxG.state.add(this);
 	}
 	
@@ -117,6 +122,7 @@ class Player extends FlxSprite
 			{
 				Reg.jumpVelPlayer = Reg.jumpMaxVelPlayer;
 				jumpCount++;
+				SFXJump.play();
 			}
 		}
 		if (Reg.jumpVelPlayer < Reg.jumpMaxVelPlayer*-1)
@@ -147,6 +153,7 @@ class Player extends FlxSprite
 				Reg.jumpVelPlayer = Reg.jumpMaxVelPlayer;
 				Reg.velPlayer = Reg.maxVelPlayer;
 				jumpCount = 0;
+				SFXJump.play();
 			}
 			x = Reg.paredIzq.x + Reg.paredIzq.width;
 		}
@@ -158,6 +165,7 @@ class Player extends FlxSprite
 				Reg.jumpVelPlayer = Reg.jumpMaxVelPlayer;
 				Reg.velPlayer = Reg.maxVelPlayer*-1;
 				jumpCount = 0;
+				SFXJump.play();
 			}
 			x = Reg.paredDer.x - width;
 
@@ -167,5 +175,11 @@ class Player extends FlxSprite
 			Reg.jumpVelPlayer = 0;
 			y = Reg.techo.y + Reg.techo.height;
 		}
+	}
+	
+	override public function kill():Void 
+	{
+		super.kill();
+		SFXDead.play();
 	}
 }
