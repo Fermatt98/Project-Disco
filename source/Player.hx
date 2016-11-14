@@ -22,6 +22,9 @@ class Player extends FlxSprite
 		super(X, Y, SimpleGraphic);
 		makeGraphic(Reg.tamanioPlayerX, Reg.tamanioPlayerY);
 		loadGraphic("assets/images/Player/player.png");
+		width = 44;
+		height = 56;
+		offset.set(10, 8);
 		y -= height;
 		FlxG.state.add(this);
 	}
@@ -35,11 +38,17 @@ class Player extends FlxSprite
 			if (_animacionCorrer == false)
 			{
 				loadGraphic("assets/images/Player/player.png");
+				width = 44;
+				height = 56;
+				offset.set(10, 8);
 				_animacionCorrer = true;
 			}
 			else
 			{
 				loadGraphic("assets/images/Player/player_2.png");
+				width = 44;
+				height = 56;
+				offset.set(10, 8);
 				_animacionCorrer = false;
 			}
 			_time = 0;
