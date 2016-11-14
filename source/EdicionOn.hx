@@ -17,6 +17,7 @@ class EdicionOn extends FlxSprite
 	private var armaDos:Bool = false;
 	private var armaTres:Bool = false;
 	private var armaCuatro:Bool = false;
+	private var armaCinco:Bool = false;
 	private var inicio:Int = 200;
 	private var distancia:Int = 50;
 	
@@ -63,7 +64,11 @@ class EdicionOn extends FlxSprite
 			Reg.CajaLacer[Reg.CantCajaLacer] = new Laser(FlxG.mouse.x, FlxG.mouse.y, Reg.LacerVertical,Reg.LacerDireccion, Reg.LacerVelocidad, Reg.LacerCambio, Reg.LacerIntervalo);
 			Reg.CantCajaLacer += 1;
 		}
-		
+		if (FlxG.mouse.justPressed && arma == 5)
+		{
+			Reg.CajaPantallas[Reg.CantCajaPantallas] = new CajaPantalla(Std.int(FlxG.mouse.x/64)*64, Std.int(FlxG.mouse.y/64)*64, Reg.PantallaIntervalo,Reg.PantallaDuracion, Reg.PantallaColor);
+			Reg.CantCajaPantallas += 1;
+		}
 		if (FlxG.keys.justPressed.ONE)
 		{
 			if (arma == 1)
@@ -184,6 +189,33 @@ class EdicionOn extends FlxSprite
 				cambio(false);
 			}
 		}
+		if (FlxG.keys.justPressed.FIVE)
+		{
+			if (arma == 5)
+			{
+				arma = 0;
+				cambio(true);
+			}
+			else
+			{
+				if (armaCinco != true)
+				{
+					Reg.Consol[15] = new Consola(inicio, inicio, "Intervalo", Reg.PantallaIntervalo);
+					Reg.Consol[16] = new Consola(inicio, inicio+distancia, "Duracion", Reg.PantallaDuracion);
+					Reg.ConsolTexto = new ConsolaTexto(inicio, inicio+distancia*2, "Color", Reg.PantallaColor);
+					Reg.BotonEditor[30] = new Boton(Reg.Consol[15].x + Reg.Consol[15].width, Reg.Consol[15].y + Reg.Consol[15].height/2, true, "PantallaIntervalo");
+					Reg.BotonEditor[31] = new Boton(Reg.Consol[15].x, Reg.Consol[15].y + Reg.Consol[15].height/2, false, "PantallaIntervaloMenos");
+					Reg.BotonEditor[32] = new Boton(Reg.Consol[16].x + Reg.Consol[16].width, Reg.Consol[16].y + Reg.Consol[16].height/2, true, "PantallaDuracion");
+					Reg.BotonEditor[33] = new Boton(Reg.Consol[16].x, Reg.Consol[16].y + Reg.Consol[16].height/2, false, "PantallaDuracionMenos");
+					Reg.BotonEditor[34] = new Boton(Reg.ConsolTexto.x + Reg.ConsolTexto.width, Reg.ConsolTexto.y + Reg.ConsolTexto.height/2, true, "PantallaColor");
+					Reg.BotonEditor[35] = new Boton(Reg.ConsolTexto.x, Reg.ConsolTexto.y + Reg.ConsolTexto.height/2, false, "PantallaColorMenos");
+				}
+				activo = "armaCinco";
+				armaCinco = true;
+				arma = 5;
+				cambio(false);
+			}
+		}
 		if (FlxG.keys.justPressed.G && Reg.GrishaBool == true)
 		{
 			Reg.GrishaBool = false;
@@ -239,6 +271,19 @@ class EdicionOn extends FlxSprite
 				Reg.BotonEditor[a].destroy();
 			}
 			armaCuatro = false;
+		}
+		if (armaCinco == true && activo != "armaCinco")
+		{
+			for (a in 15...17)
+			{
+				Reg.Consol[a].destroy();
+			}
+			Reg.ConsolTexto.destroy();
+			for (a in 30...36)
+			{
+				Reg.BotonEditor[a].destroy();
+			}
+			armaCinco = false;
 		}
 	}
 }

@@ -34,6 +34,7 @@ class Reg
 	
 	//-----Editor----//
 	static public var Consol:Array<Consola>;
+	static public var ConsolTexto:ConsolaTexto;
 	static public var BotonEditor:Array<FlxSprite>;
 	static public var EdicionControl:EdicionOn;
 	//--------FLXSPRITES------------//
@@ -75,6 +76,11 @@ class Reg
 		static public var LacerCambio:Float = 0;
 		static public var LacerIntervalo:Float = 0;
 		//-----FinLacer----//
+		//-----Pantalla----//
+		static public var PantallaIntervalo:Float = 0;
+		static public var PantallaDuracion:Float = 0;
+		static public var PantallaColor:String = "NEGRO";
+		//----finPantalla--//
 		static public var CajaLuzes:Array<CajaLuz>;
 		static public var CantCajaLuzes:Int = 0;
 		static public var CajaLacer:Array<Laser>;
@@ -83,6 +89,8 @@ class Reg
 		static public var CantCajaPixel:Int = 0;
 		static public var CajaPixelBoton:Array<PixelBoton>;
 		static public var pixel:Array<Pixel>;
+		static public var CajaPantallas:Array<CajaPantalla>;
+		static public var CantCajaPantallas:Int = 0;
 	//-------Editor------//
 		static public var timeline:FlxSprite;
 		static public var songLine:FlxSprite;

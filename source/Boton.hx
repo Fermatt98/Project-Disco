@@ -12,6 +12,8 @@ class Boton extends FlxSprite
 {
 	private var _suma:Bool = false;
 	private var _tag:String = "-";
+	private var colorNum:Int = 0;
+	
 	public function new(?X:Float=0, ?Y:Float=0, ?mas:Bool, tag:String, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
@@ -271,6 +273,86 @@ class Boton extends FlxSprite
 			{
 				Reg.LacerIntervalo -= 0.1;
 				Reg.Consol[14].cambio(Reg.LacerIntervalo);
+			}
+			if (_tag == "PantallaIntervalo")
+			{
+				Reg.PantallaIntervalo += 0.1;
+				Reg.Consol[15].cambio(Reg.PantallaIntervalo);
+			}
+			if (_tag == "PantallaIntervaloMenos")
+			{
+				Reg.PantallaIntervalo -= 0.1;
+				Reg.Consol[15].cambio(Reg.PantallaIntervalo);
+			}
+			if (_tag == "PantallaDuracion")
+			{
+				Reg.PantallaDuracion += 0.1;
+				Reg.Consol[16].cambio(Reg.PantallaDuracion);
+			}
+			if (_tag == "PantallaDuracionMenos")
+			{
+				Reg.PantallaDuracion -= 0.1;
+				Reg.Consol[16].cambio(Reg.PantallaDuracion);
+			}
+			if (_tag == "PantallaColor")
+			{
+				colorNum++;
+				if (colorNum == 0)
+				{
+					Reg.PantallaColor = "NEGRO";
+				}
+				if (colorNum == 1)
+				{
+					Reg.PantallaColor = "BLANCO";
+				}
+				if (colorNum == 2)
+				{
+					Reg.PantallaColor = "AZUL";
+				}
+				if (colorNum == 3)
+				{
+					Reg.PantallaColor = "ROJO";
+				}
+				if (colorNum == 4)
+				{
+					Reg.PantallaColor = "VERDE";
+				}
+				if (colorNum == 5)
+				{
+					colorNum = 0;
+					Reg.PantallaColor = "NEGRO";
+				}
+				Reg.ConsolTexto.cambio(Reg.PantallaColor);
+			}
+			if (_tag == "PantallaColorMenos")
+			{
+				colorNum--;
+				if (colorNum == 0)
+				{
+					Reg.PantallaColor = "NEGRO";
+				}
+				if (colorNum == 1)
+				{
+					Reg.PantallaColor = "BLANCO";
+				}
+				if (colorNum == 2)
+				{
+					Reg.PantallaColor = "AZUL";
+				}
+				if (colorNum == 3)
+				{
+					Reg.PantallaColor = "ROJO";
+				}
+				if (colorNum == 4)
+				{
+					Reg.PantallaColor = "VERDE";
+				}
+				if (colorNum == -1)
+				{
+					colorNum = 4;
+					Reg.PantallaColor = "VERDE";
+				}
+				Reg.ConsolTexto.cambio(Reg.PantallaColor);
 			}
 		}
 	}
