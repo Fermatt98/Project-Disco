@@ -16,10 +16,14 @@ class CajaPantalla extends FlxSprite
 	private var _duracion:Float;
 	private var timer:Float = 0;
 	private var timer2:Float = 0;
+	private var timeStart:Float = 0;
+	private var endTime:Float = Reg.time;
+	private var _color:String;
 	
-	public function new(?X:Float = 0, ?Y:Float = 0, intervalo:Float, duracion:Float, color:String, ?SimpleGraphic:FlxGraphicAsset) 
+	public function new(?X:Float = 0, ?Y:Float = 0, ?intervalo:Float = 0, ?duracion:Float = 0, ?color:String = "NEGRO", ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
+		timeStart = Reg.getTime;
 		makeGraphic(Reg.tamanioCajas, Reg.tamanioCajas);
 		FlxG.state.add(this);
 		_intervalo = intervalo;
@@ -45,6 +49,7 @@ class CajaPantalla extends FlxSprite
 		{
 			_pantalla.makeGraphic(FlxG.width, FlxG.height,FlxColor.GREEN);
 		}
+		_color = color;
 		_pantalla.alpha = 0;
 		FlxG.state.add(_pantalla);
 	}
@@ -52,29 +57,143 @@ class CajaPantalla extends FlxSprite
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
-		timer += elapsed;
-		if (timer > _duracion)
+		if (Reg.getTime >= timeStart && Reg.getTime < endTime)
 		{
-			timer2 += elapsed;
-			if (_pantalla.alpha != 1 && timer2 <= _intervalo)
+			timer += elapsed;
+			if (!visible)
 			{
-				trace("+");
-				_pantalla.alpha += 0.1;
+				set_visible(true);
 			}
-			if (timer2 > _intervalo)
+			if (timer > _duracion)
 			{
-				if (_pantalla.alpha != 0)
+				timer2 += elapsed;
+				if (_pantalla.alpha != 1 && timer2 <= _intervalo)
 				{
-					trace("-");
-					_pantalla.alpha -= 0.1;
+					trace("+");
+					_pantalla.alpha += 0.1;
 				}
-				else
+				if (timer2 > _intervalo)
 				{
-					timer = 0;
-					timer2 = 0;
+					if (_pantalla.alpha != 0)
+					{
+						trace("-");
+						_pantalla.alpha -= 0.1;
+					}
+					else
+					{
+						timer = 0;
+						timer2 = 0;
+					}
 				}
+			}
+			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.pressedRight)
+			{
+				set_visible(false);
+				endTime = Reg.getTime;
+			}
+			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.pressedMiddle)
+			{
+				destroy();
 			}
 		}
+		else
+		{
+			set_visible(false);
+			_pantalla.alpha = 0;
+			timer = 0;
+			timer2 = 0;
+		}
+		
+	}
+	
+	public function getVariable(list:List<Float>)
+	{
+		list.add(x);
+		list.add(y);
+		list.add(timeStart);
+		list.add(endTime);
+		list.add(_intervalo);
+		list.add(_duracion);
+		if (_color == "NEGRO")
+		{
+			list.add(0);
+		}
+		else if (_color == "BLANCO")
+		{
+			list.add(1);
+		}
+		else if (_color == "AZUL")
+		{
+			list.add(2);
+		}
+		else if (_color == "ROJO")
+		{
+			list.add(3);
+		}
+		else if (_color == "VERDE")
+		{
+			list.add(4);
+		}
+	}
+	
+	public function setVariable(list:List<Float>)
+	{
+		x = list.pop();
+		y = list.pop();
+		timeStart = list.pop();
+		endTime = list.pop();
+		_intervalo = list.pop();
+		_duracion = list.pop();
+		switch(list.pop())
+		{
+			case 0:
+				_color = "NEGRO";
+				_pantalla.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+			case 1:
+				_color = "BLANCO";
+				_pantalla.makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
+			case 2:
+				_color = "AZUL";
+				_pantalla.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLUE);
+			case 3:
+				_color = "ROJO";
+				_pantalla.makeGraphic(FlxG.width, FlxG.height, FlxColor.RED);
+			case 4:
+				_color = "VERDE";
+				_pantalla.makeGraphic(FlxG.width, FlxG.height, FlxColor.GREEN);
+		}
+		list.add(x);
+		list.add(y);
+		list.add(timeStart);
+		list.add(endTime);
+		list.add(_intervalo);
+		list.add(_duracion);
+		if (_color == "NEGRO")
+		{
+			list.add(0);
+		}
+		else if (_color == "BLANCO")
+		{
+			list.add(1);
+		}
+		else if (_color == "AZUL")
+		{
+			list.add(2);
+		}
+		else if (_color == "ROJO")
+		{
+			list.add(3);
+		}
+		else if (_color == "VERDE")
+		{
+			list.add(4);
+		}
+	}
+	
+	override public function destroy():Void 
+	{
+		super.destroy();
+		_pantalla.destroy();
 	}
 	
 }

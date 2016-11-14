@@ -24,7 +24,10 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		super.create();
-		Level1 = new Array <Array<List<Float>>>();
+		Level1 = new Array < Array<List<Float>> > ();
+		Reg.fondo = new FlxSprite();
+		//Reg.fondo.loadGraphic(AssetPaths.fondo9__jpg);
+		add(Reg.fondo);
 		Reg.getTime = 0;
 		Reg.player = new Player(FlxG.width/2, FlxG.height/2);
 		Reg.paredIzq = new Pared();
@@ -47,6 +50,7 @@ class PlayState extends FlxState
 		_gameSave = new FlxSave();
 		_gameSave.bind("Level1");
 		FlxG.cameras.bgColor = 0xffffffff;
+
 		unserializer = new Unserializer(Reg.EntireLevel);
 		Level1 = unserializer.unserialize();
 		trace(Level1);
@@ -113,6 +117,10 @@ class PlayState extends FlxState
 			for (i in 0...Reg.CajaLacer.length)
 			{
 				Reg.CajaLacer[i].destroy();
+			}
+			for (i in 0...Reg.CajaPantallas.length)
+			{
+				Reg.CajaPantallas[i].destroy();
 			}
 		}
 		if (FlxG.keys.justPressed.R)
@@ -202,6 +210,20 @@ class PlayState extends FlxState
 								existsCounter++;
 							}
 						}
+					case 5:
+						existsCounter = 0;
+						for(i in 0...Reg.CantCajaPantallas)
+						{
+							if (Reg.CajaPantallas[i].exists)
+							{
+								Level1[k][i-existsCounter] = new List<Float>();
+								Reg.CajaPantallas[i].getVariable(Level1[k][i-existsCounter]);
+							}
+							else
+							{
+								existsCounter++;
+							}
+						}
 				}
 			}
 			_gameSave.data.Level1 = Level1;
@@ -235,6 +257,10 @@ class PlayState extends FlxState
 			for (i in 0...Reg.CajaLacer.length)
 			{
 				Reg.CajaLacer[i].destroy();
+			}
+			for (i in 0...Reg.CajaPantallas.length)
+			{
+				Reg.CajaPantallas[i].destroy();
 			}
 			for (k in 0...Level1.length)
 			{
@@ -273,6 +299,13 @@ class PlayState extends FlxState
 							Reg.CajaLacer[i] = new Laser();
 							Reg.CajaLacer[i].setVariable(Level1[k][i]);
 							Reg.CantCajaLacer++;
+						}
+					case 5:
+						for (i in 0...Level1[k].length)
+						{
+							Reg.CajaPantallas[i] = new CajaPantalla();
+							Reg.CajaPantallas[i].setVariable(Level1[k][i]);
+							Reg.CantCajaPantallas++;
 						}
 				}
 			}
