@@ -44,7 +44,7 @@ class Reg
 	static public var paredIzq:FlxSprite;
 	static public var paredDer:FlxSprite;
 	static public var techo:FlxSprite;
-	static public var fondo:FlxSprite;
+	static public var fondoo:FlxSprite;
 	//-------Armas------//
 		//-------Discos-----//
 		static public var CajaDiscos:Array<CajaDisco>;
