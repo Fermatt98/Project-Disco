@@ -55,7 +55,7 @@ class PlayState extends FlxState
 		Level1 = unserializer.unserialize();
 		trace(Level1);
 		
-		for (k in 0...5)
+		for (k in 0...6)
 			{
 				switch (k)
 				{
@@ -92,6 +92,13 @@ class PlayState extends FlxState
 							Reg.CajaLacer[i] = new Laser();
 							Reg.CajaLacer[i].setVariable(Level1[k][i]);
 							Reg.CantCajaLacer++;
+						}
+					case 5:
+						for (i in 0...Level1[k].length)
+						{
+							Reg.CajaPantallas[i] = new CajaPantalla();
+							Reg.CajaPantallas[i].setVariable(Level1[k][i]);
+							Reg.CantCajaPantallas++;
 						}
 				}
 			}
