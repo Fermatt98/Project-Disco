@@ -26,7 +26,7 @@ class PlayState extends FlxState
 		super.create();
 		Level1 = new Array < Array<List<Float>> > ();
 		Reg.fondo = new FlxSprite();
-		//Reg.fondo.loadGraphic(AssetPaths.fondo9__jpg);
+		//Reg.fondo.loadGraphic(AssetPaths.fondo3__jpg);
 		add(Reg.fondo);
 		Reg.getTime = 0;
 		Reg.player = new Player(FlxG.width/2, FlxG.height/2);
