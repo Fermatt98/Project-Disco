@@ -16,6 +16,7 @@ class MenuSelection extends FlxState
 	private var start:Bool = false;
 	private var historia:FlxSprite;
 	private var Editor:FlxSprite;
+	private var comic:FlxState;
 	
 	override public function create():Void
 	{
@@ -23,7 +24,7 @@ class MenuSelection extends FlxState
 		Menu = new FlxSprite();
 		Menu.loadGraphic("assets/images/AnimacionMenu/escritorio_90.jpg");
 		add(Menu);
-		
+		comic = new Comic();
 	}
 	
 	override public function update(elapsed:Float):Void 
@@ -35,9 +36,20 @@ class MenuSelection extends FlxState
 			{
 				start = true;
 				Menu.loadGraphic(AssetPaths.Menu__jpg);
-				historia = new FlxSprite(
+				historia = new FlxSprite(206, 424);
+				historia.loadGraphic(AssetPaths.historia__png);
+				Editor = new FlxSprite(711, 424);
+				Editor.loadGraphic(AssetPaths.Editor__png);
+				add(historia);
+				add(Editor);
 			}
 		}
-		
+		else
+		{
+			if (FlxG.mouse.overlaps(historia) && FlxG.mouse.justPressed)
+			{
+				FlxG.switchState(comic);
+			}
+		}
 	}
 }

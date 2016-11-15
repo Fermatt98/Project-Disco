@@ -15,7 +15,7 @@ class Next extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(81, 58);
-		loadGraphic("assets/images/New/new.png");
+		loadGraphic("assets/images/New/next.png");
 		FlxG.state.add(this);
 	}
 	override public function update(elapsed:Float):Void 
