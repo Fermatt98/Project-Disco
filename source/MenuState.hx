@@ -12,12 +12,15 @@ class MenuState extends FlxState
 	private var Menu:FlxSprite;
 	private var _time:Float = 0;
 	private var counter:Int = 0;
+	private var nextState:FlxState;
+	
 	override public function create():Void
 	{
 		super.create();
 		Menu = new FlxSprite();
 		Menu.loadGraphic("assets/images/AnimacionMenu/escritorio_1.jpg");
 		add(Menu);
+		nextState = new MenuSelection();
 	}
 
 	override public function update(elapsed:Float):Void
@@ -209,6 +212,7 @@ class MenuState extends FlxState
 				Menu.loadGraphic(AssetPaths.escritorio_89__jpg);
 			case 113:
 				Menu.loadGraphic(AssetPaths.escritorio_90__jpg);
+				FlxG.switchState(nextState);
 		}
 	}
 }

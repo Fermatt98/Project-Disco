@@ -14,14 +14,16 @@ class Fondo extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		loadGraphic(AssetPaths.fondo__jpg);
+		loadGraphic(AssetPaths.fondo2__jpg);
 		FlxG.state.add(this);
+		Reg.ojo1 = new Ojo(770, 220);
+		Reg.ojo2 = new Ojo(300,220);
 	}
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
 		
-		if (Reg.getTime > 6 && Reg.getTime <= 12)
+		/*if (Reg.getTime > 6 && Reg.getTime <= 12)
 		{
 			count++;
 			switch(count)
@@ -51,9 +53,17 @@ class Fondo extends FlxSprite
 				case 110:
 					count = 0;
 			}
-		}
+		}*/
 		if (Reg.getTime > 12)
 		{
+		if (Reg.ojo1.exists)
+		{
+			Reg.ojo1.kill();
+		}
+		if (Reg.ojo2.exists)
+		{
+			Reg.ojo2.kill();
+		}
 		count++;
 			switch(count)
 			{
