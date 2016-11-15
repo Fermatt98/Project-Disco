@@ -1,6 +1,7 @@
 package;
 
 import flixel.FlxSprite;
+import flixel.FlxState;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.FlxG;
 
@@ -13,19 +14,33 @@ class Timeline extends FlxSprite
 	private var movement:Bool = false;
 	private var oldTime:Float = 0;
 	private var play:Bool = false;
-
+	
+	
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(Reg.tamanioTimeLineX, Reg.tamanioTimeLineY);
 		color = 0x24552564;
 		FlxG.state.add(this);
-		Reg.Consol[99] = new Consola(Reg.posicionTiempo.x, Reg.posicionTiempo.y, "Tiempo: ", Reg.getTime);
+		if (Reg.stateString != "Level1")
+		{
+			Reg.Consol[99] = new Consola(Reg.posicionTiempo.x, Reg.posicionTiempo.y, "Tiempo: ", Reg.getTime);
+		}
 	}
 	
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
+		if (Reg.stateString == "Level1")
+		{
+			set_visible(false);
+			play = true;
+			Reg.music.play(true, Reg.getTime*1000);
+		}
+		else
+		{
+			set_visible(true);
+		}
 		if (FlxG.keys.justPressed.ENTER)
 		{
 			if (play)
@@ -79,12 +94,15 @@ class Timeline extends FlxSprite
 				movement = false;
 			}
 		}
-		Reg.getTime = (x-Reg.songLine.x) * Reg.pixelTime;
-		if (Reg.getTime != oldTime)
+		Reg.getTime = (x - Reg.songLine.x) * Reg.pixelTime;
+		if (Reg.stateString != "Level1")
 		{
-			Reg.Consol[99].destroy();
-			Reg.Consol[99] = new Consola(Reg.posicionTiempo.x, Reg.posicionTiempo.y, "Tiempo: ", Reg.getTime);
-			oldTime = Reg.getTime;
+			if (Reg.getTime != oldTime)
+			{
+				Reg.Consol[99].destroy();
+				Reg.Consol[99] = new Consola(Reg.posicionTiempo.x, Reg.posicionTiempo.y, "Tiempo: ", Reg.getTime);
+				oldTime = Reg.getTime;
+			}
 		}
 		
 	}

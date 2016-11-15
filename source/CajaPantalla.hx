@@ -4,6 +4,7 @@ import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.FlxG;
 import flixel.util.FlxColor;
+import flixel.FlxState;
 
 /**
  * ...
@@ -57,6 +58,14 @@ class CajaPantalla extends FlxSprite
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
+		if (Reg.stateString == "Level1")
+		{
+			set_visible(false);
+		}
+		else
+		{
+			set_visible(true);
+		}
 		if (Reg.getTime >= timeStart && Reg.getTime < endTime)
 		{
 			timer += elapsed;

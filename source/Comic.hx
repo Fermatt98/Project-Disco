@@ -12,6 +12,8 @@ class Comic extends FlxState
 	private var Historia:FlxSprite;
 	private var boton:FlxSprite;
 	private var _time:Float = 0;
+	private var playstate:FlxState;
+	
 	override public function create():Void
 	{
 		super.create();
@@ -19,6 +21,8 @@ class Comic extends FlxState
 		Historia.loadGraphic("assets/images/Comic/Escritorio1.jpg");
 		add(Historia);
 		boton = new Next();
+		playstate = new Level1();
+		Reg.stateString = "comic";
 	}
 	override public function update(elapsed:Float):Void
 	{
@@ -385,7 +389,7 @@ class Comic extends FlxState
 						Historia.loadGraphic("assets/images/Comic/Escritorio135.jpg");
 					case 180:
 						Historia.loadGraphic("assets/images/Comic/Escritorio136.jpg");
-					
+						FlxG.switchState(playstate);
 				}
 		}
 	}

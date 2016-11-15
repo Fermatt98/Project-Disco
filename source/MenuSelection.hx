@@ -25,6 +25,7 @@ class MenuSelection extends FlxState
 		Menu.loadGraphic("assets/images/AnimacionMenu/escritorio_90.jpg");
 		add(Menu);
 		comic = new Comic();
+		Reg.stateString = "MenuSelection";
 	}
 	
 	override public function update(elapsed:Float):Void 
