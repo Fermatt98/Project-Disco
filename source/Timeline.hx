@@ -15,7 +15,6 @@ class Timeline extends FlxSprite
 	private var oldTime:Float = 0;
 	private var play:Bool = false;
 	
-	
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
