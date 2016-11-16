@@ -99,5 +99,9 @@ class Level1 extends FlxState
 		{
 			//FlxG.resetState();
 		}
+		if (Reg.getTime > 147)
+		{
+			FlxG.resetGame();
+		}
 	}
 }
