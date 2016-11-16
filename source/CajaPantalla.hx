@@ -76,23 +76,15 @@ class CajaPantalla extends FlxSprite
 			if (timer > _duracion)
 			{
 				timer2 += elapsed;
-				if (_pantalla.alpha <0.8 && timer2 <= _intervalo)
+				if (timer2 <= _intervalo)
 				{
-					trace("+");
-					_pantalla.alpha += 0.2;
+					_pantalla.alpha = 0.8;
 				}
 				if (timer2 > _intervalo)
 				{
-					if (_pantalla.alpha != 0)
-					{
-						trace("-");
-						_pantalla.alpha -= 0.2;
-					}
-					else
-					{
-						timer = 0;
-						timer2 = 0;
-					}
+					_pantalla.alpha = 0;
+					timer = 0;
+					timer2 = 0;
 				}
 			}
 			if (this.overlapsPoint(FlxG.mouse.getPosition()) && FlxG.mouse.pressedRight)
