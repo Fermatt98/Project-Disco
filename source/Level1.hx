@@ -41,7 +41,7 @@ class Level1 extends FlxState
 		Reg.CajaPantallas = new Array<CajaPantalla>();
 		//Reg.Consol = new Array<Consola>();
 		//Reg.BotonEditor = new Array<FlxSprite>();
-		Reg.music = FlxG.sound.load(AssetPaths.Game__wav);
+		Reg.music = FlxG.sound.load(AssetPaths.Game__ogg);
 		Reg.songLine = new SongLine(Reg.paredIzq.width, Reg.techo.height, 2*60+28);
 		serializer = new Serializer();
 		//FlxG.debugger.visible = true;2*60+28

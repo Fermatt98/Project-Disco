@@ -32,15 +32,15 @@ class Timeline extends FlxSprite
 		super.update(elapsed);
 		if (Reg.stateString == "Level1")
 		{
-			set_visible(false);
 			play = true;
-			Reg.music.play(true, Reg.getTime*1000);
+			Reg.music.play();
+			set_visible(false);
 		}
 		else
 		{
 			set_visible(true);
 		}
-		if (FlxG.keys.justPressed.ENTER)
+		if (FlxG.keys.justPressed.ENTER && Reg.stateString != "Level1")
 		{
 			if (play)
 			{
