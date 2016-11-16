@@ -17,6 +17,7 @@ class MenuSelection extends FlxState
 	private var historia:FlxSprite;
 	private var Editor:FlxSprite;
 	private var comic:FlxState;
+	private var menuEditor:FlxState;
 	
 	override public function create():Void
 	{
@@ -25,6 +26,7 @@ class MenuSelection extends FlxState
 		Menu.loadGraphic("assets/images/AnimacionMenu/escritorio_90.jpg");
 		add(Menu);
 		comic = new Comic();
+		menuEditor = new MenuEditor();
 		Reg.stateString = "MenuSelection";
 	}
 	
@@ -50,6 +52,10 @@ class MenuSelection extends FlxState
 			if (FlxG.mouse.overlaps(historia))
 			{
 				historia.loadGraphic(AssetPaths.historia__png);
+				if (FlxG.mouse.justPressed)
+				{
+					FlxG.switchState(comic);
+				}
 			}
 			else
 			{
@@ -58,14 +64,14 @@ class MenuSelection extends FlxState
 			if (FlxG.mouse.overlaps(Editor))
 			{
 				Editor.loadGraphic(AssetPaths.Editor__png);
+				if (FlxG.mouse.justPressed)
+				{
+					FlxG.switchState(menuEditor);
+				}
 			}
 			else
 			{
 				Editor.loadGraphic(AssetPaths.Editor2__png);
-			}
-			if (FlxG.mouse.overlaps(historia) && FlxG.mouse.justPressed)
-			{
-				FlxG.switchState(comic);
 			}
 		}
 	}
