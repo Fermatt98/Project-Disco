@@ -111,23 +111,28 @@ class PlayState extends FlxState
 			for (i in 0...Reg.CajaDiscos.length)
 			{
 				Reg.CajaDiscos[i].destroy();
+				Reg.CantCajaDiscos = 0;
 			}
 			for (i in 0...Reg.CajaLuzes.length)
 			{
 				Reg.CajaLuzes[i].destroy();
+				Reg.CantCajaLuzes = 0;
 			}
 			for (i in 0...Reg.CajaPixel.length)
 			{
 				Reg.CajaPixel[i].destroy();
 				Reg.CajaPixelBoton[i].destroy();
+				Reg.CantCajaPixel = 0;
 			}
 			for (i in 0...Reg.CajaLacer.length)
 			{
 				Reg.CajaLacer[i].destroy();
+				Reg.CantCajaLacer = 0;
 			}
 			for (i in 0...Reg.CajaPantallas.length)
 			{
 				Reg.CajaPantallas[i].destroy();
+				Reg.CantCajaPantallas = 0;
 			}
 		}
 		if (FlxG.keys.justPressed.R)
@@ -251,23 +256,28 @@ class PlayState extends FlxState
 			for (i in 0...Reg.CajaDiscos.length)
 			{
 				Reg.CajaDiscos[i].destroy();
+				Reg.CantCajaDiscos = 0;
 			}
 			for (i in 0...Reg.CajaLuzes.length)
 			{
 				Reg.CajaLuzes[i].destroy();
+				Reg.CantCajaLuzes = 0;
 			}
 			for (i in 0...Reg.CajaPixel.length)
 			{
 				Reg.CajaPixel[i].destroy();
 				Reg.CajaPixelBoton[i].destroy();
+				Reg.CantCajaPixel = 0;
 			}
 			for (i in 0...Reg.CajaLacer.length)
 			{
 				Reg.CajaLacer[i].destroy();
+				Reg.CantCajaLacer = 0;
 			}
 			for (i in 0...Reg.CajaPantallas.length)
 			{
 				Reg.CajaPantallas[i].destroy();
+				Reg.CantCajaPantallas = 0;
 			}
 			for (k in 0...Level1.length)
 			{

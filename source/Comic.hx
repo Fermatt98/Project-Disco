@@ -438,47 +438,47 @@ class Comic extends FlxState
 						Historia.loadGraphic("assets/images/Comic/Escritorio157.jpg");
 					case 480:
 						Historia.loadGraphic("assets/images/Comic/Escritorio158.jpg");
-					case 490:
-						Historia.loadGraphic("assets/images/Comic/Escritorio159.jpg");
-					case 500:
-						Historia.loadGraphic("assets/images/Comic/Escritorio160.jpg");
-					case 510:
-						Historia.loadGraphic("assets/images/Comic/Escritorio161.jpg");
-					case 520:
-						Historia.loadGraphic("assets/images/Comic/Escritorio162.jpg");
-					case 530:
-						Historia.loadGraphic("assets/images/Comic/Escritorio163.jpg");
-					case 540:
-						Historia.loadGraphic("assets/images/Comic/Escritorio164.jpg");
-					case 550:
-						Historia.loadGraphic("assets/images/Comic/Escritorio165.jpg");
-					case 560:
-						Historia.loadGraphic("assets/images/Comic/Escritorio166.jpg");
-					case 570:
-						Historia.loadGraphic("assets/images/Comic/Escritorio167.jpg");
-					case 580:
-						Historia.loadGraphic("assets/images/Comic/Escritorio168.jpg");
-					case 590:
-						Historia.loadGraphic("assets/images/Comic/Escritorio169.jpg");
-					case 600:
-						Historia.loadGraphic("assets/images/Comic/Escritorio170.jpg");
-					case 610:
-						Historia.loadGraphic("assets/images/Comic/Escritorio171.jpg");
 					case 620:
-						Historia.loadGraphic("assets/images/Comic/Escritorio172.jpg");
+						Historia.loadGraphic("assets/images/Comic/Escritorio159.jpg");
 					case 630:
-						Historia.loadGraphic("assets/images/Comic/Escritorio173.jpg");
+						Historia.loadGraphic("assets/images/Comic/Escritorio160.jpg");
 					case 640:
-						Historia.loadGraphic("assets/images/Comic/Escritorio174.jpg");
+						Historia.loadGraphic("assets/images/Comic/Escritorio161.jpg");
 					case 650:
-						Historia.loadGraphic("assets/images/Comic/Escritorio175.jpg");
+						Historia.loadGraphic("assets/images/Comic/Escritorio162.jpg");
 					case 660:
-						Historia.loadGraphic("assets/images/Comic/Escritorio176.jpg");
+						Historia.loadGraphic("assets/images/Comic/Escritorio163.jpg");
 					case 670:
-						Historia.loadGraphic("assets/images/Comic/Escritorio177.jpg");
+						Historia.loadGraphic("assets/images/Comic/Escritorio164.jpg");
 					case 680:
-						Historia.loadGraphic("assets/images/Comic/Escritorio178.jpg");
+						Historia.loadGraphic("assets/images/Comic/Escritorio165.jpg");
 					case 690:
+						Historia.loadGraphic("assets/images/Comic/Escritorio166.jpg");
+					case 700:
+						Historia.loadGraphic("assets/images/Comic/Escritorio167.jpg");
+					case 710:
+						Historia.loadGraphic("assets/images/Comic/Escritorio168.jpg");
+					case 720:
+						Historia.loadGraphic("assets/images/Comic/Escritorio169.jpg");
+					case 730:
+						Historia.loadGraphic("assets/images/Comic/Escritorio170.jpg");
+					case 740:
+						Historia.loadGraphic("assets/images/Comic/Escritorio171.jpg");
+					case 750:
+						Historia.loadGraphic("assets/images/Comic/Escritorio172.jpg");
+					case 760:
+						Historia.loadGraphic("assets/images/Comic/Escritorio173.jpg");
+					case 770:
+						Historia.loadGraphic("assets/images/Comic/Escritorio174.jpg");
+					case 780:
+						Historia.loadGraphic("assets/images/Comic/Escritorio175.jpg");
+					case 790:
+						Historia.loadGraphic("assets/images/Comic/Escritorio176.jpg");
+					case 800:
+						Historia.loadGraphic("assets/images/Comic/Escritorio177.jpg");
+					case 810:
+						Historia.loadGraphic("assets/images/Comic/Escritorio178.jpg");
+					case 820:
 						Historia.loadGraphic("assets/images/Comic/Escritorio179.jpg");
 						FlxG.switchState(playstate);
 				}
