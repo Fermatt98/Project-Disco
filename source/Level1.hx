@@ -97,7 +97,7 @@ class Level1 extends FlxState
 		super.update(elapsed);
 		if (!Reg.player.exists)
 		{
-			//FlxG.resetState();
+			FlxG.resetState();
 		}
 		if (Reg.getTime > 147)
 		{

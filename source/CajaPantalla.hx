@@ -78,7 +78,7 @@ class CajaPantalla extends FlxSprite
 				timer2 += elapsed;
 				if (timer2 <= _intervalo)
 				{
-					_pantalla.alpha = 0.8;
+					_pantalla.alpha = 0.9;
 				}
 				if (timer2 > _intervalo)
 				{
