@@ -29,7 +29,11 @@ class PixelBoton extends FlxSprite
 		super.update(elapsed);
 		if (Reg.getTime >= timeStart && Reg.getTime < endTime)
 		{
-			if (!visible)
+			if (Reg.stateString == "Level1")
+			{
+				set_visible(false);
+			}
+			else if (!visible)
 			{
 				set_visible(true);
 			}

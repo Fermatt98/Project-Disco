@@ -16,7 +16,6 @@ class Level1 extends FlxState
 {
 
 	private var pixelRain:PixelRain;
-	private var _gameSave:FlxSave;
 	private var level1:Array<Array<List<Float>>>;
 	private var existsCounter:Int = 0;
 	private var serializer:Serializer;
@@ -29,7 +28,7 @@ class Level1 extends FlxState
 		Reg.stateString = "Level1";
 		Reg.fondoo = new Fondo();
 		Reg.getTime = 0;
-		Reg.player = new Player(FlxG.width/2, FlxG.height/2);
+		Reg.player = new Player(Reg.PosicionPlayerX, Reg.PosicionPlayerY);
 		Reg.paredIzq = new Pared();
 		Reg.paredDer = new Pared(FlxG.width, 0);
 		Reg.piso = new Piso(0, FlxG.height);
@@ -43,11 +42,9 @@ class Level1 extends FlxState
 		//Reg.Consol = new Array<Consola>();
 		//Reg.BotonEditor = new Array<FlxSprite>();
 		Reg.music = FlxG.sound.load(AssetPaths.Game__wav);
-		Reg.songLine = new SongLine(Reg.paredIzq.width, Reg.techo.height, Reg.music.length / 1000);
+		Reg.songLine = new SongLine(Reg.paredIzq.width, Reg.techo.height, 2*60+28);
 		serializer = new Serializer();
 		//FlxG.debugger.visible = true;2*60+28
-		_gameSave = new FlxSave();
-		_gameSave.bind("Level1");
 		FlxG.cameras.bgColor = 0xffffffff;
 		unserializer = new Unserializer(Reg.EntireLevel);
 		level1 = unserializer.unserialize();

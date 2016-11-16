@@ -65,14 +65,14 @@ class Timeline extends FlxSprite
 				velocity.x = 0;
 			}
 		}
-		if (FlxG.mouse.pressed && overlapsPoint(FlxG.mouse.getPosition()))
+		if (FlxG.mouse.pressed && overlapsPoint(FlxG.mouse.getPosition()) && Reg.stateString == "Level1")
 		{
 			movement = true;
 			play = false;
 			Reg.music.stop();
 			velocity.x = 0;
 		}
-		if (movement)
+		if (movement && Reg.stateString == "Level1")
 		{
 			if (x < Reg.songLine.x)
 			{
@@ -94,14 +94,14 @@ class Timeline extends FlxSprite
 			}
 		}
 		Reg.getTime = (x - Reg.songLine.x) * Reg.pixelTime;
-		if (Reg.stateString != "Level1")
+		if (Reg.getTime != oldTime)
 		{
-			if (Reg.getTime != oldTime)
+			if (Reg.stateString == "Level1")
 			{
 				Reg.Consol[99].destroy();
 				Reg.Consol[99] = new Consola(Reg.posicionTiempo.x, Reg.posicionTiempo.y, "Tiempo: ", Reg.getTime);
-				oldTime = Reg.getTime;
 			}
+			oldTime = Reg.getTime;
 		}
 		
 	}

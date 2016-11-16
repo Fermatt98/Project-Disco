@@ -23,6 +23,8 @@ class Reg
 	//------Tamaño------//
 	inline static public var tamanioPlayerX:Int = 64;
 	inline static public var tamanioPlayerY:Int = 64;
+	inline static public var PosicionPlayerX:Int = 282;
+	inline static public var PosicionPlayerY:Int = 834;
 	inline static public var tamanioPared:Int = 64;
 	inline static public var tamanioPiso:Int = 64;
 	inline static public var tamanioCajas:Int = 64;

@@ -27,7 +27,7 @@ class PlayState extends FlxState
 		Level1 = new Array < Array<List<Float>> > ();
 		Reg.fondoo = new Fondo();
 		Reg.getTime = 0;
-		Reg.player = new Player(FlxG.width/2, FlxG.height/2);
+		Reg.player = new Player(Reg.PosicionPlayerX, Reg.PosicionPlayerY);
 		Reg.paredIzq = new Pared();
 		Reg.paredDer = new Pared(FlxG.width, 0);
 		Reg.piso = new Piso(0, FlxG.height);
