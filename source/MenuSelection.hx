@@ -38,15 +38,31 @@ class MenuSelection extends FlxState
 				start = true;
 				Menu.loadGraphic(AssetPaths.Menu__jpg);
 				historia = new FlxSprite(206, 424);
-				historia.loadGraphic(AssetPaths.historia__png);
+				historia.loadGraphic(AssetPaths.historia2__png);
 				Editor = new FlxSprite(711, 424);
-				Editor.loadGraphic(AssetPaths.Editor__png);
+				Editor.loadGraphic(AssetPaths.Editor2__png);
 				add(historia);
 				add(Editor);
 			}
 		}
 		else
 		{
+			if (FlxG.mouse.overlaps(historia))
+			{
+				historia.loadGraphic(AssetPaths.historia__png);
+			}
+			else
+			{
+				historia.loadGraphic(AssetPaths.historia2__png);
+			}
+			if (FlxG.mouse.overlaps(Editor))
+			{
+				Editor.loadGraphic(AssetPaths.Editor__png);
+			}
+			else
+			{
+				Editor.loadGraphic(AssetPaths.Editor2__png);
+			}
 			if (FlxG.mouse.overlaps(historia) && FlxG.mouse.justPressed)
 			{
 				FlxG.switchState(comic);

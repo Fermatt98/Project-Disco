@@ -29,8 +29,8 @@ class Player extends FlxSprite
 		height = 56;
 		offset.set(10, 8);
 		y -= height;
-		SFXJump = FlxG.sound.load(AssetPaths.Jump__wav);
-		SFXDead = FlxG.sound.load(AssetPaths.Explosion__wav);
+		SFXJump = FlxG.sound.load(AssetPaths.Jump__ogg);
+		SFXDead = FlxG.sound.load(AssetPaths.Explosion__ogg);
 		FlxG.state.add(this);
 	}
 	
