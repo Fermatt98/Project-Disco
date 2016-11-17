@@ -14,6 +14,7 @@ import flixel.util.FlxSave;
 class MenuEditor extends FlxState
 {
 	private var Menu:FlxSprite;
+	private var NextState:FlxState;
 	private var gamesave1:FlxSave;
 	private var gamesave2:FlxSave;
 	private var gamesave3:FlxSave;
@@ -36,6 +37,7 @@ class MenuEditor extends FlxState
 		Menu.loadGraphic(AssetPaths.partidas__jpg);
 		add(Menu);
 		Reg.stateString = "MenuEditor";
+		NextState = new PlayEditor();
 		gamesave1 = new FlxSave();
 		gamesave2 = new FlxSave();
 		gamesave3 = new FlxSave();
@@ -113,6 +115,35 @@ class MenuEditor extends FlxState
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
-		if(FlxG.mo
+		if (FlxG.mouse.overlaps(gameSprite1) && FlxG.mouse.justPressed)
+		{
+			Reg.stateString = "Create1";
+			FlxG.switchState(NextState);
+		}
+		if (FlxG.mouse.overlaps(gameSprite2) && FlxG.mouse.justPressed)
+		{
+			Reg.stateString = "Create2";
+			FlxG.switchState(NextState);
+		}
+		if (FlxG.mouse.overlaps(gameSprite3) && FlxG.mouse.justPressed)
+		{
+			Reg.stateString = "Create3";
+			FlxG.switchState(NextState);
+		}
+		if (FlxG.mouse.overlaps(gameSprite4) && FlxG.mouse.justPressed)
+		{
+			Reg.stateString = "Create4";
+			FlxG.switchState(NextState);
+		}
+		if (FlxG.mouse.overlaps(gameSprite5) && FlxG.mouse.justPressed)
+		{
+			Reg.stateString = "Create5";
+			FlxG.switchState(NextState);
+		}
+		if (FlxG.mouse.overlaps(gameSprite6) && FlxG.mouse.justPressed)
+		{
+			Reg.stateString = "Create6";
+			FlxG.switchState(NextState);
+		}
 	}
 }

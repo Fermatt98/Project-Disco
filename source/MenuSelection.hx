@@ -39,9 +39,9 @@ class MenuSelection extends FlxState
 			{
 				start = true;
 				Menu.loadGraphic(AssetPaths.Menu__jpg);
-				historia = new FlxSprite(206, 424);
+				historia = new FlxSprite(166, 424);
 				historia.loadGraphic(AssetPaths.historia2__png);
-				Editor = new FlxSprite(711, 424);
+				Editor = new FlxSprite(671, 424);
 				Editor.loadGraphic(AssetPaths.Editor2__png);
 				add(historia);
 				add(Editor);
