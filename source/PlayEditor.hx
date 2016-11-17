@@ -47,12 +47,16 @@ class PlayEditor extends FlxState
 		Reg.music = FlxG.sound.load(AssetPaths.Game__ogg);
 		Reg.songLine = new SongLine(Reg.paredIzq.width, Reg.techo.height, 2 * 60 + 28);
 		salir = new FlxSprite(1226, 910);
+		salir.loadGraphic(AssetPaths.salir__png);
 		add(salir);
 		guardar = new FlxSprite(1171, 910);
+		guardar.loadGraphic(AssetPaths.save__png);
 		add(guardar);
 		tacho = new FlxSprite(1121, 910);
+		tacho.loadGraphic(AssetPaths.Basura__png);
 		add(tacho);
 		reviver = new FlxSprite(1058, 910);
+		reviver.loadGraphic(AssetPaths.resureccion__png);
 		add(reviver);
 		
 		trace(Reg.music.length);

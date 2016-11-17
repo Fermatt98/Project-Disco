@@ -18,6 +18,8 @@ class MenuSelection extends FlxState
 	private var Editor:FlxSprite;
 	private var comic:FlxState;
 	private var menuEditor:FlxState;
+	private var instrucciones:FlxSprite;
+	private var menuInstrucciones:FlxState;
 	
 	override public function create():Void
 	{
@@ -27,6 +29,7 @@ class MenuSelection extends FlxState
 		add(Menu);
 		comic = new Comic();
 		menuEditor = new MenuEditor();
+		menuInstrucciones = new Instrucciones();
 		Reg.stateString = "MenuSelection";
 	}
 	
@@ -45,6 +48,8 @@ class MenuSelection extends FlxState
 				Editor.loadGraphic(AssetPaths.Editor2__png);
 				add(historia);
 				add(Editor);
+				instrucciones = new FlxSprite();
+				instrucciones.loadGraphic(AssetPaths.Control2__png);
 			}
 		}
 		else
@@ -72,6 +77,18 @@ class MenuSelection extends FlxState
 			else
 			{
 				Editor.loadGraphic(AssetPaths.Editor2__png);
+			}
+			if (FlxG.mouse.overlaps(instrucciones))
+			{
+				historia.loadGraphic(AssetPaths.Control__png);
+				if (FlxG.mouse.justPressed)
+				{
+					FlxG.switchState(menuInstrucciones);
+				}
+			}
+			else
+			{
+				historia.loadGraphic(AssetPaths.Control2__png);
 			}
 		}
 	}
