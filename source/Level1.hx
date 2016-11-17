@@ -176,7 +176,7 @@ class Level1 extends FlxState
 			else
 			{
 				siCount = 0;
-				noSprite.loadGraphic(AssetPaths.SI1__png);
+				siSprite.loadGraphic(AssetPaths.SI1__png);
 			}
 			if (FlxG.mouse.overlaps(noSprite))
 			{
