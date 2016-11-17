@@ -48,8 +48,9 @@ class MenuSelection extends FlxState
 				Editor.loadGraphic(AssetPaths.Editor2__png);
 				add(historia);
 				add(Editor);
-				instrucciones = new FlxSprite();
+				instrucciones = new FlxSprite(419, 585);
 				instrucciones.loadGraphic(AssetPaths.Control2__png);
+				add(instrucciones);
 			}
 		}
 		else
@@ -80,7 +81,7 @@ class MenuSelection extends FlxState
 			}
 			if (FlxG.mouse.overlaps(instrucciones))
 			{
-				historia.loadGraphic(AssetPaths.Control__png);
+				instrucciones.loadGraphic(AssetPaths.Control__png);
 				if (FlxG.mouse.justPressed)
 				{
 					FlxG.switchState(menuInstrucciones);
@@ -88,7 +89,7 @@ class MenuSelection extends FlxState
 			}
 			else
 			{
-				historia.loadGraphic(AssetPaths.Control2__png);
+				instrucciones.loadGraphic(AssetPaths.Control2__png);
 			}
 		}
 	}

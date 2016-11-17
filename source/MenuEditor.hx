@@ -27,6 +27,8 @@ class MenuEditor extends FlxState
 	private var gameSprite4:FlxSprite;
 	private var gameSprite5:FlxSprite;
 	private var gameSprite6:FlxSprite;
+	private var flecha:FlxSprite;
+	private var lastState:FlxState;
 	
 	
 	
@@ -38,6 +40,11 @@ class MenuEditor extends FlxState
 		add(Menu);
 		Reg.stateString = "MenuEditor";
 		NextState = new PlayEditor();
+		lastState = new MenuSelection();
+		flecha = new FlxSprite(FlxG.width, 0);
+		flecha.loadGraphic(AssetPaths.atras__png);
+		flecha.x -= flecha.width;
+		add(flecha);
 		gamesave1 = new FlxSave();
 		gamesave2 = new FlxSave();
 		gamesave3 = new FlxSave();
@@ -115,6 +122,10 @@ class MenuEditor extends FlxState
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
+		if (FlxG.mouse.overlaps(flecha) && FlxG.mouse.justPressed)
+		{
+			FlxG.switchState(lastState);
+		}
 		if (FlxG.mouse.overlaps(gameSprite1) && FlxG.mouse.justPressed)
 		{
 			Reg.stateString = "Create1";
