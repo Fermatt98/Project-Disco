@@ -22,6 +22,7 @@ class PlayEditor extends FlxState
 	private var guardar:FlxSprite;
 	private var tacho:FlxSprite;
 	private var reviver:FlxSprite;
+	private var load:Bool = false;
 	
 	override public function create():Void
 	{
@@ -46,9 +47,13 @@ class PlayEditor extends FlxState
 		Reg.music = FlxG.sound.load(AssetPaths.Game__ogg);
 		Reg.songLine = new SongLine(Reg.paredIzq.width, Reg.techo.height, 2 * 60 + 28);
 		salir = new FlxSprite(1226, 910);
+		add(salir);
 		guardar = new FlxSprite(1171, 910);
+		add(guardar);
 		tacho = new FlxSprite(1121, 910);
+		add(tacho);
 		reviver = new FlxSprite(1058, 910);
+		add(reviver);
 		
 		trace(Reg.music.length);
 		trace(Reg.music.length/1000);
@@ -57,38 +62,62 @@ class PlayEditor extends FlxState
 		if (Reg.stateString == "Create1")
 		{
 			_gameSave.bind("Create1");
-			level1 = _gameSave.data.Create1;
+			if (_gameSave.data.Create1 != null)
+			{
+				level1 = _gameSave.data.Create1;
+				load = true;
+			}
 		}
 		if (Reg.stateString == "Create2")
 		{
 			_gameSave.bind("Create2");
-			level1 = _gameSave.data.Create2;
+			if (_gameSave.data.Create2 != null)
+			{
+				level1 = _gameSave.data.Create2;
+				load = true;
+			}
 		}
 		if (Reg.stateString == "Create3")
 		{
 			_gameSave.bind("Create3");
-			level1 = _gameSave.data.Create3;
+			if (_gameSave.data.Create3 != null)
+			{
+				level1 = _gameSave.data.Create3;
+				load = true;
+			}
 		}
 		if (Reg.stateString == "Create4")
 		{
 			_gameSave.bind("Create4");
-			level1 = _gameSave.data.Create4;
+			if (_gameSave.data.Create4 != null)
+			{
+				level1 = _gameSave.data.Create4;
+				load = true;
+			}
 		}
 		if (Reg.stateString == "Create5")
 		{
 			_gameSave.bind("Create5");
-			level1 = _gameSave.data.Create5;
+			if (_gameSave.data.Create5 != null)
+			{
+				level1 = _gameSave.data.Create5;
+				load = true;
+			}
 		}
 		if (Reg.stateString == "Create6")
 		{
 			_gameSave.bind("Create6");
-			level1 = _gameSave.data.Create6;
+			if (_gameSave.data.Create6 != null)
+			{
+				level1 = _gameSave.data.Create6;
+				load = true;
+			}
 		}
 		FlxG.cameras.bgColor = 0xffffffff;
 		
-		trace(level1);
-		
-		for (k in 0...6)
+		if (load)
+		{
+			for (k in 0...6)
 			{
 				switch (k)
 				{
@@ -135,6 +164,8 @@ class PlayEditor extends FlxState
 						}
 				}
 			}
+		}
+		
 	}
 	override public function update(elapsed:Float):Void
 	{
