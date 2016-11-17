@@ -20,6 +20,18 @@ class Level1 extends FlxState
 	private var existsCounter:Int = 0;
 	private var serializer:Serializer;
 	private var unserializer:Unserializer;
+	private var YouWin:Bool = false;
+	private var YouWinSprite:FlxSprite;
+	private var timer:Float = 0;
+	private var godMode:Bool = false;
+	private var deadTimer:Float = 0;
+	private var deadSprite:FlxSprite;
+	private var justDead:Bool = false;
+	private var deadCount:Int = 0;
+	private var siSprite:FlxSprite;
+	private var noSprite:FlxSprite;
+	private var siCount:Int = 0;
+	private var noCount:Int = 0;
 	
 	override public function create():Void
 	{
@@ -95,13 +107,119 @@ class Level1 extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		if (!Reg.player.exists)
+		if (FlxG.keys.justPressed.G)
 		{
-			FlxG.resetState();
+			godMode = true;
 		}
-		if (Reg.getTime > 147)
+		if (!Reg.player.exists && !godMode && !justDead)
 		{
-			FlxG.resetGame();
+			Reg.music.kill();
+			deadTimer += elapsed;
+			if (deadTimer > 3)
+			{
+				deadSprite = new FlxSprite();
+				deadSprite.loadGraphic(AssetPaths.Perdiste__png);
+				add(deadSprite);
+				siSprite = new FlxSprite(815, 759);
+				siSprite.loadGraphic(AssetPaths.SI1__png);
+				add(siSprite);
+				noSprite = new FlxSprite(201, 759);
+				noSprite.loadGraphic(AssetPaths.SI1__png);
+				add(noSprite);
+				justDead = true;
+				
+			}
+		}
+		if (justDead)
+		{
+			deadCount++;
+			switch(deadCount)
+			{
+				case 1:
+					deadSprite.loadGraphic(AssetPaths.Perdiste__png);
+				case 50:
+					deadSprite.loadGraphic(AssetPaths.Perdiste2__png);
+				case 60:
+					deadCount = 0;
+			}
+			if (FlxG.mouse.overlaps(siSprite))
+			{
+				if (siCount < 7)
+				{
+					siCount++;
+				}
+				switch(siCount)
+				{
+					case 1:
+						siSprite.loadGraphic(AssetPaths.SI1__png);
+					case 2:
+						siSprite.loadGraphic(AssetPaths.SI2__png);
+					case 3:
+						siSprite.loadGraphic(AssetPaths.SI3__png);
+					case 4:
+						siSprite.loadGraphic(AssetPaths.SI4__png);
+					case 5:
+						siSprite.loadGraphic(AssetPaths.si6__png);
+					case 6:
+						siSprite.loadGraphic(AssetPaths.SI5__png);
+				}
+				if (FlxG.mouse.justPressed)
+				{
+					FlxG.resetState();
+				}
+			}
+			else
+			{
+				siCount = 0;
+				noSprite.loadGraphic(AssetPaths.SI1__png);
+			}
+			if (FlxG.mouse.overlaps(noSprite))
+			{
+				if (noCount < 7)
+				{
+					noCount++;
+				}
+				switch(noCount)
+				{
+					case 1:
+						noSprite.loadGraphic(AssetPaths.SI1__png);
+					case 2:
+						noSprite.loadGraphic(AssetPaths.NO2__png);
+					case 3:
+						noSprite.loadGraphic(AssetPaths.NO3__png);
+					case 4:
+						noSprite.loadGraphic(AssetPaths.NO4__png);
+					case 5:
+						noSprite.loadGraphic(AssetPaths.NO6__png);
+					case 6:
+						noSprite.loadGraphic(AssetPaths.NO5__png);
+				}
+				if (FlxG.mouse.justPressed)
+				{
+					FlxG.resetGame();
+				}
+			}
+			else
+			{
+				noCount = 0;
+				noSprite.loadGraphic(AssetPaths.SI1__png);
+			}
+		}
+		if (Reg.getTime > 147 && !YouWin)
+		{
+			YouWin = true;
+			YouWinSprite = new FlxSprite();
+			YouWinSprite.loadGraphic(AssetPaths.Ganaste__png);
+			add(YouWinSprite);
+			Reg.music.stop();
+		}
+		if (YouWin)
+		{
+			timer += elapsed;
+			if (timer > 5)
+			{
+				FlxG.resetGame();
+			}
 		}
 	}
 }

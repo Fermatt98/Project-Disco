@@ -23,7 +23,7 @@ class Fondo extends FlxSprite
 	{
 		super.update(elapsed);
 		
-		/*if (Reg.getTime > 6 && Reg.getTime <= 12)
+		if (Reg.getTime > 26 && Reg.getTime <= 65)
 		{
 			count++;
 			switch(count)
@@ -53,8 +53,35 @@ class Fondo extends FlxSprite
 				case 110:
 					count = 0;
 			}
-		}*/
-		if (Reg.getTime > 12)
+		}
+		if (Reg.getTime > 65 && Reg.getTime <= 92)
+		{
+			count++;
+			switch(count)
+			{
+				case 1:
+					loadGraphic(AssetPaths.fondo_3_1__jpg);
+				case 3:
+					loadGraphic(AssetPaths.fondo_3_2__jpg);
+				case 6:
+					loadGraphic(AssetPaths.fondo_3_3__jpg);
+				case 9:
+					loadGraphic(AssetPaths.fondo_3_4__jpg);
+				case 12:
+					loadGraphic(AssetPaths.fondo_3_5__jpg);
+				case 15:
+					loadGraphic(AssetPaths.fondo_3_4__jpg);
+				case 18:
+					loadGraphic(AssetPaths.fondo_3_6__jpg);
+				case 21:
+					loadGraphic(AssetPaths.fondo_3_7__jpg);
+				case 24:
+					loadGraphic(AssetPaths.fondo_3_8__jpg);
+				case 27:
+					count = 0;
+			}
+		}
+		if (Reg.getTime > 13 && Reg.getTime <= 26 || Reg.getTime > 92)
 		{
 		if (Reg.ojo1.exists)
 		{
@@ -87,6 +114,7 @@ class Fondo extends FlxSprite
 					count = 0;
 			}
 		}
+		
 	}
 	
 }
