@@ -54,6 +54,7 @@ class Level1 extends FlxState
 		//Reg.Consol = new Array<Consola>();
 		//Reg.BotonEditor = new Array<FlxSprite>();
 		Reg.music = FlxG.sound.load(AssetPaths.Game__ogg);
+		Reg.music.volume = 0;
 		Reg.songLine = new SongLine(Reg.paredIzq.width, Reg.techo.height, 2*60+28);
 		serializer = new Serializer();
 		//FlxG.debugger.visible = true;2*60+28
@@ -107,6 +108,10 @@ class Level1 extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+		if (Reg.music.volume < 1)
+		{
+			Reg.music.volume += 0.1;
+		}
 		if (FlxG.keys.justPressed.G)
 		{
 			godMode = true;
